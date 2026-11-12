@@ -3792,13 +3792,13 @@
     }
 
     .inventory-filter-grid {
-      grid-template-columns: repeat(3, minmax(0, calc((100% - 36px) / 4))) auto;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       width: 100%;
       justify-content: start;
     }
 
     .inventory-filter-grid .filter-actions {
-      grid-column: auto;
+      grid-column: 1 / -1;
     }
 
     .inventory-help {
@@ -5940,7 +5940,7 @@
 
     .inventory-table {
       width: 100%;
-      min-width: 1320px;
+      min-width: 1680px;
     }
 
     .inventory-iccid-link {
@@ -6062,6 +6062,57 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+    }
+
+    .traffic-usage-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+      line-height: 18px;
+    }
+
+    .traffic-usage-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-width: 0;
+      color: #374151;
+    }
+
+    .traffic-usage-value {
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .traffic-usage-time {
+      color: #8a93a3;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .traffic-help-btn {
+      width: 18px;
+      height: 18px;
+      display: inline-grid;
+      place-items: center;
+      flex: 0 0 auto;
+      padding: 0;
+      border: 1px solid #c9d8e8;
+      border-radius: 50%;
+      background: #fff;
+      color: #7b8492;
+      font-size: 12px;
+      line-height: 1;
+      cursor: help;
+    }
+
+    .traffic-help-btn:hover,
+    .traffic-help-btn:focus {
+      border-color: #b8dfff;
+      background: var(--blue-050);
+      color: var(--blue);
+      outline: none;
     }
 
     .switch {
@@ -6412,7 +6463,96 @@
         max-height: calc(100vh - 428px);
       }
     }
+    .stock-in-modal { width: min(720px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); display: flex; flex-direction: column; border-radius: 8px; background: #fff; overflow: hidden; box-shadow: var(--shadow); }
+    .stock-in-modal .modal-head { position: relative; justify-content: center; flex-shrink: 0; background: #507cff; border: 0; }
+    .stock-in-modal .modal-title { color: #fff; font-size: 16px; font-weight: 500; }
+    .stock-in-modal .modal-close { position: absolute; right: 16px; color: #fff; }
+    .stock-in-modal .modal-close:hover { background: rgba(255,255,255,.15); }
+    .stock-in-modal .modal-body { padding: 26px 18px; min-height: 0; }
+    .stock-in-tip { margin-bottom: 22px; padding: 12px 14px; border: 1px solid #ffc9ce; border-radius: 4px; background: #fff7f7; color: #ef4444; font-size: 12px; line-height: 20px; }
+    .inventory-card-change-btn { position: relative; }
+    .inventory-note-index {
+      display: inline-grid;
+      flex: 0 0 16px;
+      width: 16px;
+      height: 16px;
+      place-items: center;
+      border-radius: 50%;
+      background: #ffdb6e;
+      color: #633d00;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .inventory-card-change-btn .inventory-note-index { position: absolute; top: -6px; right: -6px; box-shadow: 0 0 0 2px #fff; pointer-events: none; }
+    .stock-in-tip.is-card-change { display: flex; align-items: center; gap: 8px; border-color: #f3dc95; background: #fff9e7; color: #704500; }
+    .stock-in-row { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 12px; align-items: start; margin-bottom: 16px; }
+    .stock-in-label { text-align: right; padding-top: 8px; color: #4b5563; font-size: 13px; }
+    .stock-in-type { width: min(252px,100%); }
+    .stock-in-note { margin: 6px 0 0; color: #6b7280; font-size: 12px; line-height: 20px; }
+    .stock-in-file-name { display: flex; align-items: center; gap: 8px; margin-top: 6px; overflow-wrap: anywhere; font-size: 12px; }
+    .stock-in-file-name[hidden] { display: none; }
+    .stock-in-modal textarea { display: block; width: 100%; min-height: 52px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 4px; resize: none; color: var(--text); font: inherit; }
+    .stock-in-modal textarea:focus { outline: 2px solid #c9e6ff; border-color: var(--blue); }
+    .stock-in-error { color: #dc2626; font-size: 12px; margin: 6px 0 0; }
+    .stock-in-modal [aria-invalid="true"] { outline: 1px solid #dc2626; }
+    .stock-in-modal .modal-foot { margin-top: auto; padding: 20px 18px; flex-shrink: 0; border-top: 0; }
+    .stock-in-modal button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    @media (max-width: 600px) { .stock-in-row { grid-template-columns: 74px minmax(0,1fr); gap: 8px; } }
+    .account-log-page {
+      height: max(480px, calc(100dvh - 142px));
+      min-height: 0;
+    }
+
+    .account-log-page .filter-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+    }
+
+    .account-log-page .filter-actions { grid-column: auto; }
+    .account-log-page .filters { position: relative; z-index: 5; }
+    .account-log-page .table-toolbar { justify-content: flex-end; }
+    .account-log-page .table-area { min-height: 0; }
+    .account-log-page .table-scroll {
+      flex: 1 1 auto;
+      min-height: 0;
+      max-height: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .account-log-table { width: 100%; }
+    .account-log-table th,
+    .account-log-table td { border-right: 1px solid var(--border-soft); }
+    .account-log-table th:last-child,
+    .account-log-table td:last-child { border-right: 0; }
+    .account-log-table th { background: #f0f1f3; }
+    .account-log-table tbody td:not(.empty-cell) { height: 36px; padding-block: 5px; }
+    .account-log-table [data-doc-field="序号"] { text-align: center; }
+    .account-log-page .pagination { flex-wrap: wrap; }
+
+    .account-log-columns {
+      position: fixed;
+      inset: auto;
+      top: var(--log-columns-top, 0px);
+      right: var(--log-columns-right, 18px);
+      width: min(232px, calc(100vw - 24px));
+      max-height: min(440px, calc(100dvh - 24px));
+      margin: 0;
+      padding: 12px;
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--panel);
+      color: var(--text);
+      box-shadow: var(--shadow);
+      font-size: 12px;
+    }
+
+    .account-log-columns label { display: flex; align-items: center; gap: 8px; min-height: 27px; cursor: pointer; }
+    .account-log-columns .link-tool { margin-top: 8px; }
+    .account-log-page :focus-visible,
+    .account-log-columns :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
   </style>
+  <link rel="stylesheet" href="components/product-doc-panel.css">
 </head>
 <body>
   <div class="app">
@@ -7161,11 +7301,12 @@
         return items.slice(start, start + Number(pageSize || 20));
       }
 
-      function getCompactPaginationButtons(page, pageCount, className) {
+      function getCompactPaginationButtons(page, pageCount, className, limit) {
+        limit = limit || 5;
         var buttons = [];
         var start = Math.max(1, page - 2);
-        var end = Math.min(pageCount, start + 4);
-        start = Math.max(1, end - 4);
+        var end = Math.min(pageCount, start + limit - 1);
+        start = Math.max(1, end - limit + 1);
         for (var number = start; number <= end; number += 1) {
           buttons.push('<button class="page-btn ' + className + ' ' + (number === page ? "current" : "") + '" type="button" data-page="' + number + '">' + number + '</button>');
         }
@@ -7620,6 +7761,18 @@
               <a class="sub-item ${activePage === "warningStrategy" ? "current" : ""} js-warning-strategy-page" href="#">预警通知策略</a>
             </div>
           </div>
+          <div class="nav-group">
+            <button class="nav-item js-nav-toggle" type="button" aria-expanded="true">
+              <span class="nav-label">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12"></path><path d="M6 12h12"></path><path d="M6 20h12"></path><path d="M4 6h.01"></path><path d="M4 14h.01"></path><path d="M4 22h.01"></path></svg>
+                日志管理
+              </span>
+              <svg class="collapse-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"></path></svg>
+            </button>
+            <div class="sub-menu">
+              <a class="sub-item ${activePage === "accountLog" ? "current" : ""} js-account-log-page" href="#account-operation-log">账户操作日志</a>
+            </div>
+          </div>
         `;
       }
 
@@ -7707,6 +7860,21 @@
         `;
       }
 
+      function getStockCardOptions(key) {
+        var options = {
+          specification: ["贴片MS0-5*6", "贴片MS1-5*6", "贴片MS0-2*2", "三切插拔MP1", "二切插拔MP2-中卡", "二切插拔MP2-小卡"],
+          network: ["4G", "5G"],
+          scenario: ["非定向大流量", "非定向小流量", "定向流量", "场景一", "场景二", "场景三", "场景四", "场景五", "场景六", "场景七"]
+        };
+        return options[key] || [];
+      }
+
+      function getStockCardSelectHtml(id, key, placeholder, required) {
+        return '<div class="select-wrap"><select id="' + id + '"' + (required ? ' required aria-describedby="' + id + 'Error"' : '') + '><option value="" selected disabled hidden>' + placeholder + '</option>' + getStockCardOptions(key).map(function (value) {
+          return '<option value="' + escapeHtml(value) + '">' + escapeHtml(value) + '</option>';
+        }).join('') + '</select></div>';
+      }
+
       function getInventoryManagementMainHtml() {
         return `
           <section class="content-card inventory-page">
@@ -7741,6 +7909,9 @@
                     <button class="clear-control" type="button" aria-label="清除库存状态">×</button>
                   </div>
                 </div>
+                <div class="field" data-doc-field="卡片规格"><label for="inventorySpecification">卡片规格</label>${getStockCardSelectHtml("inventorySpecification", "specification", "卡片规格", false)}</div>
+                <div class="field" data-doc-field="网络类型"><label for="inventoryNetwork">网络类型</label>${getStockCardSelectHtml("inventoryNetwork", "network", "网络类型", false)}</div>
+                <div class="field" data-doc-field="卡场景"><label for="inventoryScenario">卡场景</label>${getStockCardSelectHtml("inventoryScenario", "scenario", "卡场景", false)}</div>
                 <div class="filter-actions">
                   <button class="btn primary js-inventory-query" type="button">
                     <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
@@ -7754,6 +7925,7 @@
             <div class="table-toolbar">
               <div class="toolbar-left">
                 <button class="btn primary js-inventory-action" type="button" data-action="stock-in">卡片入库</button>
+                <button class="btn js-inventory-action inventory-card-change-btn" type="button" data-action="change-info" title="对应页面说明第 ${inventoryCardChangeNote.number} 条">卡片信息变更 ${getInventoryCardChangeBadgeHtml()}</button>
                 <button class="btn js-inventory-action" type="button" data-action="export">导出</button>
               </div>
               <div class="toolbar-right">
@@ -7775,6 +7947,9 @@
                       <th style="width: 150px;">MSISDN</th>
                       <th style="width: 170px;">IMSI</th>
                       <th style="width: 130px;">卡片类型</th>
+                      <th scope="col" style="width: 144px;">卡片规格</th>
+                      <th scope="col" style="width: 88px;">网络类型</th>
+                      <th scope="col" style="width: 128px;">卡场景</th>
                       <th style="width: 110px;">运营商</th>
                       <th style="width: 110px;">库存状态</th>
                       <th style="width: 160px;">归属商户</th>
@@ -7789,6 +7964,9 @@
                       <td><div class="cell-line"><span>17290310018</span><button class="copy-btn" type="button" data-copy="17290310018" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td><div class="cell-line"><span>460001982761245</span><button class="copy-btn" type="button" data-copy="460001982761245" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td>贴片卡</td>
+                      <td data-inventory-attribute="specification">贴片MS0-5*6</td>
+                      <td data-inventory-attribute="network">4G</td>
+                      <td data-inventory-attribute="scenario">非定向大流量</td>
                       <td>中国移动</td>
                       <td><span class="inventory-status outbound">已出库</span></td>
                       <td>华东物流</td>
@@ -7801,6 +7979,9 @@
                       <td><div class="cell-line"><span>17721883909</span><button class="copy-btn" type="button" data-copy="17721883909" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td><div class="cell-line"><span>460011982762118</span><button class="copy-btn" type="button" data-copy="460011982762118" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td>插拔卡</td>
+                      <td data-inventory-attribute="specification">三切插拔MP1</td>
+                      <td data-inventory-attribute="network">5G</td>
+                      <td data-inventory-attribute="scenario">非定向小流量</td>
                       <td>中国联通</td>
                       <td><span class="inventory-status in-stock">在库</span></td>
                       <td>--</td>
@@ -7813,6 +7994,9 @@
                       <td><div class="cell-line"><span>15300648821</span><button class="copy-btn" type="button" data-copy="15300648821" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td><div class="cell-line"><span>460031982889315</span><button class="copy-btn" type="button" data-copy="460031982889315" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td>贴片卡</td>
+                      <td data-inventory-attribute="specification">贴片MS0-2*2</td>
+                      <td data-inventory-attribute="network">4G</td>
+                      <td data-inventory-attribute="scenario">定向流量</td>
                       <td>中国电信</td>
                       <td><span class="inventory-status outbound">已出库</span></td>
                       <td>北辰科技</td>
@@ -7825,6 +8009,9 @@
                       <td><div class="cell-line"><span>18976521045</span><button class="copy-btn" type="button" data-copy="18976521045" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td><div class="cell-line"><span>460001982100789</span><button class="copy-btn" type="button" data-copy="460001982100789" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td>插拔卡</td>
+                      <td data-inventory-attribute="specification">二切插拔MP2-中卡</td>
+                      <td data-inventory-attribute="network">5G</td>
+                      <td data-inventory-attribute="scenario">场景一</td>
                       <td>中国移动</td>
                       <td><span class="inventory-status in-stock">在库</span></td>
                       <td>--</td>
@@ -7837,6 +8024,9 @@
                       <td><div class="cell-line"><span>17088263881</span><button class="copy-btn" type="button" data-copy="17088263881" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td><div class="cell-line"><span>460031982889470</span><button class="copy-btn" type="button" data-copy="460031982889470" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
                       <td>贴片卡</td>
+                      <td data-inventory-attribute="specification">贴片MS1-5*6</td>
+                      <td data-inventory-attribute="network">4G</td>
+                      <td data-inventory-attribute="scenario">场景二</td>
                       <td>中国联通</td>
                       <td><span class="inventory-status in-stock">在库</span></td>
                       <td>--</td>
@@ -11242,6 +11432,203 @@
         if (jump) jump.addEventListener('keydown', function (event) { if (event.key === 'Enter') { downloadManagementState.page = clampPage(event.target.value, getFilteredDownloadManagementRecords().length, downloadManagementState.pageSize); renderDownloadManagementPage(); } });
       }
 
+      var accountLogColumns = [
+        { key: "index", label: "序号", width: 56 },
+        { key: "merchant", label: "商户名称", width: 115 },
+        { key: "group", label: "群组名称", width: 180 },
+        { key: "operator", label: "操作人", width: 90 },
+        { key: "operatorId", label: "操作人用户ID", width: 110 },
+        { key: "time", label: "操作时间", width: 153 },
+        { key: "type", label: "操作类型", width: 99 },
+        { key: "result", label: "操作结果", width: 90 },
+        { key: "ip", label: "操作人当前IP", width: 126 },
+        { key: "remark", label: "备注", width: 109 }
+      ];
+      var accountLogTypes = ["卡划拨", "卡片入库", "卡片回收", "套餐续费"];
+      var accountLogState = { type: "卡划拨", operator: "", start: "", end: "", page: 1, pageSize: 20, hiddenColumns: [] };
+      var accountLogRecords = Array.from({ length: 132 }, function (_, index) {
+        var date = new Date(Date.UTC(2026, 8, 2, 11, 11, 49) - index * 1037 * 1000);
+        var type = index < 108 ? accountLogTypes[0] : accountLogTypes[1 + (index - 108) % 3];
+        var operatorIndex = Math.floor(index / 18) % 3;
+        var dateTime = date.toISOString();
+        return {
+          merchant: ["诺达通信", "星环设备", "汇联能源"][operatorIndex],
+          group: "智慧教育_通用大流量卡_" + dateTime.slice(0, 10).replace(/-/g, "") + "_" + (index % 5 + 1),
+          operator: ["唐一诚", "李凡", "运营管理员"][operatorIndex],
+          operatorId: ["232", "216", "305"][operatorIndex],
+          time: dateTime.slice(0, 19).replace("T", " "),
+          type: type,
+          result: index > 19 && index % 23 === 0 ? "失败" : "成功",
+          ip: "192.0.2." + (18 + operatorIndex),
+          remark: type
+        };
+      });
+
+      function getFilteredAccountLogs() {
+        return accountLogRecords.filter(function (record) {
+          return (!accountLogState.type || record.type === accountLogState.type) &&
+            record.operator.toLowerCase().includes(accountLogState.operator.toLowerCase()) &&
+            matchesDateRange(record.time, accountLogState.start, accountLogState.end);
+        });
+      }
+
+      function renderAccountLogPage() {
+        var state = accountLogState;
+        var main = document.querySelector(".main");
+        main.innerHTML = `
+          <section class="content-card account-log-page" id="account-operation-log" aria-label="账户操作日志">
+            <div class="filters">
+              <form class="filter-grid" novalidate>
+                <div class="field" data-doc-field="操作类型">
+                  <label for="accountLogType">操作类型</label>
+                  <div class="select-wrap"><select id="accountLogType">
+                    <option value="" disabled hidden${state.type ? "" : " selected"}>操作类型</option>
+                    ${accountLogTypes.map(function (type) {
+                      return '<option value="' + escapeHtml(type) + '"' + (type === state.type ? " selected" : "") + '>' + escapeHtml(type) + '</option>';
+                    }).join("")}
+                  </select></div>
+                </div>
+                <div class="field" data-doc-field="操作人">
+                  <label for="accountLogOperator">操作人</label>
+                  <input class="control" id="accountLogOperator" type="text" placeholder="请输入操作人" value="${escapeHtml(state.operator)}">
+                </div>
+                ${getDateRangeFilterHtml("操作时间", "js-account-log-date", state.start, state.end, "")}
+                <div class="filter-actions">
+                  <button class="btn primary" type="submit"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>搜索</button>
+                  <button class="btn js-account-log-reset" type="button"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8m0-5v5h5"></path></svg>重置</button>
+                </div>
+              </form>
+            </div>
+            <div class="table-toolbar"><div class="toolbar-right">
+              <button class="link-tool js-account-log-columns" type="button" popovertarget="accountLogColumns"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10m4 0h2M4 12h3m4 0h9M4 17h10m4 0h2"></path><circle cx="16" cy="7" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="16" cy="17" r="2"></circle></svg>自定义列表项</button>
+              <div class="account-log-columns" id="accountLogColumns" popover aria-label="自定义列表项">
+                ${accountLogColumns.map(function (column) {
+                  return '<label><input type="checkbox" data-column="' + column.key + '"' + (state.hiddenColumns.includes(column.key) ? "" : " checked") + '>' + column.label + '</label>';
+                }).join("")}
+                <button class="link-tool js-account-log-default-columns" type="button">恢复默认列</button>
+              </div>
+            </div></div>
+            <div class="table-area">
+              <div class="table-scroll" role="region" aria-label="账户操作日志列表" tabindex="0"><table class="account-log-table"><thead></thead><tbody></tbody></table></div>
+              <div class="pagination" aria-label="账户操作日志分页"></div>
+            </div>
+          </section>`;
+        var page = main.querySelector(".account-log-page");
+        var form = page.querySelector("form");
+        var type = form.querySelector("#accountLogType");
+        var operator = form.querySelector("#accountLogOperator");
+        var dateRange = form.querySelector(".js-account-log-date");
+        var scroller = page.querySelector(".table-scroll");
+        var table = page.querySelector("table");
+        var pagination = page.querySelector(".pagination");
+        var columnButton = page.querySelector(".js-account-log-columns");
+        var columnPanel = page.querySelector("#accountLogColumns");
+        var columnChecks = Array.from(columnPanel.querySelectorAll("[data-column]"));
+        bindClearableControls(page);
+        bindDateRangeControls(page);
+
+        function renderResults(resetScroll) {
+          var columns = accountLogColumns.filter(function (column) { return !state.hiddenColumns.includes(column.key); });
+          var totalWidth = columns.reduce(function (sum, column) { return sum + column.width; }, 0);
+          var records = getFilteredAccountLogs();
+          var pageCount = getPageCount(records.length, state.pageSize);
+          state.page = clampPage(state.page, records.length, state.pageSize);
+          table.style.minWidth = totalWidth + "px";
+          table.tHead.innerHTML = "<tr>" + columns.map(function (column) {
+            return '<th scope="col" data-doc-field="' + column.label + '" style="width:' + (column.width / totalWidth * 100) + '%">' + column.label + "</th>";
+          }).join("") + "</tr>";
+          table.tBodies[0].innerHTML = getPagedItems(records, state.page, state.pageSize).map(function (record, index) {
+            return "<tr>" + columns.map(function (column) {
+              var value = column.key === "index" ? (state.page - 1) * state.pageSize + index + 1 : record[column.key] || "/";
+              var safeValue = escapeHtml(value);
+              return '<td data-doc-field="' + column.label + '" title="' + safeValue + '">' + safeValue + "</td>";
+            }).join("") + "</tr>";
+          }).join("") || getEmptyTableRowHtml(columns.length);
+          pagination.innerHTML = `
+            <span role="status">共 ${records.length} 条</span>
+            <select class="page-size" aria-label="每页条数">${getPageSizeOptions(state.pageSize)}</select>
+            <button class="page-btn" type="button" data-step="-1" aria-label="上一页" ${state.page === 1 ? "disabled" : ""}>‹</button>
+            ${getCompactPaginationButtons(state.page, pageCount, "js-account-log-page-number", 6)}
+            <button class="page-btn" type="button" data-step="1" aria-label="下一页" ${state.page >= pageCount ? "disabled" : ""}>›</button>
+            <span>前往</span><input class="jump" type="number" step="1" min="1" max="${pageCount}" value="${state.page}" aria-label="跳转页码"><span>页</span>`;
+          pagination.querySelector(".page-btn.current").setAttribute("aria-current", "page");
+          if (resetScroll) scroller.scrollTop = 0;
+        }
+
+        function applyFilters() {
+          var range = getDateRangeFilterValue(dateRange);
+          Object.assign(state, { type: type.value, operator: operator.value.trim(), start: range.start, end: range.end, page: 1 });
+          renderResults(true);
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          applyFilters();
+        });
+        operator.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && (event.isComposing || event.keyCode === 229)) event.preventDefault();
+        });
+        form.querySelector(".js-account-log-reset").addEventListener("click", function () {
+          type.value = "";
+          operator.value = "";
+          resetDateRangeValue(dateRange);
+          hideDatePicker();
+          updateClearableState(form);
+          applyFilters();
+        });
+        operator.addEventListener("input", function () {
+          if (!operator.value && state.operator) applyFilters();
+        });
+        type.addEventListener("change", function () {
+          if (!type.value && state.type) applyFilters();
+        });
+        dateRange.addEventListener("date-range-change", function () {
+          if (!dateRange.dataset.start && state.start) applyFilters();
+        });
+
+        pagination.addEventListener("click", function (event) {
+          var button = event.target.closest("button[data-page], button[data-step]");
+          if (!button) return;
+          state.page = button.dataset.page ? Number(button.dataset.page) : state.page + Number(button.dataset.step);
+          renderResults(true);
+          pagination.querySelector(".page-btn.current").focus();
+        });
+        pagination.addEventListener("change", function (event) {
+          if (event.target.matches(".page-size")) {
+            state.pageSize = Number(event.target.value);
+            state.page = 1;
+            renderResults(true);
+            pagination.querySelector(".page-size").focus();
+          }
+        });
+        pagination.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && event.target.matches(".jump")) {
+            state.page = Math.trunc(Number(event.target.value));
+            renderResults(true);
+            pagination.querySelector(".jump").focus();
+          }
+        });
+
+        function syncColumns() {
+          var count = columnChecks.filter(function (check) { return check.checked; }).length;
+          columnChecks.forEach(function (check) { check.disabled = count === 1 && check.checked; });
+          state.hiddenColumns = columnChecks.filter(function (check) { return !check.checked; }).map(function (check) { return check.dataset.column; });
+          renderResults(false);
+        }
+        columnPanel.addEventListener("change", syncColumns);
+        columnPanel.querySelector(".js-account-log-default-columns").addEventListener("click", function () {
+          columnChecks.forEach(function (check) { check.checked = true; });
+          syncColumns();
+        });
+        columnPanel.addEventListener("beforetoggle", function (event) {
+          if (event.newState !== "open") return;
+          var bounds = columnButton.getBoundingClientRect();
+          columnPanel.style.setProperty("--log-columns-top", Math.max(12, Math.min(bounds.bottom + 6, window.innerHeight - 340)) + "px");
+          columnPanel.style.setProperty("--log-columns-right", Math.max(12, window.innerWidth - bounds.right) + "px");
+        });
+        syncColumns();
+      }
+
       function getApprovalFlowMainHtml() {
         return `
           <section class="content-card approval-page">
@@ -11673,7 +12060,7 @@
                       <th style="width: 110px;">卡状态</th>
                       <th style="width: 250px;">套餐信息</th>
                       <th style="width: 180px;">备注</th>
-                      <th style="width: 150px;">本月已用流量（MB）</th>
+                      <th style="width: 210px;">本月已用流量（MB）</th>
                       <th style="width: 140px;">本月剩余流量（MB）</th>
                       <th style="width: 130px;">群组名称</th>
                       <th style="width: 130px;">归属商户</th>
@@ -11696,7 +12083,7 @@
                       <td><span class="tag success card-status">已激活</span></td>
                       <td><div class="cell-stack"><div><span class="cell-key">套餐名称</span> 月度 20GB 套餐</div><div><span class="cell-key">套餐生效方式</span> 激活后生效</div><div><span class="cell-key">套餐有效期</span> 2026-05-01 至 2026-06-30</div><div><span class="cell-key">套餐状态</span> <span class="tag success">生效中</span></div><div><span class="cell-key">当前套餐到期时间</span> 2026-06-30</div></div></td>
                       <td><span class="remark-cell">物流车载主卡<button class="inline-icon-btn" type="button" aria-label="编辑备注"><svg class="action-icon" viewBox="0 0 24 24"><path d="M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4z"></path></svg></button></span></td>
-                      <td><span class="traffic-cell">18,420<button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></span></td>
+                      <td><div class="traffic-usage-cell"><div class="traffic-usage-main"><span class="traffic-usage-value">18,420</span><button class="traffic-help-btn" type="button" title="本月已用流量数据可能存在延迟，以更新时间为准。" aria-label="本月已用流量说明">?</button><button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></div><div class="traffic-usage-time">更新时间：2026-08-29 10：00：00</div></div></td>
                       <td>2,060</td>
                       <td>车载终端组</td>
                       <td>华东物流</td>
@@ -11711,7 +12098,7 @@
                       <td><span class="tag muted card-status">测试期</span></td>
                       <td><div class="cell-stack"><div><span class="cell-key">套餐名称</span> 季度共享 30GB</div><div><span class="cell-key">套餐生效方式</span> 出库后生效</div><div><span class="cell-key">套餐有效期</span> 2026-04-01 至 2026-07-01</div><div><span class="cell-key">套餐状态</span> <span class="tag success">生效中</span></div><div><span class="cell-key">当前套餐到期时间</span> 2026-07-01</div></div></td>
                       <td><span class="remark-cell">北区摄像头<button class="inline-icon-btn" type="button" aria-label="编辑备注"><svg class="action-icon" viewBox="0 0 24 24"><path d="M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4z"></path></svg></button></span></td>
-                      <td><span class="traffic-cell">6,170<button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></span></td>
+                      <td><div class="traffic-usage-cell"><div class="traffic-usage-main"><span class="traffic-usage-value">6,170</span><button class="traffic-help-btn" type="button" title="本月已用流量数据可能存在延迟，以更新时间为准。" aria-label="本月已用流量说明">?</button><button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></div><div class="traffic-usage-time">更新时间：2026-08-29 10：00：00</div></div></td>
                       <td>24,550</td>
                       <td>共享设备组</td><td>星环设备</td><td>中国联通</td><td>2026-04-28</td><td><div class="cell-stack"><div><span class="cell-key">测试期截止日期</span> 2026-05-05</div><div><span class="cell-key">测试期可用流量上限</span> 300MB</div></div></td><td>30 天</td>
                     </tr>
@@ -11721,7 +12108,7 @@
                       <td><span class="tag danger card-status">已停用</span></td>
                       <td><div class="cell-stack"><div><span class="cell-key">套餐名称</span> 全球漫游 10GB</div><div><span class="cell-key">套餐生效方式</span> 首次联网生效</div><div><span class="cell-key">套餐有效期</span> 2026-03-01 至 2026-06-01</div><div><span class="cell-key">套餐状态</span> <span class="tag danger">已过期</span></div><div><span class="cell-key">当前套餐到期时间</span> 2026-06-01</div></div></td>
                       <td><span class="remark-cell">海外节点备用<button class="inline-icon-btn" type="button" aria-label="编辑备注"><svg class="action-icon" viewBox="0 0 24 24"><path d="M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4z"></path></svg></button></span></td>
-                      <td><span class="traffic-cell">820<button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></span></td>
+                      <td><div class="traffic-usage-cell"><div class="traffic-usage-main"><span class="traffic-usage-value">820</span><button class="traffic-help-btn" type="button" title="本月已用流量数据可能存在延迟，以更新时间为准。" aria-label="本月已用流量说明">?</button><button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></div><div class="traffic-usage-time">更新时间：2026-08-29 10：00：00</div></div></td>
                       <td>9,420</td>
                       <td>海外漫游组</td><td>北辰科技</td><td>中国电信</td><td>2026-03-06</td><td><div class="cell-stack"><div><span class="cell-key">测试期截止日期</span> 2026-03-13</div><div><span class="cell-key">测试期可用流量上限</span> 200MB</div></div></td><td>60 天</td>
                     </tr>
@@ -11731,7 +12118,7 @@
                       <td><span class="tag muted card-status">库存</span></td>
                       <td><div class="cell-stack"><div><span class="cell-key">套餐名称</span> 自然月 20GB 套餐</div><div><span class="cell-key">套餐生效方式</span> 自然月生效</div><div><span class="cell-key">套餐有效期</span> 2026-06-01 至 2026-06-30</div><div><span class="cell-key">套餐状态</span> <span class="tag success">生效中</span></div><div><span class="cell-key">当前套餐到期时间</span> 2026-06-30</div></div></td>
                       <td><span class="remark-cell">能源表计卡<button class="inline-icon-btn" type="button" aria-label="编辑备注"><svg class="action-icon" viewBox="0 0 24 24"><path d="M4 20h4l11-11a2.8 2.8 0 0 0-4-4L4 16v4z"></path></svg></button></span></td>
-                      <td><span class="traffic-cell">12,040<button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></span></td>
+                      <td><div class="traffic-usage-cell"><div class="traffic-usage-main"><span class="traffic-usage-value">12,040</span><button class="traffic-help-btn" type="button" title="本月已用流量数据可能存在延迟，以更新时间为准。" aria-label="本月已用流量说明">?</button><button class="refresh-cell-btn" type="button" aria-label="刷新本月已用流量"><svg class="action-icon" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><path d="M21 3v6h-6"></path></svg></button></div><div class="traffic-usage-time">更新时间：2026-08-29 10：00：00</div></div></td>
                       <td>8,440</td>
                       <td>测试设备组</td><td>汇联能源</td><td>中国移动</td><td>2026-05-20</td><td><div class="cell-stack"><div><span class="cell-key">测试期截止日期</span> 2026-05-27</div><div><span class="cell-key">测试期可用流量上限</span> 800MB</div></div></td><td>15 天</td>
                     </tr>
@@ -12156,8 +12543,8 @@
         return date.getFullYear() + "-" + padDate(date.getMonth() + 1) + "-" + padDate(date.getDate());
       }
 
-      function getDateRangeFilterHtml(label, className, start, end) {
-        var dateLabel = label.replace(/(时间|日期)$/, "");
+      function getDateRangeFilterHtml(label, className, start, end, placeholderPrefix) {
+        var dateLabel = placeholderPrefix === undefined ? label.replace(/(时间|日期)$/, "") : placeholderPrefix;
         var startLabel = dateLabel + "开始日期";
         var endLabel = dateLabel + "结束日期";
         var hasValue = Boolean(start && end);
@@ -12671,6 +13058,15 @@
           item.classList.remove("current");
         });
         tab.classList.add("current");
+
+        if (tab.dataset.page === "accountLog") {
+          currentView = "accountLog";
+          document.body.classList.remove("page-cleared");
+          renderSidebar("accountLog");
+          document.querySelector(".breadcrumb").textContent = "日志管理 / 账户操作日志";
+          renderAccountLogPage();
+          return;
+        }
 
         if (tab.dataset.approvalWorkOrderSubpage) {
           approvalWorkOrderSubpage = {
@@ -16653,6 +17049,166 @@
         setCardRecycleTab(cardRecycleRecordState.activeTab, cardRecycleRecordState.activeBatchNo);
       }
 
+      window.productDocRegistry = window.productDocRegistry || {};
+      var inventoryCardChangeNote = { number: 1, text: "已经订购套餐的卡不支持修改卡片信息。" };
+
+      function getInventoryCardChangeBadgeHtml() {
+        return '<span class="inventory-note-index" aria-hidden="true">' + inventoryCardChangeNote.number + '</span>';
+      }
+
+      window.productDocRegistry["库存管理"] = {
+        title: "库存管理",
+        businessRules: [
+          { type: "warning", text: inventoryCardChangeNote.number + ". 卡片信息变更：" + inventoryCardChangeNote.text + " 工单号：1002333" }
+        ]
+      };
+
+      function openInventoryCardForm(mode) {
+        if (document.querySelector(".js-stock-in-modal")) return;
+        var isChange = mode === "change-info";
+        var title = isChange ? "卡片信息变更" : "卡片入库";
+        var opener = document.activeElement;
+        var overlay = document.createElement("div");
+        overlay.className = "modal-overlay show js-stock-in-modal";
+        overlay.innerHTML = `
+          <section class="stock-in-modal" role="dialog" aria-modal="true" aria-labelledby="stockInTitle" aria-describedby="stockInNotice">
+            <div class="modal-head"><div class="modal-title" id="stockInTitle">${title}</div><button class="modal-close js-stock-close" type="button" aria-label="关闭${title}">×</button></div>
+            <form novalidate style="display: contents;">
+              <div class="modal-body">
+                ${isChange
+                  ? '<div class="stock-in-tip is-card-change" id="stockInNotice">' + getInventoryCardChangeBadgeHtml() + '<span>' + escapeHtml(inventoryCardChangeNote.text) + '</span></div>'
+                  : '<div class="stock-in-tip" id="stockInNotice"><strong>⚠ 重要提示：</strong>自运营卡片导入前，请向上确认运营商已经入库了此卡片，否则会存在入库失败问题。</div>'}
+                <div class="stock-in-row" data-doc-field="批量导入">
+                  <label class="stock-in-label" for="stockInFile"><span class="required-mark">*</span> 批量导入</label>
+                  <div><input id="stockInFile" type="file" accept=".xls,.xlsx" hidden aria-required="true" aria-describedby="stockInFileError stockInFileHint">
+                    <button class="btn primary js-stock-file" type="button">导入模板</button> <button class="link-tool js-stock-template" type="button">下载模板</button>
+                    <p class="stock-in-note" id="stockInFileHint">支持文件格式：.XLS、.XLSX表格格式，单次导入文件上限为10MB</p>
+                    <div class="stock-in-file-name" hidden><span></span><button type="button" class="inline-icon-btn js-stock-remove" aria-label="移除已选文件">×</button></div>
+                    <p class="stock-in-error" id="stockInFileError" role="status"></p>
+                  </div>
+                </div>
+                <div class="stock-in-row" data-doc-field="卡片类型">
+                  <label class="stock-in-label" for="stockInType"><span class="required-mark">*</span> 卡片类型</label>
+                  <div><div class="select-wrap stock-in-type"><select id="stockInType" required aria-describedby="stockInTypeError"><option value="" selected disabled hidden>请选择卡片类型</option><option value="流量卡">流量卡</option><option value="语音卡">语音卡</option></select></div><p class="stock-in-error" id="stockInTypeError" role="status"></p></div>
+                </div>
+                <div class="stock-in-row" data-doc-field="卡片规格"><label class="stock-in-label" for="stockInSpecification"><span class="required-mark">*</span> 卡片规格</label><div class="stock-in-type">${getStockCardSelectHtml("stockInSpecification", "specification", "请选择卡片规格", true)}<p class="stock-in-error" id="stockInSpecificationError" role="status"></p></div></div>
+                <div class="stock-in-row" data-doc-field="网络类型"><label class="stock-in-label" for="stockInNetwork"><span class="required-mark">*</span> 网络类型</label><div class="stock-in-type">${getStockCardSelectHtml("stockInNetwork", "network", "请选择网络类型", true)}<p class="stock-in-error" id="stockInNetworkError" role="status"></p></div></div>
+                <div class="stock-in-row" data-doc-field="卡场景"><label class="stock-in-label" for="stockInScenario"><span class="required-mark">*</span> 卡场景</label><div class="stock-in-type">${getStockCardSelectHtml("stockInScenario", "scenario", "请选择卡场景", true)}<p class="stock-in-error" id="stockInScenarioError" role="status"></p></div></div>
+                <div class="stock-in-row" data-doc-field="备注"><label class="stock-in-label" for="stockInRemark">备注</label><textarea id="stockInRemark" rows="2"></textarea></div>
+              </div>
+              <div class="modal-foot"><button class="btn js-stock-close" type="button">取消</button><button class="btn primary js-stock-submit" type="submit">确认</button></div>
+            </form>
+          </section>`;
+        document.body.appendChild(overlay);
+        enhanceSelectControls(overlay);
+        var fileInput = overlay.querySelector("#stockInFile");
+        var typeSelect = overlay.querySelector("#stockInType");
+        var specSelect = overlay.querySelector("#stockInSpecification");
+        var specError = overlay.querySelector("#stockInSpecificationError");
+        var additionalRequired = [
+          { select: overlay.querySelector("#stockInNetwork"), message: "请选择网络类型" },
+          { select: overlay.querySelector("#stockInScenario"), message: "请选择卡场景" }
+        ];
+        additionalRequired.forEach(function (field) {
+          field.error = overlay.querySelector("#" + field.select.id + "Error");
+          field.trigger = field.select.closest(".custom-select-host").querySelector(".custom-select-trigger");
+          field.trigger.setAttribute("aria-describedby", field.error.id);
+          field.select.addEventListener("change", function () {
+            field.error.textContent = "";
+            field.trigger.removeAttribute("aria-invalid");
+          });
+        });
+        var fileButton = overlay.querySelector(".js-stock-file");
+        var fileError = overlay.querySelector("#stockInFileError");
+        var typeError = overlay.querySelector("#stockInTypeError");
+        var fileName = overlay.querySelector(".stock-in-file-name");
+        var submit = overlay.querySelector(".js-stock-submit");
+        var pending = false;
+        var app = document.querySelector(".app");
+        var wasInert = app.inert;
+        app.inert = true;
+        function close() {
+          if (pending) return;
+          closeCustomSelects();
+          overlay.remove();
+          app.inert = wasInert;
+          if (opener && opener.isConnected) opener.focus();
+        }
+        overlay.querySelectorAll(".js-stock-close").forEach(function (button) { button.addEventListener("click", close); });
+        fileButton.addEventListener("click", function () { fileInput.click(); });
+        function validateFile() {
+          var file = fileInput.files[0];
+          var error = !file ? "请选择导入文件" : !/\.(xls|xlsx)$/i.test(file.name) ? "仅支持 .XLS、.XLSX 文件" : file.size === 0 ? "文件为空，请重新选择" : file.size > 10 * 1024 * 1024 ? "文件不能超过10MB" : "";
+          fileError.textContent = error;
+          fileButton.setAttribute("aria-invalid", String(Boolean(error)));
+          fileButton.setAttribute("aria-describedby", "stockInFileError stockInFileHint");
+          return !error;
+        }
+        fileInput.addEventListener("change", function () {
+          var file = fileInput.files[0];
+          fileName.hidden = !file;
+          fileName.querySelector("span").textContent = file ? file.name : "";
+          validateFile();
+        });
+        overlay.querySelector(".js-stock-remove").addEventListener("click", function () {
+          fileInput.value = ""; fileName.hidden = true; fileError.textContent = ""; fileButton.removeAttribute("aria-invalid"); fileButton.focus();
+        });
+        typeSelect.addEventListener("change", function () {
+          typeError.textContent = "";
+          typeSelect.closest(".custom-select-host").querySelector(".custom-select-trigger").removeAttribute("aria-invalid");
+        });
+        specSelect.addEventListener("change", function () {
+          specError.textContent = "";
+          specSelect.closest(".custom-select-host").querySelector(".custom-select-trigger").removeAttribute("aria-invalid");
+        });
+        overlay.querySelector(".js-stock-template").addEventListener("click", function () {
+          var xml = '<?xml version="1.0"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Worksheet ss:Name="' + title + '"><Table><Row><Cell><Data ss:Type="String">ICCID</Data></Cell><Cell><Data ss:Type="String">MSISDN</Data></Cell><Cell><Data ss:Type="String">IMSI</Data></Cell></Row></Table></Worksheet></Workbook>';
+          var url = URL.createObjectURL(new Blob([xml], { type: "application/vnd.ms-excel" }));
+          var link = document.createElement("a"); link.href = url; link.download = title + "模板.xls"; link.click();
+          window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        });
+        overlay.querySelector("form").addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (pending) return;
+          var validFile = validateFile();
+          var trigger = typeSelect.closest(".custom-select-host").querySelector(".custom-select-trigger");
+          var specTrigger = specSelect.closest(".custom-select-host").querySelector(".custom-select-trigger");
+          typeError.textContent = typeSelect.value ? "" : "请选择卡片类型";
+          trigger.setAttribute("aria-invalid", String(!typeSelect.value));
+          trigger.setAttribute("aria-describedby", "stockInTypeError");
+          specError.textContent = specSelect.value ? "" : "请选择卡片规格";
+          specTrigger.setAttribute("aria-invalid", String(!specSelect.value));
+          specTrigger.setAttribute("aria-describedby", "stockInSpecificationError");
+          additionalRequired.forEach(function (field) {
+            field.error.textContent = field.select.value ? "" : field.message;
+            field.trigger.setAttribute("aria-invalid", String(!field.select.value));
+          });
+          var missingField = additionalRequired.find(function (field) { return !field.select.value; });
+          if (!validFile || !typeSelect.value || !specSelect.value || missingField) {
+            (!validFile ? fileButton : !typeSelect.value ? trigger : !specSelect.value ? specTrigger : missingField.trigger).focus();
+            return;
+          }
+          pending = true; submit.disabled = true; submit.setAttribute("aria-busy", "true");
+          window.setTimeout(function () { pending = false; close(); showToast((isChange ? "变更" : "入库") + "任务已提交（原型演示）"); }, 350);
+        });
+        overlay.addEventListener("keydown", function (event) {
+          var host = event.target.closest(".custom-select-host");
+          if (event.key === "Escape") { event.preventDefault(); var openHost = overlay.querySelector(".custom-select-host.open"); if (openHost) { closeCustomSelects(); openHost.querySelector(".custom-select-trigger").focus(); } else close(); }
+          if (["ArrowDown", "ArrowUp"].indexOf(event.key) >= 0 && host) {
+            event.preventDefault(); host.classList.add("open"); host.querySelector(".custom-select-trigger").setAttribute("aria-expanded", "true");
+            var options = Array.from(host.querySelectorAll(".custom-select-option")); var index = options.indexOf(document.activeElement);
+            options[(index + (event.key === "ArrowDown" ? 1 : -1) + options.length) % options.length].focus();
+          }
+          if (event.key === "Tab") {
+            var focusable = Array.from(overlay.querySelectorAll("button,textarea,input,select")).filter(function (node) { return !node.disabled && node.getClientRects().length && !node.classList.contains("is-native-select"); });
+            var first = focusable[0], last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+          }
+        });
+        fileButton.focus();
+      }
+
       function bindInventoryManagementControls(root) {
         var page = (root || document).querySelector(".inventory-page");
 
@@ -16667,10 +17223,18 @@
         var keywordInput = page.querySelector("#inventoryKeyword");
         var groupInput = page.querySelector("#inventoryGroup");
         var statusSelect = page.querySelector("#inventoryStatus");
+        var specificationSelect = page.querySelector("#inventorySpecification");
+        var networkSelect = page.querySelector("#inventoryNetwork");
+        var scenarioSelect = page.querySelector("#inventoryScenario");
         var queryButton = page.querySelector(".js-inventory-query");
         var resetButton = page.querySelector(".js-inventory-reset");
         var actionButtons = Array.prototype.slice.call(page.querySelectorAll(".js-inventory-action"));
         var rows = Array.prototype.slice.call(page.querySelectorAll(".inventory-table tbody tr"));
+        rows.forEach(function (row) {
+          row.querySelectorAll("[data-inventory-attribute]").forEach(function (cell) {
+            row.dataset[cell.dataset.inventoryAttribute] = cell.textContent.trim();
+          });
+        });
         var headerCheckbox = page.querySelector("thead .check-cell input");
         var rowCheckboxes = Array.prototype.slice.call(page.querySelectorAll("tbody .check-cell input"));
         var pageButtons = Array.prototype.slice.call(page.querySelectorAll(".js-inventory-page-btn"));
@@ -16716,7 +17280,10 @@
             var matchesKeyword = !keyword || row.dataset.keyword.indexOf(keyword) !== -1;
             var matchesGroup = !group || row.dataset.group.toLowerCase().indexOf(group) !== -1;
             var matchesStatus = !status || row.dataset.status === status;
-            row.classList.toggle("hidden", !(matchesKeyword && matchesGroup && matchesStatus));
+            var matchesSpecification = !specificationSelect.value || row.dataset.specification === specificationSelect.value;
+            var matchesNetwork = !networkSelect.value || row.dataset.network === networkSelect.value;
+            var matchesScenario = !scenarioSelect.value || row.dataset.scenario === scenarioSelect.value;
+            row.classList.toggle("hidden", !(matchesKeyword && matchesGroup && matchesStatus && matchesSpecification && matchesNetwork && matchesScenario));
           });
 
           syncHeaderCheckbox();
@@ -16726,6 +17293,9 @@
           keywordInput.value = "";
           groupInput.value = "";
           statusSelect.value = "";
+          specificationSelect.value = "";
+          networkSelect.value = "";
+          scenarioSelect.value = "";
           rows.forEach(function (row) {
             row.classList.remove("hidden");
           });
@@ -16956,8 +17526,8 @@
               return;
             }
 
-            if (button.dataset.action === "stock-in") {
-              showToast("卡片入库入口已打开");
+            if (button.dataset.action === "stock-in" || button.dataset.action === "change-info") {
+              openInventoryCardForm(button.dataset.action);
               return;
             }
 
@@ -17863,6 +18433,20 @@
         showToast("已打开下载管理");
       }
 
+      function openAccountLogPageFromSidebar() {
+        var tabs = document.querySelector(".tabs");
+        var tab = tabs.querySelector('[data-page="accountLog"]');
+        if (!tab) {
+          tab = document.createElement("div");
+          tab.className = "tab";
+          tab.dataset.page = "accountLog";
+          tab.innerHTML = '账户操作日志 <button class="tab-close" type="button" aria-label="关闭账户操作日志页面">×</button>';
+          tabs.appendChild(tab);
+          bindCurrentTabInteractions();
+        }
+        activateTabPage(tab);
+      }
+
       function openApprovalFlowPageFromSidebar() {
         currentView = "approval";
         document.body.classList.remove("page-cleared");
@@ -17942,6 +18526,7 @@
         var taskMenu = event.target.closest(".js-task-page");
         var downloadManagementMenu = event.target.closest(".js-download-management-page");
         var approvalMenu = event.target.closest(".js-approval-page");
+        var accountLogMenu = event.target.closest(".js-account-log-page");
         var navToggle = event.target.closest(".js-nav-toggle");
 
         if (dashboardMenu) {
@@ -18031,6 +18616,12 @@
         if (approvalMenu) {
           event.preventDefault();
           runWithTrafficPoolLeaveGuard(openApprovalFlowPageFromSidebar);
+          return;
+        }
+
+        if (accountLogMenu) {
+          event.preventDefault();
+          runWithTrafficPoolLeaveGuard(openAccountLogPageFromSidebar);
           return;
         }
 
@@ -18219,5 +18810,6 @@
       renderDashboardPage();
     })();
   </script>
+  <script src="components/product-doc-panel.js"></script>
 </body>
 </html>
