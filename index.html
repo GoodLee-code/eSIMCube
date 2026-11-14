@@ -4516,7 +4516,8 @@
       justify-content: start;
     }
     .group-filter-grid .filter-actions { grid-column: auto; }
-    table.group-management-table { width: 100%; min-width: 1640px; }
+    table.group-management-table { width: 100%; min-width: 1700px; }
+    .group-management-table .row-actions { flex-wrap: wrap; }
     .group-management-table tbody td { height: 72px; vertical-align: middle; }
     .group-rule-stack { min-width: 330px; gap: 3px; line-height: 1.35; }
     .group-management-table .row-actions button {
@@ -6470,22 +6471,6 @@
     .stock-in-modal .modal-close:hover { background: rgba(255,255,255,.15); }
     .stock-in-modal .modal-body { padding: 26px 18px; min-height: 0; }
     .stock-in-tip { margin-bottom: 22px; padding: 12px 14px; border: 1px solid #ffc9ce; border-radius: 4px; background: #fff7f7; color: #ef4444; font-size: 12px; line-height: 20px; }
-    .inventory-card-change-btn { position: relative; }
-    .inventory-note-index {
-      display: inline-grid;
-      flex: 0 0 16px;
-      width: 16px;
-      height: 16px;
-      place-items: center;
-      border-radius: 50%;
-      background: #ffdb6e;
-      color: #633d00;
-      font-size: 10px;
-      font-weight: 700;
-      line-height: 1;
-    }
-    .inventory-card-change-btn .inventory-note-index { position: absolute; top: -6px; right: -6px; box-shadow: 0 0 0 2px #fff; pointer-events: none; }
-    .stock-in-tip.is-card-change { display: flex; align-items: center; gap: 8px; border-color: #f3dc95; background: #fff9e7; color: #704500; }
     .stock-in-row { display: grid; grid-template-columns: 90px minmax(0,1fr); gap: 12px; align-items: start; margin-bottom: 16px; }
     .stock-in-label { text-align: right; padding-top: 8px; color: #4b5563; font-size: 13px; }
     .stock-in-type { width: min(252px,100%); }
@@ -6551,6 +6536,110 @@
     .account-log-columns .link-tool { margin-top: 8px; }
     .account-log-page :focus-visible,
     .account-log-columns :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .monthly-billing-page .filters { position: relative; z-index: 6; }
+    .bill-lookup .custom-select-trigger { color: #374151; cursor: text; }
+    .bill-lookup.has-value .custom-select-trigger { padding-right: 52px; }
+    .bill-lookup .bill-lookup-arrow {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-right: 1.5px solid #8f98a7;
+      border-bottom: 1.5px solid #8f98a7;
+      transform: translateY(-65%) rotate(45deg);
+      pointer-events: none;
+    }
+    .bill-lookup .custom-select-option[hidden] { display: none; }
+    .bill-lookup .bill-lookup-empty { color: var(--muted); padding: 6px 10px; font-size: 12px; }
+    .monthly-billing-page .table-area { min-height: 0; }
+    .monthly-billing-page .table-scroll { flex: 1 1 auto; max-height: min(640px, calc(100dvh - 350px)); min-height: 190px; border-top: 1px solid var(--border); }
+    .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)) auto; }
+    .monthly-billing-page .filters.is-summary .filter-actions { grid-column: auto; }
+    .monthly-billing-page .table-toolbar { height: auto; flex-wrap: wrap; gap: 10px; }
+    .monthly-billing-page .toolbar-right { color: var(--muted); font-size: 12px; }
+    .monthly-billing-table { width: 100%; min-width: 1590px; font-variant-numeric: tabular-nums; }
+    .monthly-billing-table.summary { min-width: 930px; }
+    .monthly-billing-table .bill-number { text-align: right; }
+    .monthly-billing-table .bill-money { color: var(--text); font-weight: 700; }
+    .monthly-billing-table:not(.summary) { --bill-action-width: 148px; }
+    .monthly-billing-table:not(.summary) .bill-fixed { position: sticky; z-index: 1; background: var(--panel); }
+    .monthly-billing-table:not(.summary) .bill-money.bill-fixed { right: var(--bill-action-width); box-shadow: -2px 0 0 var(--border-soft); }
+    .monthly-billing-table:not(.summary) .bill-actions.bill-fixed { right: 0; }
+    .monthly-billing-table .bill-actions .link-tool { padding-inline: 4px; }
+    .monthly-billing-table:not(.summary) thead .bill-fixed { background: #f3f4f6; z-index: 3; }
+    .monthly-billing-table .bill-subline, .bill-history-table .bill-subline { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .bill-field-help { display: inline-flex; align-items: center; gap: 5px; vertical-align: middle; }
+    .bill-field-help .traffic-help-btn { border-color: var(--blue-700); background: var(--blue-700); color: #fff; }
+    .bill-field-help .traffic-help-btn:hover,
+    .bill-field-help .traffic-help-btn:focus { border-color: #125fae; background: #125fae; color: #fff; }
+    .bill-dialog .bill-field-help label { margin-bottom: 0; }
+    .bill-dialog .bill-field-help { margin-bottom: 6px; }
+    .bill-help-tooltip { inset: auto; margin: 0; width: max-content; max-width: min(320px, calc(100vw - 24px)); text-align: left; font-weight: 400; pointer-events: auto; }
+    .monthly-billing-table .bill-detail-cell { white-space: normal; padding: 12px 16px; background: #f8fafc; }
+    .bill-drill-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding: 6px 0; }
+    .bill-drill-row + .bill-drill-row { border-top: 1px solid var(--border-soft); }
+    .monthly-billing-page .pagination { flex-wrap: wrap; }
+    .monthly-billing-page .bill-error { color: #b42318; font-size: 12px; }
+    .monthly-billing-page .link-tool:disabled { color: var(--muted); cursor: default; }
+    .bill-query-btn { min-width: 118px; }
+    .bill-dialog {
+      position: fixed;
+      inset: 0;
+      width: min(520px, calc(100vw - 32px));
+      max-width: none;
+      max-height: calc(100dvh - 32px);
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .bill-dialog[open] { display: flex; flex-direction: column; }
+    .bill-dialog::backdrop { background: rgba(15, 23, 42, .32); }
+    .bill-dialog.bill-history { width: min(1060px, calc(100vw - 32px)); }
+    .bill-dialog .modal-head, .bill-dialog .modal-foot { flex-shrink: 0; }
+    .bill-dialog .modal-body { min-height: 0; overflow: auto; }
+    .bill-dialog .modal-grid { gap: 14px; }
+    .bill-dialog .modal-field label { display: block; margin-bottom: 6px; }
+    .bill-dialog .modal-field input { width: 100%; }
+    .bill-dialog textarea { resize: none; }
+    .bill-dialog .bill-dialog-context { margin: 0 0 16px; color: var(--muted); overflow-wrap: anywhere; font-size: 13px; line-height: 1.65; }
+    .bill-dialog .bill-error { min-height: 18px; margin: 8px 0 0; color: #b42318; font-size: 12px; }
+    .bill-dialog [aria-invalid="true"] { border-color: #dc2626; }
+    .bill-history-table { width: 100%; min-width: 1070px; font-variant-numeric: tabular-nums; }
+    .bill-history .table-scroll { min-height: 0; max-height: min(410px, 50dvh); border-top: 1px solid var(--border); }
+    .bill-history .pagination { flex-wrap: wrap; }
+    .bill-history-confirm { margin-top: 12px; padding: 12px; border: 1px solid var(--border); border-radius: var(--ui-radius); background: #f5f9ff; }
+    .bill-history-confirm[hidden] { display: none; }
+    .bill-history-confirm p { margin: 0 0 10px; line-height: 1.6; }
+    @media (max-width: 1440px) {
+      .monthly-billing-page .table-scroll { max-height: calc(100dvh - 372px); }
+      html:has(.monthly-billing-page), body:has(.monthly-billing-page) { min-width: 0; }
+      .app:has(.monthly-billing-page) { grid-template-columns: 225px minmax(0, 1fr); }
+      .monthly-billing-page .table-area, .monthly-billing-page .table-scroll { min-width: 0; }
+      .app:has(.monthly-billing-page) .quick-search { position: static; transform: none; width: min(320px, 100%); }
+      .app:has(.monthly-billing-page) .topline { justify-content: space-between; gap: 8px; }
+    }
+    @media (max-width: 1000px) {
+      .monthly-billing-page .filter-grid,
+      .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .monthly-billing-page .filters.is-summary .filter-actions { grid-column: 1 / -1; }
+      .app:has(.monthly-billing-page) .breadcrumb { display: none; }
+    }
+    @media (max-width: 760px) {
+      .app:has(.monthly-billing-page) { grid-template-columns: min(155px, 30vw) minmax(0, 1fr); }
+      .app:has(.monthly-billing-page) .brand { font-size: 0; }
+      .app:has(.monthly-billing-page) .topline .right-tools { display: none; }
+      .app:has(.monthly-billing-page) .main { padding-inline: 8px; }
+      .monthly-billing-page .filter-grid,
+      .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: minmax(0, 1fr); }
+      .monthly-billing-table:not(.summary) tbody .bill-fixed { position: static; box-shadow: none; }
+      .monthly-billing-table:not(.summary) thead .bill-fixed.bill-money,
+      .monthly-billing-table:not(.summary) thead .bill-fixed.bill-actions { right: auto; box-shadow: none; }
+    }
+    .monthly-billing-page :focus-visible, .bill-dialog :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
   </style>
   <link rel="stylesheet" href="components/product-doc-panel.css">
 </head>
@@ -7715,6 +7804,18 @@
           <div class="nav-group">
             <button class="nav-item js-nav-toggle" type="button" aria-expanded="true">
               <span class="nav-label">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="13" rx="2"></rect><path d="M4 10h16"></path><path d="M8 15h4"></path></svg>
+                财务中心
+              </span>
+              <svg class="collapse-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5"></path></svg>
+            </button>
+            <div class="sub-menu">
+              <a class="sub-item ${activePage === "monthlyBilling" ? "current" : ""} js-monthly-billing-page" href="#monthly-billing">月度流量账单</a>
+            </div>
+          </div>
+          <div class="nav-group">
+            <button class="nav-item js-nav-toggle" type="button" aria-expanded="true">
+              <span class="nav-label">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V8l8-4 8 4v12"></path><path d="M9 20v-6h6v6"></path><path d="M8 10h.01"></path><path d="M16 10h.01"></path></svg>
                 商户中心
               </span>
@@ -7925,7 +8026,7 @@
             <div class="table-toolbar">
               <div class="toolbar-left">
                 <button class="btn primary js-inventory-action" type="button" data-action="stock-in">卡片入库</button>
-                <button class="btn js-inventory-action inventory-card-change-btn" type="button" data-action="change-info" title="对应页面说明第 ${inventoryCardChangeNote.number} 条">卡片信息变更 ${getInventoryCardChangeBadgeHtml()}</button>
+                <button class="btn js-inventory-action" type="button" data-action="change-info">卡片信息变更</button>
                 <button class="btn js-inventory-action" type="button" data-action="export">导出</button>
               </div>
               <div class="toolbar-right">
@@ -8573,7 +8674,7 @@
               <td>${escapeHtml(group.scene)}</td>
               <td>${escapeHtml(group.delayDays)}</td>
               <td>${escapeHtml(group.remark || "--")}</td>
-              <td><div class="row-actions"><button type="button" class="js-group-row-action" data-action="详情" data-id="${escapeHtml(group.id)}">详情</button><button type="button" class="js-group-row-action" data-action="编辑" data-id="${escapeHtml(group.id)}">编辑</button><button type="button" class="js-group-row-action danger" data-action="删除" data-id="${escapeHtml(group.id)}">删除</button></div></td>
+              <td><div class="row-actions"><button type="button" class="js-group-row-action" data-action="详情" data-id="${escapeHtml(group.id)}">详情</button><button type="button" class="js-group-row-action" data-action="编辑" data-id="${escapeHtml(group.id)}">编辑</button><button type="button" class="js-group-row-action" data-action="计费配置" data-id="${escapeHtml(group.id)}">计费配置</button><button type="button" class="js-group-row-action danger" data-action="删除" data-id="${escapeHtml(group.id)}">删除</button></div></td>
             </tr>
           `;
         }).join("");
@@ -8666,6 +8767,11 @@
         }
         page.querySelectorAll(".js-group-row-action").forEach(function (button) {
           button.addEventListener("click", function () {
+            if (button.dataset.action === "计费配置") {
+              var group = groupCatalog.find(function (item) { return item.id === button.dataset.id; });
+              if (group) openGroupBillingConfig(group);
+              return;
+            }
             if (button.dataset.action === "删除") {
               openGroupDeleteModal(button.dataset.id);
               return;
@@ -11629,6 +11735,739 @@
         syncColumns();
       }
 
+      var billingStorageKey = "esimcube.monthly-billing.v1";
+      var billingCanPersist = true;
+      var billingData = readMonthlyBillingData();
+      var billingView = { tab: "groups", month: previousBillingMonth(), merchant: "", summaryMerchant: "", group: "", type: "", page: 1, pageSize: 20, expanded: "", busy: false };
+      var billingTypes = { minimum: "低消计费", usage: "按量计费" };
+      var billingFieldHelp = {
+        average: { name: "卡均用量", text: "卡均用量 = 使用流量 ÷ 计费卡数。" },
+        price: { name: "流量单价", text: "每 GB 计费流量的价格。账单金额 = 计费流量 × 流量单价。" },
+        minimum: { name: "低消", text: "每张计费卡每月的最低计费流量。群组卡均用量低于低消时，出账费用 = 低消 × 计费卡数 × 单价；达到或超过时，按实际用量计费。设为 0 则不设最低用量。" }
+      };
+
+      function getBillingFieldHelp(field, context, label) {
+        var help = billingFieldHelp[field];
+        var id = "bill-help-" + context + "-" + field;
+        return '<span class="bill-field-help">' + label +
+          '<button class="traffic-help-btn" type="button" data-bill-help aria-label="' + help.name + '说明" aria-describedby="' + id + '">?</button>' +
+          '<span class="global-hover-tooltip bill-help-tooltip" id="' + id + '" role="tooltip" popover="manual">' + help.text + '</span></span>';
+      }
+
+      function bindBillingFieldHelp(root) {
+        root.querySelectorAll("[data-bill-help]").forEach(function (trigger) {
+          var tooltip = trigger.nextElementSibling;
+          if (!tooltip.showPopover) {
+            trigger.title = tooltip.textContent;
+            tooltip.hidden = true;
+            return;
+          }
+          var timer;
+          function hide() {
+            clearTimeout(timer);
+            if (tooltip.matches(":popover-open")) tooltip.hidePopover();
+          }
+          function show() {
+            clearTimeout(timer);
+            if (tooltip.matches(":popover-open")) return;
+            document.querySelectorAll(".bill-help-tooltip:popover-open").forEach(function (openTooltip) { openTooltip.hidePopover(); });
+            tooltip.showPopover();
+            var bounds = trigger.getBoundingClientRect();
+            var top = bounds.bottom + 4;
+            if (top + tooltip.offsetHeight > window.innerHeight - 12) top = bounds.top - tooltip.offsetHeight - 4;
+            tooltip.style.left = Math.max(12, Math.min(bounds.left, window.innerWidth - tooltip.offsetWidth - 12)) + "px";
+            tooltip.style.top = Math.max(12, top) + "px";
+          }
+          function leave() {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+              if (document.activeElement !== trigger && !trigger.matches(":hover") && !tooltip.matches(":hover")) hide();
+            }, 150);
+          }
+          trigger.addEventListener("pointerenter", show);
+          trigger.addEventListener("pointerleave", leave);
+          trigger.addEventListener("focus", show);
+          trigger.addEventListener("blur", leave);
+          trigger.addEventListener("click", show);
+          trigger.addEventListener("keydown", function (event) {
+            if (event.key !== "Escape" || !tooltip.matches(":popover-open")) return;
+            event.preventDefault();
+            event.stopPropagation();
+            hide();
+          });
+          tooltip.addEventListener("pointerenter", function () { clearTimeout(timer); });
+          tooltip.addEventListener("pointerleave", leave);
+        });
+      }
+
+      function hideBillingFieldHelp(event) {
+        if (!HTMLElement.prototype.showPopover) return;
+        document.querySelectorAll(".bill-help-tooltip:popover-open").forEach(function (tooltip) {
+          if (event.type === "pointerdown" && tooltip.parentElement.contains(event.target)) return;
+          tooltip.hidePopover();
+        });
+      }
+
+      document.addEventListener("pointerdown", hideBillingFieldHelp);
+      document.addEventListener("scroll", hideBillingFieldHelp, true);
+      window.addEventListener("resize", hideBillingFieldHelp);
+
+      window.addEventListener("storage", function (event) {
+        if (event.key !== billingStorageKey || !event.newValue || !billingCanPersist) return;
+        billingData = readMonthlyBillingData();
+        if (currentView === "monthlyBilling") renderMonthlyBillingPage();
+      });
+
+      function previousBillingMonth() {
+        var yearMonth = new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit" }).format(new Date()).split("-").map(Number);
+        var date = new Date(Date.UTC(yearMonth[0], yearMonth[1] - 2, 1));
+        return date.toISOString().slice(0, 7);
+      }
+
+      function isBillingMonth(value) {
+        return /^[1-9]\d{3}-(0[1-9]|1[0-2])$/.test(value);
+      }
+
+      function readMonthlyBillingData() {
+        try {
+          var saved = JSON.parse(localStorage.getItem(billingStorageKey));
+          if (saved && saved.rates && saved.snapshots && saved.confirmed && saved.remarks) {
+            Object.keys(saved.rates).forEach(function (groupId) {
+              var rate = saved.rates[groupId];
+              // The previous form appended its most recently saved configuration last.
+              if (Array.isArray(rate)) {
+                var latest = rate[rate.length - 1];
+                saved.rates[groupId] = latest ? { price: latest.price, minimum: latest.minimum } : null;
+              }
+            });
+            saved.groupRemarks ||= {};
+            return saved;
+          }
+        } catch (_) {
+          billingCanPersist = false;
+        }
+        var rates = {};
+        groupCatalog.forEach(function (group, index) {
+          rates[group.groupId] = { price: [20000, 17500, 22500, 16000, 18000, 21000][index % 6], minimum: 1000 };
+        });
+        return { rates: rates, snapshots: {}, confirmed: {}, remarks: {}, groupRemarks: {}, serial: 0 };
+      }
+
+      function saveMonthlyBillingData() {
+        try {
+          localStorage.setItem(billingStorageKey, JSON.stringify(billingData));
+          billingCanPersist = true;
+          return true;
+        } catch (_) {
+          billingCanPersist = false;
+          return false;
+        }
+      }
+
+      function billingKey(month, id) {
+        return JSON.stringify([month, id]);
+      }
+
+      function getBillingRate(groupId) {
+        return billingData.rates[groupId] || null;
+      }
+
+      function parseBillingDecimal(value, digits) {
+        var match = /^(\d{1,6})(?:\.(\d+))?$/.exec(value.trim());
+        if (!match || (match[2] && match[2].length > digits)) return null;
+        return Number(match[1]) * Math.pow(10, digits) + Number((match[2] || "").padEnd(digits, "0"));
+      }
+
+      function calculateMonthlyBill(usage, chargingCards, rate) {
+        if (!rate || !Number.isSafeInteger(usage) || usage < 0 || !Number.isSafeInteger(chargingCards) || chargingCards < 0 || (!chargingCards && usage)) return null;
+        if (!Number.isSafeInteger(rate.minimum) || rate.minimum < 0 || !Number.isSafeInteger(rate.price) || rate.price < 0) return null;
+        var minimumUsage = rate.minimum * chargingCards;
+        if (!Number.isSafeInteger(minimumUsage)) return null;
+        var billableUsage = Math.max(usage, minimumUsage);
+        // Traffic is stored in thousandths of a GB and price in ten-thousandths of a yuan.
+        var cents = Number((BigInt(billableUsage) * BigInt(rate.price) + 50000n) / 100000n);
+        return Number.isSafeInteger(cents) ? { type: usage < minimumUsage ? "minimum" : "usage", billableUsage: billableUsage, cents: cents } : null;
+      }
+
+      function formatBillingCents(value) {
+        return value == null ? "--" : (value / 100).toLocaleString("zh-CN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+
+      function formatBillingGb(value) {
+        return value == null ? "--" : (value / 1000).toLocaleString("zh-CN", { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+      }
+
+      function formatBillingPrice(value) {
+        return value == null ? "--" : (value / 10000).toFixed(4);
+      }
+
+      function formatBillingTime(value) {
+        return new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Shanghai", dateStyle: "short", timeStyle: "medium" }).format(new Date(value));
+      }
+
+      function estimateBillingSnapshot(snapshot) {
+        var rate = getBillingRate(snapshot.groupId);
+        var bill = snapshot.sourceState === "查询成功" ? calculateMonthlyBill(snapshot.usage, snapshot.chargingCards, rate) : null;
+        var invalidCount = !Number.isSafeInteger(snapshot.chargingCards) || snapshot.chargingCards < 0 || (!snapshot.chargingCards && snapshot.usage > 0);
+        return Object.assign({}, snapshot, {
+          rate: rate ? { price: rate.price, minimum: rate.minimum } : null,
+          bill: bill,
+          issue: snapshot.sourceState === "查询成功" && !bill ? (invalidCount ? "计费卡数异常" : rate ? "金额超出可计算范围" : "未配置计费规则") : ""
+        });
+      }
+
+      function getConfirmedMonthlyBill(key, history) {
+        var saved = billingData.confirmed[key];
+        return typeof saved === "string" ? history.find(function (snapshot) { return snapshot.id === saved; }) || null : saved || null;
+      }
+
+      function makeBillingSnapshot(group, month, sequence, time) {
+        var seed = Number(group.groupId.slice(-4)) || 0;
+        var key = billingKey(month, group.groupId);
+        var version = (billingData.snapshots[key] || []).length + 1;
+        var cards = 30 + seed % 491;
+        var chargingCards = cards - Math.floor(cards / 8);
+        var average = 420 + seed % 2100;
+        var usage = Math.max(0, chargingCards * average + (version % 5 - 2) * (37 + seed % 50));
+        var sourceState = (seed + version) % 13 === 0 ? "查询失败" : (seed + version) % 17 === 0 ? "数据缺失" : "查询成功";
+        return estimateBillingSnapshot({
+          id: sequence + ":" + group.groupId, version: version, time: time, month: month,
+          groupId: group.groupId, groupName: group.groupName, merchantName: group.merchantName,
+          sourceState: sourceState, cards: sourceState === "查询成功" ? cards : null,
+          chargingCards: sourceState === "查询成功" ? chargingCards : null,
+          usage: sourceState === "查询成功" ? usage : null
+        });
+      }
+
+      function getMonthlyBillingRows(month) {
+        var groups = new Map(groupCatalog.map(function (group) { return [group.groupId, group]; }));
+        Object.values(billingData.snapshots).forEach(function (history) {
+          var snapshot = history[0];
+          if (snapshot && snapshot.month === month && !groups.has(snapshot.groupId)) groups.set(snapshot.groupId, snapshot);
+        });
+        return Array.from(groups.values()).map(function (group) {
+          var key = billingKey(month, group.groupId);
+          var history = billingData.snapshots[key] || [];
+          var rawLatest = history[history.length - 1];
+          var confirmed = getConfirmedMonthlyBill(key, history);
+          var latest = !rawLatest ? null : !confirmed ? estimateBillingSnapshot(rawLatest) : rawLatest.id === confirmed.id ? confirmed : rawLatest;
+          return { group: group, key: key, latest: latest, confirmed: confirmed, display: confirmed || latest };
+        });
+      }
+
+      function getMonthlyMerchantRows(rows) {
+        var merchants = new Map();
+        rows.forEach(function (row) {
+          var name = row.confirmed ? row.confirmed.merchantName : row.group.merchantName;
+          if (!merchants.has(name)) merchants.set(name, { name: name, rows: [], count: 0, cents: 0 });
+          var item = merchants.get(name);
+          item.rows.push(row);
+          if (row.confirmed) {
+            item.count += 1;
+            item.cents += row.confirmed.bill.cents;
+          }
+        });
+        return Array.from(merchants.values());
+      }
+
+      function getBillingSelect(id, placeholder, items, value) {
+        return '<div class="field"><label for="' + id + '">' + placeholder + '</label><div class="select-wrap"><select id="' + id + '"><option value="" disabled hidden' + (!value ? ' selected' : '') + '>' + placeholder + '</option>' +
+          items.map(function (item) { return '<option value="' + escapeHtml(item[0]) + '"' + (item[0] === value ? ' selected' : '') + '>' + escapeHtml(item[1]) + '</option>'; }).join("") + '</select></div></div>';
+      }
+
+      function getBillingLookup(id, label, placeholder, options, value) {
+        var listId = id + "Options";
+        return '<div class="field"><label for="' + id + '">' + label +
+          '</label><div class="bill-lookup custom-select-host clearable-wrap clearable-select"><input class="control custom-select-trigger" id="' + id +
+          '" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="' + listId +
+          '" autocomplete="off" placeholder="' + placeholder + '" value="' + escapeHtml(value) +
+          '"><span class="bill-lookup-arrow" aria-hidden="true"></span><button class="clear-control" type="button" aria-label="清除' + label + '">×</button>' +
+          '<div class="custom-select-list"><div id="' + listId + '" role="listbox" aria-label="' + label + '">' +
+          options.map(function (option, index) {
+            return '<button type="button" class="custom-select-option" id="' + listId + '-' + index +
+              '" role="option" aria-selected="false" tabindex="-1">' + escapeHtml(option) + '</button>';
+          }).join("") + '</div><div class="bill-lookup-empty" role="status" hidden>无匹配选项</div></div></div></div>';
+      }
+
+      function bindBillingLookups(root) {
+        root.querySelectorAll(".bill-lookup").forEach(function (host) {
+          var input = host.querySelector("input");
+          var options = Array.from(host.querySelectorAll(".custom-select-option"));
+          var empty = host.querySelector(".bill-lookup-empty");
+          var active = null;
+
+          function setActive(option) {
+            active = option || null;
+            options.forEach(function (item) { item.classList.toggle("selected", item === active || (!active && item.getAttribute("aria-selected") === "true")); });
+            if (active) input.setAttribute("aria-activedescendant", active.id);
+            else input.removeAttribute("aria-activedescendant");
+          }
+
+          function open() {
+            closeCustomSelects(host);
+            var value = input.value.trim().toLowerCase();
+            var keyword = options.some(function (option) { return option.textContent.toLowerCase() === value; }) ? "" : value;
+            options.forEach(function (option) {
+              option.hidden = !option.textContent.toLowerCase().includes(keyword);
+              option.setAttribute("aria-selected", String(option.textContent === input.value));
+            });
+            empty.hidden = options.some(function (option) { return !option.hidden; });
+            setActive(null);
+            host.classList.add("open");
+            input.setAttribute("aria-expanded", "true");
+          }
+
+          function close() { closeCustomSelects(); }
+
+          function choose(option) {
+            input.value = option.textContent;
+            input.dispatchEvent(new Event("change", { bubbles: true }));
+            input.focus();
+            close();
+          }
+
+          input.addEventListener("focus", open);
+          input.addEventListener("click", function () { if (!host.classList.contains("open")) open(); });
+          input.addEventListener("input", function (event) { if (!event.isComposing) open(); });
+          input.addEventListener("compositionend", open);
+          host.addEventListener("focusout", function (event) {
+            if (!host.contains(event.relatedTarget) && host.classList.contains("open")) close();
+          });
+          options.forEach(function (option) {
+            option.addEventListener("mousedown", function (event) { event.preventDefault(); });
+            option.addEventListener("click", function () { choose(option); });
+          });
+          input.addEventListener("keydown", function (event) {
+            if (event.isComposing || event.keyCode === 229) return;
+            var isOpen = host.classList.contains("open");
+            if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+              event.preventDefault();
+              if (!isOpen) open();
+              var visible = options.filter(function (option) { return !option.hidden; });
+              var index = visible.indexOf(active);
+              var next = event.key === "ArrowDown" ? Math.min(visible.length - 1, index + 1) : (index < 0 ? visible.length - 1 : Math.max(0, index - 1));
+              setActive(visible[next]);
+              if (active) active.scrollIntoView({ block: "nearest" });
+            } else if (isOpen && event.key === "Enter" && active) {
+              event.preventDefault();
+              choose(active);
+            } else if (isOpen && event.key === "Escape") {
+              event.preventDefault();
+              close();
+            }
+          });
+        });
+      }
+
+      function getBillingGroupLabel(group) {
+        return "（" + group.groupId + "）" + group.groupName;
+      }
+
+      function matchesBillingGroupFilters(group, filters) {
+        var merchant = filters.merchant.toLowerCase();
+        var groupQuery = filters.group.toLowerCase();
+        return (!merchant || group.merchantName.toLowerCase().includes(merchant)) &&
+          (!groupQuery || getBillingGroupLabel(group).toLowerCase().includes(groupQuery));
+      }
+
+      function getBillingPager(page, count, size, scope) {
+        var pages = getPageCount(count, size);
+        return `<div class="pagination" aria-label="${scope}分页">
+          <span role="status">共 ${count} 条</span><select class="page-size" aria-label="每页条数">${getPageSizeOptions(size)}</select>
+          <button class="page-btn" type="button" data-step="-1" ${page <= 1 ? "disabled" : ""}>上一页</button>
+          ${getCompactPaginationButtons(page, pages, "bill-page-number")}
+          <button class="page-btn" type="button" data-step="1" ${page >= pages ? "disabled" : ""}>下一页</button>
+          <span>跳至</span><input class="jump" type="number" min="1" max="${pages}" value="${page}" aria-label="跳转页码"><span>页</span>
+        </div>`;
+      }
+
+      function bindBillingPager(root, state, refresh) {
+        var pager = root.querySelector(".pagination");
+        pager.querySelector(".page-btn.current").setAttribute("aria-current", "page");
+        pager.addEventListener("click", function (event) {
+          var button = event.target.closest("button[data-page],button[data-step]");
+          if (!button) return;
+          state.page = button.dataset.page ? Number(button.dataset.page) : state.page + Number(button.dataset.step);
+          refresh(".page-btn.current");
+        });
+        pager.querySelector(".page-size").addEventListener("change", function (event) {
+          state.pageSize = Number(event.target.value);
+          state.page = 1;
+          refresh(".page-size");
+        });
+        pager.querySelector(".jump").addEventListener("keydown", function (event) {
+          if (event.key !== "Enter" || event.isComposing) return;
+          state.page = Math.trunc(Number(event.target.value)) || 1;
+          refresh(".jump");
+        });
+      }
+
+      function getBillingGroupRow(row) {
+        var group = row.group;
+        var item = row.display;
+        var latest = row.latest;
+        var rate = item ? item.rate : getBillingRate(group.groupId);
+        var bill = item && item.bill;
+        var status = row.confirmed ? "已确认" : !latest ? "待查询" : latest.bill ? "待确认" : "待核对";
+        var average = item && item.chargingCards > 0 && item.usage != null ? item.usage / item.chargingCards : null;
+        var groupId = escapeHtml(group.groupId);
+        var remark = billingData.groupRemarks[row.key] || "";
+        return `<tr>
+          <td>${billingView.month}</td><td>${escapeHtml(item ? item.merchantName : group.merchantName)}</td>
+          <td title="${escapeHtml(item ? item.groupName : group.groupName)}">${escapeHtml(item ? item.groupName : group.groupName)}<span class="bill-subline">${groupId}</span></td>
+          <td>${bill ? billingTypes[bill.type] : "--"}</td>
+          <td class="bill-number">${item && item.cards != null ? item.cards : "--"}</td>
+          <td class="bill-number">${formatBillingGb(item && item.usage)}</td>
+          <td class="bill-number">${item && item.chargingCards != null ? item.chargingCards : "--"}</td>
+          <td class="bill-number">${formatBillingGb(average)}</td>
+          <td class="bill-number">${formatBillingPrice(rate && rate.price)}</td>
+          <td class="bill-number">${formatBillingGb(rate && rate.minimum)}</td>
+          <td class="bill-number">${formatBillingCents(latest && latest.bill ? latest.bill.cents : null)}</td>
+          <td>${latest ? formatBillingTime(latest.time) : "--"}${latest ? '<span class="bill-subline">V' + latest.version + ' · ' + escapeHtml(latest.issue || latest.sourceState) + '</span>' : ""}</td>
+          <td data-bill-remark-cell title="${escapeHtml(remark)}">${escapeHtml(remark || "--")}</td>
+          <td class="bill-number bill-money bill-fixed">${formatBillingCents(row.confirmed ? row.confirmed.bill.cents : null)}<span class="bill-subline"><span class="tag ${row.confirmed ? "success" : status === "待核对" ? "partial" : "muted"}">${status}</span></span></td>
+          <td class="bill-actions bill-fixed"><button class="link-tool" type="button" data-bill-history="${groupId}" ${latest ? "" : "disabled"}>查询历史</button>
+          <button class="link-tool" type="button" data-bill-group-remark="${groupId}">编辑备注</button></td>
+        </tr>`;
+      }
+
+      function getBillingMerchantRow(item) {
+        var month = billingView.month;
+        var remark = billingData.remarks[billingKey(month, item.name)] || "";
+        var expanded = billingView.expanded === item.name;
+        var merchant = escapeHtml(item.name);
+        return `<tr><td>${month}</td><td>${merchant}</td><td class="bill-number">${item.rows.length}</td>
+          <td class="bill-number">${item.count}</td><td class="bill-number">${item.rows.length - item.count}</td>
+          <td class="bill-number bill-money">${formatBillingCents(item.count ? item.cents : null)}</td>
+          <td data-bill-remark-cell title="${escapeHtml(remark)}">${escapeHtml(remark || "--")}</td>
+          <td><button type="button" class="link-tool" data-bill-merchant="${merchant}" aria-expanded="${expanded}">${expanded ? "收起群组" : "查看群组"}</button>
+          <button type="button" class="link-tool" data-bill-remark="${merchant}">编辑备注</button></td></tr>${expanded ?
+          '<tr><td colspan="8" class="bill-detail-cell">' + item.rows.map(function (row) {
+            return '<div class="bill-drill-row"><span>' + escapeHtml(row.confirmed ? row.confirmed.groupName : row.group.groupName) + '</span><span>' +
+              (row.confirmed ? '已确认 · V' + row.confirmed.version + ' · ¥' + formatBillingCents(row.confirmed.bill.cents) : '未出账') +
+              '</span><button class="link-tool" type="button" data-bill-history="' + escapeHtml(row.group.groupId) + '"' + (row.latest ? '' : ' disabled') + '>查询历史</button></div>';
+          }).join("") + '</td></tr>' : ""}`;
+      }
+
+      function renderMonthlyBillingPage(focusSelector) {
+        var state = billingView;
+        var isSummary = state.tab === "merchants";
+        var allRows = getMonthlyBillingRows(state.month);
+        var merchantOptions = Array.from(new Set(allRows.map(function (row) {
+          return (isSummary ? row.confirmed || row.group : row.display || row.group).merchantName;
+        })));
+        var groupOptions = allRows.map(function (row) { return getBillingGroupLabel(row.display || row.group); });
+        var groupRows = allRows.filter(function (row) {
+          return matchesBillingGroupFilters(row.display || row.group, state) &&
+            (!state.type || (row.display && row.display.bill && row.display.bill.type === state.type));
+        });
+        var rows = isSummary ? getMonthlyMerchantRows(allRows).filter(function (item) { return !state.summaryMerchant || item.name === state.summaryMerchant; }) : groupRows;
+        var headers = isSummary
+          ? ["账期", "商户", "群组总数", "已出账群组", "未出账群组", "总出账金额（元）", "备注", "操作"]
+          : ["账期", "商户", "群组", "账单类型", "总卡数", "使用流量（GB）", "计费卡数", "卡均用量（GB）", "单价（元/GB）", "低消（GB/卡/月）", "最新测算（元）", "最新查询时间", "备注", "出账金额（元）", "操作"];
+        var widths = isSummary ? [90, 120, 90, 100, 100, 140, 190, 160] : [85, 100, 240, 90, 74, 111, 76, 135, 130, 147, 108, 170, 180, 124, 148];
+        var helpFields = { 7: "average", 8: "price", 9: "minimum" };
+        var numericStart = isSummary ? 2 : 4;
+        var numericEnd = isSummary ? 5 : 10;
+        state.page = clampPage(state.page, rows.length, state.pageSize);
+        var main = document.querySelector(".main");
+        main.innerHTML = `
+          <section class="content-card monthly-billing-page" id="monthly-billing" aria-label="月度流量账单">
+            <div class="tariff-tabs" aria-label="账单视图">
+              <button type="button" class="tariff-tab ${!isSummary ? "current" : ""}" data-bill-view="groups" aria-pressed="${!isSummary}">群组账单</button>
+              <button type="button" class="tariff-tab ${isSummary ? "current" : ""}" data-bill-view="merchants" aria-pressed="${isSummary}">商户汇总</button>
+            </div>
+            <div class="filters${isSummary ? " is-summary" : ""}"><form class="filter-grid" novalidate>
+              <div class="field"><label for="billMonth">账期</label><input class="control" id="billMonth" type="month" value="${state.month}" max="${previousBillingMonth()}" required aria-describedby="billMonthError"></div>
+              ${isSummary ? getBillingSelect("billMerchant", "商户", merchantOptions.map(function (name) { return [name, name]; }), state.summaryMerchant) :
+                getBillingLookup("billMerchant", "商户", "请输入商户名称", merchantOptions, state.merchant) +
+                getBillingLookup("billGroup", "群组", "请输入群组名称或 ID", groupOptions, state.group) +
+                getBillingSelect("billType", "账单类型", Object.entries(billingTypes), state.type)}
+              <div class="filter-actions"><button class="btn primary" type="submit">搜索</button><button class="btn" type="button" data-bill-reset>重置</button>
+              <span id="billMonthError" role="status" class="bill-error"></span></div>
+            </form></div>
+            <div class="table-toolbar"><div class="toolbar-left">${isSummary ? "" :
+              '<button type="button" class="btn primary bill-query-btn" ' + (state.busy ? 'disabled aria-busy="true"' : "") + '>' + (state.busy ? "查询中…" : "重新查询用量") + '</button>'}
+              </div><div class="toolbar-right" role="status">${billingCanPersist ? "模拟数据" : "模拟数据 · 本地存储不可用"}</div></div>
+            <div class="table-area">
+              <div class="table-scroll" role="region" aria-label="${isSummary ? "商户汇总" : "群组账单"}列表" tabindex="0">
+                <table class="monthly-billing-table${isSummary ? " summary" : ""}"><thead><tr>${headers.map(function (label, i) {
+                  var className = !isSummary && i === headers.length - 2 ? "bill-number bill-money bill-fixed" :
+                    !isSummary && i === headers.length - 1 ? "bill-actions bill-fixed" : i >= numericStart && i <= numericEnd ? "bill-number" : "";
+                  if (!isSummary && helpFields[i]) label = getBillingFieldHelp(helpFields[i], "list", label);
+                  return '<th scope="col" style="width:' + widths[i] + 'px" class="' + className + '">' + label + '</th>';
+                }).join("")}</tr></thead><tbody>${getPagedItems(rows, state.page, state.pageSize).map(isSummary ? getBillingMerchantRow : getBillingGroupRow).join("") || getEmptyTableRowHtml(headers.length)}</tbody></table>
+              </div>
+              ${getBillingPager(state.page, rows.length, state.pageSize, isSummary ? "商户汇总" : "群组账单")}
+            </div>
+          </section>`;
+        var page = main.querySelector(".monthly-billing-page");
+        var form = page.querySelector("form");
+        bindBillingFieldHelp(page);
+        bindClearableControls(page);
+        if (!isSummary) bindBillingLookups(form);
+        bindBillingPager(page, state, renderMonthlyBillingPage);
+        function readFilters() {
+          var month = form.querySelector("#billMonth");
+          var valid = isBillingMonth(month.value) && month.value <= previousBillingMonth();
+          month.setAttribute("aria-invalid", String(!valid));
+          form.querySelector("#billMonthError").textContent = valid ? "" : "请选择已结束的账期";
+          if (!valid) { month.focus(); return null; }
+          var merchant = form.querySelector("#billMerchant").value.trim();
+          var filters = { month: month.value, page: 1, expanded: "" };
+          if (isSummary) {
+            filters.summaryMerchant = merchant;
+          } else {
+            filters.merchant = merchant;
+            filters.group = form.querySelector("#billGroup").value.trim();
+            filters.type = form.querySelector("#billType").value;
+          }
+          return filters;
+        }
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var filters = readFilters();
+          if (filters) { Object.assign(state, filters); renderMonthlyBillingPage('button[type="submit"]'); }
+        });
+        page.addEventListener("click", function (event) {
+          var button = event.target.closest("button");
+          if (!button) return;
+          if (button.hasAttribute("data-bill-reset")) {
+            Object.assign(state, { month: previousBillingMonth(), page: 1, expanded: "" },
+              isSummary ? { summaryMerchant: "" } : { merchant: "", group: "", type: "" });
+            renderMonthlyBillingPage("[data-bill-reset]");
+          } else if (button.dataset.billView && state.tab !== button.dataset.billView) {
+            state.tab = button.dataset.billView; state.page = 1; state.expanded = "";
+            renderMonthlyBillingPage('[data-bill-view="' + state.tab + '"]');
+          } else if (button.classList.contains("bill-query-btn")) {
+            var filters = readFilters();
+            if (filters) queryMonthlyBilling(filters);
+          } else if (button.dataset.billHistory) {
+            var row = allRows.find(function (item) { return item.group.groupId === button.dataset.billHistory; });
+            if (row) openBillingHistory(row, state.month);
+          } else if (button.dataset.billMerchant) {
+            state.expanded = state.expanded === button.dataset.billMerchant ? "" : button.dataset.billMerchant;
+            renderMonthlyBillingPage("[data-bill-merchant=" + CSS.escape(button.dataset.billMerchant) + "]");
+          } else if (button.dataset.billRemark) {
+            openBillingRemark(state.month, button.dataset.billRemark, button);
+          } else if (button.dataset.billGroupRemark) {
+            var groupRow = allRows.find(function (item) { return item.group.groupId === button.dataset.billGroupRemark; });
+            if (groupRow) {
+              var group = groupRow.display || groupRow.group;
+              openBillingRemark(state.month, group.merchantName, button, group);
+            }
+          }
+        });
+        if (focusSelector) page.querySelector(focusSelector)?.focus();
+      }
+
+      function queryMonthlyBilling(filters) {
+        if (billingView.busy) return;
+        var groups = groupCatalog.filter(function (group) {
+          return matchesBillingGroupFilters(group, filters);
+        });
+        if (!groups.length) { showToast("没有匹配的群组"); return; }
+        Object.assign(billingView, filters, { busy: true });
+        renderMonthlyBillingPage();
+        setTimeout(function () {
+          var sequence = ++billingData.serial;
+          var time = new Date().toISOString();
+          var review = 0;
+          groups.forEach(function (group) {
+            var snapshot = makeBillingSnapshot(group, filters.month, sequence, time);
+            var key = billingKey(filters.month, group.groupId);
+            (billingData.snapshots[key] ||= []).push(snapshot);
+            if (!snapshot.bill) review += 1;
+          });
+          var persisted = saveMonthlyBillingData();
+          billingView.busy = false;
+          if (currentView === "monthlyBilling") {
+            renderMonthlyBillingPage(billingView.tab === "groups" ? ".bill-query-btn" : undefined);
+            showToast("已记录 " + groups.length + " 个群组的查询结果" + (review ? "，其中 " + review + " 个待核对" : "") + (persisted ? "" : "（仅本次会话）"));
+          }
+        }, 360);
+      }
+
+      function openBillingDialog(title, body, footer, extraClass) {
+        var opener = document.activeElement;
+        var dialog = document.createElement("dialog");
+        dialog.className = "bill-dialog" + (extraClass ? " " + extraClass : "");
+        dialog.setAttribute("aria-labelledby", "billDialogTitle");
+        dialog.innerHTML = '<div class="modal-head"><div class="modal-title" id="billDialogTitle">' + escapeHtml(title) +
+          '</div><button class="modal-close" type="button" data-bill-close aria-label="关闭">×</button></div><form novalidate style="display:contents"><div class="modal-body">' +
+          body + '</div><div class="modal-foot">' + footer + '</div></form>';
+        document.body.appendChild(dialog);
+        dialog.querySelectorAll("[data-bill-close]").forEach(function (button) { button.addEventListener("click", function () { dialog.close(); }); });
+        dialog.querySelector("form").addEventListener("submit", function (event) { event.preventDefault(); });
+        dialog.addEventListener("close", function () { dialog.remove(); if (opener && opener.isConnected) opener.focus(); }, { once: true });
+        dialog.showModal();
+        return dialog;
+      }
+
+      function openGroupBillingConfig(group) {
+        var dialog = openBillingDialog("群组计费配置",
+          `<p class="bill-dialog-context">${escapeHtml(group.merchantName)} / ${escapeHtml(group.groupName)}</p>
+            <div class="modal-grid">
+              <div class="modal-field">${getBillingFieldHelp("price", "config", '<label for="billRatePrice">流量单价（元/GB）</label>')}<input id="billRatePrice" type="text" inputmode="decimal" required aria-describedby="bill-help-config-price billRateError"></div>
+              <div class="modal-field">${getBillingFieldHelp("minimum", "config", '<label for="billRateMinimum">低消（GB/卡/月）</label>')}<input id="billRateMinimum" type="text" inputmode="decimal" required aria-describedby="bill-help-config-minimum billRateError"></div>
+            </div><p class="bill-error" id="billRateError" role="status"></p>`,
+          '<button class="btn" type="button" data-bill-close>取消</button><button class="btn primary" type="submit">保存</button>');
+        bindBillingFieldHelp(dialog);
+        var price = dialog.querySelector("#billRatePrice");
+        var minimum = dialog.querySelector("#billRateMinimum");
+        var error = dialog.querySelector("#billRateError");
+        var rate = getBillingRate(group.groupId);
+        price.value = rate ? formatBillingPrice(rate.price) : "";
+        minimum.value = rate ? (rate.minimum / 1000).toFixed(3) : "";
+        dialog.querySelector("form").addEventListener("submit", function () {
+          var priceValue = parseBillingDecimal(price.value, 4);
+          var minimumValue = parseBillingDecimal(minimum.value, 3);
+          var invalid = priceValue == null ? [price, "请输入非负单价，最多 4 位小数"] :
+            minimumValue == null ? [minimum, "请输入非负低消，最多 3 位小数"] : null;
+          [price, minimum].forEach(function (input) { input.removeAttribute("aria-invalid"); });
+          if (invalid) { error.textContent = invalid[1]; invalid[0].setAttribute("aria-invalid", "true"); invalid[0].focus(); return; }
+          billingData.rates[group.groupId] = { price: priceValue, minimum: minimumValue };
+          var persisted = saveMonthlyBillingData();
+          dialog.close();
+          showToast(persisted ? "计费配置已保存" : "计费配置仅在本次会话保留");
+        });
+      }
+
+      function openBillingRemark(month, merchant, trigger, group) {
+        var key = billingKey(month, group ? group.groupId : merchant);
+        var storageField = group ? "groupRemarks" : "remarks";
+        var context = month + " · " + merchant + (group ? " / " + group.groupName : "");
+        var dialog = openBillingDialog(group ? "编辑群组账单备注" : "编辑商户账单备注",
+          `<p class="bill-dialog-context">${escapeHtml(context)}</p><div class="modal-field"><label for="billRemark">备注</label>
+          <textarea id="billRemark" maxlength="500" rows="4" autofocus></textarea></div>`,
+          '<button class="btn" type="button" data-bill-close>取消</button><button class="btn primary" type="submit">保存</button>');
+        var input = dialog.querySelector("#billRemark");
+        input.value = billingData[storageField][key] || "";
+        dialog.querySelector("form").addEventListener("submit", function () {
+          var remark = input.value.trim();
+          if (billingCanPersist) billingData = readMonthlyBillingData();
+          if (remark) billingData[storageField][key] = remark;
+          else delete billingData[storageField][key];
+          var persisted = saveMonthlyBillingData();
+          dialog.close();
+          if (billingView.month === month && currentView === "monthlyBilling") {
+            var selector = group ? "[data-bill-group-remark=" + CSS.escape(group.groupId) + "]" : "[data-bill-remark=" + CSS.escape(merchant) + "]";
+            var button = trigger.isConnected ? trigger : document.querySelector(".monthly-billing-page " + selector);
+            var cell = button?.closest("tr").querySelector("[data-bill-remark-cell]");
+            if (cell) {
+              cell.textContent = remark || "--";
+              cell.title = remark;
+              button.focus({ preventScroll: true });
+            }
+          }
+          showToast(persisted ? "备注已保存" : "备注仅在本次会话保留");
+        });
+      }
+
+      function openBillingHistory(row, month) {
+        var pager = { page: 1, pageSize: 20 };
+        var dialog = openBillingDialog("账单查询历史",
+          '<p class="bill-dialog-context">' + month + ' · ' + escapeHtml(row.group.merchantName) + ' / ' + escapeHtml(row.group.groupName) + '</p><div class="bill-history-results"></div><div class="bill-history-confirm" hidden></div>',
+          '<button class="btn" type="button" data-bill-close>关闭</button>', "bill-history");
+        var results = dialog.querySelector(".bill-history-results");
+        var confirmation = dialog.querySelector(".bill-history-confirm");
+        function refreshOnRateChange(event) {
+          if (event.key === billingStorageKey && event.newValue && confirmation.hidden) renderHistory();
+        }
+        window.addEventListener("storage", refreshOnRateChange);
+        dialog.addEventListener("close", function () {
+          window.removeEventListener("storage", refreshOnRateChange);
+          document.querySelector(".monthly-billing-page [data-bill-history=" + CSS.escape(row.group.groupId) + "]")?.focus();
+        });
+        function historyValue(current, previous) {
+          return current + (previous === current ? "" : '<span class="bill-subline">查询时：' + previous + '</span>');
+        }
+        function renderHistory(focusSelector) {
+          var history = (billingData.snapshots[row.key] || []).slice().reverse();
+          var confirmed = getConfirmedMonthlyBill(row.key, history);
+          pager.page = clampPage(pager.page, history.length, pager.pageSize);
+          results.innerHTML = `<div class="table-scroll" role="region" aria-label="账单快照列表" tabindex="0"><table class="bill-history-table">
+            <thead><tr><th style="width:56px">版本</th><th style="width:156px">查询时间</th><th style="width:94px">查询状态</th>
+              <th style="width:95px">总卡数 / 计费</th><th style="width:105px">使用流量（GB）</th><th style="width:128px">${getBillingFieldHelp("price", "history", "单价（元/GB）")}</th>
+              <th style="width:135px">${getBillingFieldHelp("minimum", "history", "低消（GB/卡/月）")}</th><th style="width:86px">账单类型</th><th style="width:104px">金额（元）</th><th style="width:125px">操作</th></tr></thead>
+            <tbody>${getPagedItems(history, pager.page, pager.pageSize).map(function (snapshot) {
+              var isConfirmed = confirmed && confirmed.id === snapshot.id;
+              var item = isConfirmed ? confirmed : confirmed ? snapshot : estimateBillingSnapshot(snapshot);
+              var status = escapeHtml(item.sourceState);
+              return `<tr><td>V${item.version}</td><td>${formatBillingTime(item.time)}</td><td title="${status}">${status}</td>
+                <td>${item.cards == null ? "--" : item.cards + " / " + item.chargingCards}</td><td>${formatBillingGb(item.usage)}</td>
+                <td>${historyValue(formatBillingPrice(item.rate && item.rate.price), formatBillingPrice(snapshot.rate && snapshot.rate.price))}</td>
+                <td>${historyValue(formatBillingGb(item.rate && item.rate.minimum), formatBillingGb(snapshot.rate && snapshot.rate.minimum))}</td>
+                <td>${historyValue(item.bill ? billingTypes[item.bill.type] : "--", snapshot.bill ? billingTypes[snapshot.bill.type] : "--")}</td>
+                <td>${historyValue(formatBillingCents(item.bill && item.bill.cents), formatBillingCents(snapshot.bill && snapshot.bill.cents))}</td>
+                <td>${isConfirmed ? '<span class="tag success">出账依据</span>' : !confirmed && item.bill ?
+                  '<button class="link-tool" type="button" data-bill-snapshot="' + escapeHtml(item.id) + '">选为出账依据</button>' :
+                  escapeHtml(item.issue || "--")}</td></tr>`;
+            }).join("") || getEmptyTableRowHtml(10)}</tbody></table></div>${getBillingPager(pager.page, history.length, pager.pageSize, "查询历史")}`;
+          bindBillingFieldHelp(results);
+          bindBillingPager(results, pager, renderHistory);
+          if (focusSelector) results.querySelector(focusSelector)?.focus();
+        }
+        results.addEventListener("click", function (event) {
+          var trigger = event.target.closest("[data-bill-snapshot]");
+          if (!trigger || billingData.confirmed[row.key]) return;
+          var snapshot = (billingData.snapshots[row.key] || []).find(function (item) { return item.id === trigger.dataset.billSnapshot; });
+          var estimate = snapshot && estimateBillingSnapshot(snapshot);
+          if (!estimate || !estimate.bill) return;
+          confirmation.hidden = false;
+          confirmation.innerHTML = '<p>采用 V' + estimate.version + ' 的用量出账，单价 ' + formatBillingPrice(estimate.rate.price) +
+            ' 元/GB，低消 ' + formatBillingGb(estimate.rate.minimum) + ' GB/卡/月，金额 ¥' + formatBillingCents(estimate.bill.cents) +
+            '。确认后金额不再随计费配置变更。</p><p class="bill-error" role="status" hidden></p>' +
+            '<button type="button" class="btn">取消</button> <button type="button" class="btn primary">确认出账</button>';
+          var buttons = confirmation.querySelectorAll("button");
+          buttons[0].addEventListener("click", function () {
+            confirmation.hidden = true;
+            renderHistory("[data-bill-snapshot=" + CSS.escape(snapshot.id) + "]");
+            if (!results.contains(document.activeElement)) dialog.querySelector(".modal-close").focus();
+          });
+          buttons[1].addEventListener("click", function () {
+            if (billingCanPersist) billingData = readMonthlyBillingData();
+            var history = billingData.snapshots[row.key] || [];
+            var current = history.find(function (item) { return item.id === snapshot.id; });
+            var latest = current && estimateBillingSnapshot(current);
+            var message = billingData.confirmed[row.key] ? "账单已确认出账" :
+              !latest || !latest.bill || latest.rate.price !== estimate.rate.price || latest.rate.minimum !== estimate.rate.minimum ?
+                "计费配置或查询记录已变化，请重新选择出账依据。" : "";
+            if (message) {
+              var error = confirmation.querySelector(".bill-error");
+              error.hidden = false;
+              error.textContent = message;
+              buttons[1].disabled = true;
+              buttons[0].focus();
+              return;
+            }
+            billingData.confirmed[row.key] = latest;
+            var persisted = saveMonthlyBillingData();
+            confirmation.hidden = true;
+            renderHistory();
+            renderMonthlyBillingPage();
+            dialog.querySelector(".modal-close").focus();
+            showToast(persisted ? "账单已确认出账" : "账单仅在本次会话确认");
+          });
+          buttons[0].focus();
+        });
+        renderHistory();
+      }
+
+      function openMonthlyBillingPage() {
+        var tabs = document.querySelector(".tabs");
+        var tab = tabs.querySelector('[data-page="monthlyBilling"]');
+        if (!tab) {
+          tab = document.createElement("div");
+          tab.className = "tab";
+          tab.dataset.page = "monthlyBilling";
+          tab.innerHTML = '月度流量账单 <button class="tab-close" type="button" aria-label="关闭月度流量账单页面">×</button>';
+          tabs.appendChild(tab);
+          bindCurrentTabInteractions();
+        }
+        activateTabPage(tab);
+      }
+
       function getApprovalFlowMainHtml() {
         return `
           <section class="content-card approval-page">
@@ -12315,6 +13154,7 @@
             var trigger = host.querySelector(".custom-select-trigger");
             if (trigger) {
               trigger.setAttribute("aria-expanded", "false");
+              trigger.removeAttribute("aria-activedescendant");
             }
           }
         });
@@ -13058,6 +13898,15 @@
           item.classList.remove("current");
         });
         tab.classList.add("current");
+
+        if (tab.dataset.page === "monthlyBilling") {
+          currentView = "monthlyBilling";
+          document.body.classList.remove("page-cleared");
+          renderSidebar("monthlyBilling");
+          document.querySelector(".breadcrumb").textContent = "财务中心 / 月度流量账单";
+          renderMonthlyBillingPage();
+          return;
+        }
 
         if (tab.dataset.page === "accountLog") {
           currentView = "accountLog";
@@ -17049,20 +17898,6 @@
         setCardRecycleTab(cardRecycleRecordState.activeTab, cardRecycleRecordState.activeBatchNo);
       }
 
-      window.productDocRegistry = window.productDocRegistry || {};
-      var inventoryCardChangeNote = { number: 1, text: "已经订购套餐的卡不支持修改卡片信息。" };
-
-      function getInventoryCardChangeBadgeHtml() {
-        return '<span class="inventory-note-index" aria-hidden="true">' + inventoryCardChangeNote.number + '</span>';
-      }
-
-      window.productDocRegistry["库存管理"] = {
-        title: "库存管理",
-        businessRules: [
-          { type: "warning", text: inventoryCardChangeNote.number + ". 卡片信息变更：" + inventoryCardChangeNote.text + " 工单号：1002333" }
-        ]
-      };
-
       function openInventoryCardForm(mode) {
         if (document.querySelector(".js-stock-in-modal")) return;
         var isChange = mode === "change-info";
@@ -17071,13 +17906,11 @@
         var overlay = document.createElement("div");
         overlay.className = "modal-overlay show js-stock-in-modal";
         overlay.innerHTML = `
-          <section class="stock-in-modal" role="dialog" aria-modal="true" aria-labelledby="stockInTitle" aria-describedby="stockInNotice">
+          <section class="stock-in-modal" role="dialog" aria-modal="true" aria-labelledby="stockInTitle"${isChange ? "" : ' aria-describedby="stockInNotice"'}>
             <div class="modal-head"><div class="modal-title" id="stockInTitle">${title}</div><button class="modal-close js-stock-close" type="button" aria-label="关闭${title}">×</button></div>
             <form novalidate style="display: contents;">
               <div class="modal-body">
-                ${isChange
-                  ? '<div class="stock-in-tip is-card-change" id="stockInNotice">' + getInventoryCardChangeBadgeHtml() + '<span>' + escapeHtml(inventoryCardChangeNote.text) + '</span></div>'
-                  : '<div class="stock-in-tip" id="stockInNotice"><strong>⚠ 重要提示：</strong>自运营卡片导入前，请向上确认运营商已经入库了此卡片，否则会存在入库失败问题。</div>'}
+                ${isChange ? "" : '<div class="stock-in-tip" id="stockInNotice"><strong>⚠ 重要提示：</strong>自运营卡片导入前，请向上确认运营商已经入库了此卡片，否则会存在入库失败问题。</div>'}
                 <div class="stock-in-row" data-doc-field="批量导入">
                   <label class="stock-in-label" for="stockInFile"><span class="required-mark">*</span> 批量导入</label>
                   <div><input id="stockInFile" type="file" accept=".xls,.xlsx" hidden aria-required="true" aria-describedby="stockInFileError stockInFileHint">
@@ -17087,10 +17920,10 @@
                     <p class="stock-in-error" id="stockInFileError" role="status"></p>
                   </div>
                 </div>
-                <div class="stock-in-row" data-doc-field="卡片类型">
+                ${isChange ? "" : `<div class="stock-in-row" data-doc-field="卡片类型">
                   <label class="stock-in-label" for="stockInType"><span class="required-mark">*</span> 卡片类型</label>
                   <div><div class="select-wrap stock-in-type"><select id="stockInType" required aria-describedby="stockInTypeError"><option value="" selected disabled hidden>请选择卡片类型</option><option value="流量卡">流量卡</option><option value="语音卡">语音卡</option></select></div><p class="stock-in-error" id="stockInTypeError" role="status"></p></div>
-                </div>
+                </div>`}
                 <div class="stock-in-row" data-doc-field="卡片规格"><label class="stock-in-label" for="stockInSpecification"><span class="required-mark">*</span> 卡片规格</label><div class="stock-in-type">${getStockCardSelectHtml("stockInSpecification", "specification", "请选择卡片规格", true)}<p class="stock-in-error" id="stockInSpecificationError" role="status"></p></div></div>
                 <div class="stock-in-row" data-doc-field="网络类型"><label class="stock-in-label" for="stockInNetwork"><span class="required-mark">*</span> 网络类型</label><div class="stock-in-type">${getStockCardSelectHtml("stockInNetwork", "network", "请选择网络类型", true)}<p class="stock-in-error" id="stockInNetworkError" role="status"></p></div></div>
                 <div class="stock-in-row" data-doc-field="卡场景"><label class="stock-in-label" for="stockInScenario"><span class="required-mark">*</span> 卡场景</label><div class="stock-in-type">${getStockCardSelectHtml("stockInScenario", "scenario", "请选择卡场景", true)}<p class="stock-in-error" id="stockInScenarioError" role="status"></p></div></div>
@@ -17153,7 +17986,7 @@
         overlay.querySelector(".js-stock-remove").addEventListener("click", function () {
           fileInput.value = ""; fileName.hidden = true; fileError.textContent = ""; fileButton.removeAttribute("aria-invalid"); fileButton.focus();
         });
-        typeSelect.addEventListener("change", function () {
+        if (typeSelect) typeSelect.addEventListener("change", function () {
           typeError.textContent = "";
           typeSelect.closest(".custom-select-host").querySelector(".custom-select-trigger").removeAttribute("aria-invalid");
         });
@@ -17171,11 +18004,14 @@
           event.preventDefault();
           if (pending) return;
           var validFile = validateFile();
-          var trigger = typeSelect.closest(".custom-select-host").querySelector(".custom-select-trigger");
+          var typeMissing = Boolean(typeSelect && !typeSelect.value);
+          var trigger = typeSelect ? typeSelect.closest(".custom-select-host").querySelector(".custom-select-trigger") : null;
           var specTrigger = specSelect.closest(".custom-select-host").querySelector(".custom-select-trigger");
-          typeError.textContent = typeSelect.value ? "" : "请选择卡片类型";
-          trigger.setAttribute("aria-invalid", String(!typeSelect.value));
-          trigger.setAttribute("aria-describedby", "stockInTypeError");
+          if (trigger) {
+            typeError.textContent = typeMissing ? "请选择卡片类型" : "";
+            trigger.setAttribute("aria-invalid", String(typeMissing));
+            trigger.setAttribute("aria-describedby", "stockInTypeError");
+          }
           specError.textContent = specSelect.value ? "" : "请选择卡片规格";
           specTrigger.setAttribute("aria-invalid", String(!specSelect.value));
           specTrigger.setAttribute("aria-describedby", "stockInSpecificationError");
@@ -17184,8 +18020,8 @@
             field.trigger.setAttribute("aria-invalid", String(!field.select.value));
           });
           var missingField = additionalRequired.find(function (field) { return !field.select.value; });
-          if (!validFile || !typeSelect.value || !specSelect.value || missingField) {
-            (!validFile ? fileButton : !typeSelect.value ? trigger : !specSelect.value ? specTrigger : missingField.trigger).focus();
+          if (!validFile || typeMissing || !specSelect.value || missingField) {
+            (!validFile ? fileButton : typeMissing ? trigger : !specSelect.value ? specTrigger : missingField.trigger).focus();
             return;
           }
           pending = true; submit.disabled = true; submit.setAttribute("aria-busy", "true");
@@ -18521,6 +19357,7 @@
         var tariffOrderMenu = event.target.closest(".js-tariff-order-page");
         var tariffRenewalMenu = event.target.closest(".js-tariff-renewal-page");
         var cardPackageDetailMenu = event.target.closest(".js-card-package-detail-page");
+        var monthlyBillingMenu = event.target.closest(".js-monthly-billing-page");
         var warningStrategyMenu = event.target.closest(".js-warning-strategy-page");
         var merchantMenu = event.target.closest(".js-merchant-page");
         var taskMenu = event.target.closest(".js-task-page");
@@ -18574,6 +19411,12 @@
         if (cardPackageDetailMenu) {
           event.preventDefault();
           runWithTrafficPoolLeaveGuard(openCardPackageDetailPageFromSidebar);
+          return;
+        }
+
+        if (monthlyBillingMenu) {
+          event.preventDefault();
+          runWithTrafficPoolLeaveGuard(openMonthlyBillingPage);
           return;
         }
 
