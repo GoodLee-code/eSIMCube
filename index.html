@@ -6557,7 +6557,9 @@
     .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)) auto; }
     .monthly-billing-page .filters.is-summary .filter-actions { grid-column: auto; }
     .monthly-billing-page .table-toolbar { height: auto; flex-wrap: wrap; gap: 10px; }
-    .monthly-billing-page .toolbar-right { color: var(--muted); font-size: 12px; }
+    .monthly-billing-page .toolbar-right,
+    .monthly-billing-page .bill-update-note { color: var(--muted); font-size: 12px; }
+    .monthly-billing-page .bill-update-note { margin: 0 0 8px; line-height: 1.5; }
     .monthly-billing-table { width: 100%; min-width: 1590px; font-variant-numeric: tabular-nums; }
     .monthly-billing-table.summary { min-width: 930px; }
     .monthly-billing-table .bill-number { text-align: right; }
@@ -12190,6 +12192,7 @@
               '<button type="button" class="btn primary bill-query-btn" ' + (state.busy ? 'disabled aria-busy="true"' : "") + '>' + (state.busy ? "查询中…" : "重新查询用量") + '</button>'}
               </div><div class="toolbar-right" role="status">${billingCanPersist ? "模拟数据" : "模拟数据 · 本地存储不可用"}</div></div>
             <div class="table-area">
+              <p class="bill-update-note">每月1-3号每日上午十点自动更新上月账单数据。</p>
               <div class="table-scroll" role="region" aria-label="${isSummary ? "商户汇总" : "群组账单"}列表" tabindex="0">
                 <table class="monthly-billing-table${isSummary ? " summary" : ""}"><thead><tr>${headers.map(function (label, i) {
                   var className = !isSummary && i === headers.length - 2 ? "bill-number bill-money bill-fixed" :
