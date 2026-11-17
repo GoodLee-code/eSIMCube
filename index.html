@@ -30,6 +30,15 @@
       --ui-table-head-height: 38px;
       --ui-table-row-height: 54px;
       --ui-table-row-multiline-height: 68px;
+      --ui-table-font: Inter, system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+      --ui-table-text: #171717;
+      --ui-table-header: #f5f5f5;
+      --ui-table-body: #fff;
+      --ui-table-border: #ebebeb;
+      --ui-table-line-height: 1.7;
+      --ui-table-compact-line-height: 1.6;
+      --ui-dialog-radius: 6px;
+      --ui-flowchart-preview-radius: 8px;
       --ui-radius: 4px;
       --ui-section-gap: 20px;
       --ui-content-padding: 18px;
@@ -904,21 +913,11 @@
       position: sticky;
       right: 0;
       z-index: 3;
-      background: #fff;
       box-shadow: -1px 0 0 var(--border-soft);
     }
 
     .download-management-table thead .sticky-action {
       z-index: 5;
-      background: #f3f4f6;
-    }
-
-    .download-management-table tbody tr:nth-child(even) .sticky-action {
-      background: #fcfdff;
-    }
-
-    .download-management-table tbody tr:hover .sticky-action {
-      background: #f4f9ff;
     }
 
     .task-total-link {
@@ -960,7 +959,6 @@
       position: sticky;
       right: 0;
       z-index: 4;
-      background: #f3f4f6;
       box-shadow: -10px 0 14px -14px rgba(15, 23, 42, 0.28);
     }
 
@@ -973,17 +971,7 @@
       position: sticky;
       right: 0;
       z-index: 1;
-      background: #fff;
       box-shadow: -10px 0 14px -14px rgba(15, 23, 42, 0.22);
-    }
-
-    .approval-table tbody tr:nth-child(even) td:last-child {
-      background: #fcfdff;
-    }
-
-    .approval-table tbody tr:hover td:last-child,
-    .approval-table tbody tr.selected td:last-child {
-      background: #f4f9ff;
     }
 
     .approval-table tbody td:last-child:has(.approval-action-menu.open) {
@@ -1744,7 +1732,6 @@
       max-height: calc(100vh - 72px);
       display: flex;
       flex-direction: column;
-      border-radius: 8px;
       background: #fff;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.22);
       overflow: hidden;
@@ -1804,7 +1791,6 @@
       width: 420px;
       display: flex;
       flex-direction: column;
-      border-radius: 8px;
       background: #fff;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.22);
       overflow: hidden;
@@ -1825,7 +1811,6 @@
       width: 480px;
       display: flex;
       flex-direction: column;
-      border-radius: 8px;
       background: #fff;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.24);
       overflow: hidden;
@@ -2142,7 +2127,6 @@
       position: sticky;
       right: 0;
       z-index: 4;
-      background: #f3f4f6;
       box-shadow: -8px 0 12px rgba(15, 23, 42, 0.04);
     }
 
@@ -2155,16 +2139,7 @@
       position: sticky;
       right: 0;
       z-index: 2;
-      background: #fff;
       box-shadow: -8px 0 12px rgba(15, 23, 42, 0.03);
-    }
-
-    .work-order-table tbody tr:nth-child(even) td:last-child {
-      background: #fbfcfe;
-    }
-
-    .work-order-table tbody tr:hover td:last-child {
-      background: #f4f9ff;
     }
 
     .approval-work-order-page .table-scroll {
@@ -2670,7 +2645,6 @@
 
     .work-order-card-table .cell-stack {
       gap: 5px;
-      line-height: 1.55;
     }
 
     .work-order-card-table .cell-key {
@@ -2700,7 +2674,6 @@
 
     .work-order-empty-row td {
       height: 100px !important;
-      color: #8a93a3;
       text-align: center;
     }
 
@@ -2757,6 +2730,15 @@
       display: flex;
     }
 
+    dialog,
+    .modal-overlay > section {
+      border-radius: var(--ui-dialog-radius);
+    }
+
+    .flowchart-preview-modal:where(dialog, .modal-overlay > section) {
+      border-radius: var(--ui-flowchart-preview-radius);
+    }
+
     .merchant-modal,
     .preview-modal,
     .task-detail-modal {
@@ -2764,7 +2746,6 @@
       max-height: calc(100vh - 72px);
       display: flex;
       flex-direction: column;
-      border-radius: 8px;
       background: #fff;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.22);
       overflow: hidden;
@@ -3295,6 +3276,7 @@
 
     .filter-grid {
       display: grid;
+      /* Keep query grids to at most four fields per row. */
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
       align-items: center;
@@ -3994,20 +3976,10 @@
       position: sticky;
       right: 0;
       z-index: 3;
-      background: #fff;
     }
 
     .tariff-renewal-table thead .sticky-action {
       z-index: 5;
-      background: #f3f4f6;
-    }
-
-    .tariff-renewal-table tbody tr:nth-child(even) .sticky-action {
-      background: #fcfdff;
-    }
-
-    .tariff-renewal-table tbody tr:hover .sticky-action {
-      background: #f4f9ff;
     }
 
     .tariff-renewal-detail {
@@ -4183,7 +4155,6 @@
       max-height: calc(100vh - 48px);
       display: flex;
       flex-direction: column;
-      border-radius: 8px;
       background: #fff;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.24);
       overflow: hidden;
@@ -4621,14 +4592,12 @@
     .warning-strategy-table .sticky-action {
       position: sticky;
       z-index: 3;
-      background: #fff;
       box-shadow: -1px 0 0 var(--border-soft);
     }
 
     .warning-strategy-table thead .sticky-status,
     .warning-strategy-table thead .sticky-action {
       z-index: 5;
-      background: #f3f4f6;
     }
 
     .warning-strategy-table .sticky-status {
@@ -5358,20 +5327,17 @@
     .pool-selected-table tbody td {
       height: 48px;
       padding: 5px 8px;
-      font-size: 12px;
     }
 
     .pool-selected-table .sticky-action {
       position: sticky;
       right: 0;
       z-index: 3;
-      background: #fff;
       box-shadow: -1px 0 0 var(--border-soft);
     }
 
     .pool-selected-table thead .sticky-action {
       z-index: 5;
-      background: #f3f4f6;
     }
 
     .pool-selected-pagination,
@@ -5443,7 +5409,6 @@
       display: grid;
       gap: 3px;
       color: #4b5563;
-      line-height: 1.32;
       white-space: nowrap;
     }
 
@@ -5469,7 +5434,6 @@
       max-height: calc(100vh - 72px);
       display: flex;
       flex-direction: column;
-      border-radius: 8px;
       background: #fff;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.22);
       overflow: hidden;
@@ -5507,7 +5471,6 @@
     .pool-picker-modal tbody td {
       height: 46px;
       padding: 4px 7px;
-      font-size: 12px;
     }
 
     .pool-picker-modal .check-cell {
@@ -5525,7 +5488,6 @@
       max-height: calc(100vh - 96px);
       display: flex;
       flex-direction: column;
-      border-radius: 8px;
       background: #fff;
       box-shadow: 0 18px 48px rgba(15, 23, 42, 0.22);
       overflow: hidden;
@@ -5561,7 +5523,6 @@
     .pool-conflict-modal tbody td {
       height: 44px;
       padding: 5px 8px;
-      font-size: 12px;
     }
 
     .pool-picker-row {
@@ -5854,10 +5815,37 @@
     table {
       width: 3000px;
       min-width: 3000px;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid var(--ui-table-border);
+      border-width: 1px 0 0 1px;
       table-layout: fixed;
-      font-size: 12px;
+      font-family: var(--ui-table-font);
+      font-size: 13px;
+      line-height: var(--ui-table-line-height);
       flex: 0 0 auto;
+    }
+
+    table[data-density="compact"],
+    .account-log-table,
+    .approval-people-table,
+    .bill-history-table,
+    .card-recycle-detection-table,
+    .task-detail-table,
+    .tariff-renew-detection-table,
+    .work-order-card-table,
+    .pool-selected-table table,
+    .pool-picker-modal table,
+    .pool-conflict-modal table {
+      line-height: var(--ui-table-compact-line-height);
+    }
+
+    th,
+    td {
+      border: 1px solid var(--ui-table-border);
+      border-width: 0 1px 1px 0;
+      color: var(--ui-table-text);
+      font-weight: 400;
     }
 
     thead th {
@@ -5866,9 +5854,8 @@
       z-index: 2;
       height: 38px;
       padding: 0 10px;
-      background: #f3f4f6;
-      color: #374151;
-      font-weight: 600;
+      background: var(--ui-table-header);
+      font-weight: 700;
       text-align: left;
       white-space: nowrap;
     }
@@ -5876,20 +5863,10 @@
     tbody td {
       height: 68px;
       padding: 7px 10px;
-      border-bottom: 1px solid var(--border-soft);
-      color: #374151;
+      background: var(--ui-table-body);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-    }
-
-    tbody tr:nth-child(even) {
-      background: #fcfdff;
-    }
-
-    tbody tr:hover,
-    tbody tr.selected {
-      background: #f4f9ff;
     }
 
     tbody tr.hidden {
@@ -5941,7 +5918,62 @@
 
     .inventory-table {
       width: 100%;
-      min-width: 1680px;
+      min-width: 1930px;
+    }
+    .inventory-page .filters, .outbound-page .filters { position: relative; z-index: 5; }
+    .inventory-page .pagination, .outbound-page .pagination { flex-wrap: wrap; }
+    .outbound-page .filter-actions { grid-column: 1 / -1; }
+    .outbound-page .table-area { min-width: 0; min-height: 0; }
+    .outbound-page .table-scroll { flex: 1 1 auto; min-height: 210px; max-height: max(210px, calc(100dvh - 320px)); }
+    .outbound-table { width: 100%; }
+    .outbound-table .cell-stack > div { white-space: nowrap; }
+    .outbound-table th:last-child, .outbound-table td:not(.empty-cell):last-child { position: sticky; right: 0; box-shadow: -1px 0 var(--ui-table-border); }
+    .outbound-table th:last-child { z-index: 3; }
+    .outbound-table td:not(.empty-cell):last-child { z-index: 1; background: var(--panel); }
+    .outbound-table .outbound-batch { padding: 0; white-space: nowrap; }
+    .outbound-batch:hover, .outbound-batch:focus-visible, .outbound-batch:active { color: var(--data-link-hover); text-decoration: underline; }
+    .outbound-serial { text-align: center; }
+    .outbound-total { color: var(--blue-700); }
+    .outbound-success { color: #16803c; }
+    .outbound-failed { color: var(--danger); }
+    .bill-dialog.outbound-detail-dialog { width: min(760px, calc(100vw - 32px)); }
+    .outbound-detail-dialog .table-scroll { min-height: 0; max-height: min(400px, 48dvh); }
+    .outbound-detail-dialog table { width: 100%; min-width: 520px; }
+    .outbound-detail-dialog .cell-line { flex-wrap: wrap; gap: 6px 16px; margin-bottom: 12px; }
+    .outbound-detail-dialog td .cell-line { margin-bottom: 0; gap: 5px; }
+    @media (max-width: 1120px) {
+      .inventory-filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .outbound-page .filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 1435px) {
+      html:has(.outbound-page), body:has(.outbound-page) { min-width: 0; }
+      .app:has(.outbound-page) { grid-template-columns: 225px minmax(0, 1fr); }
+      .app:has(.outbound-page) .quick-search { position: static; transform: none; width: min(320px, 100%); }
+      .app:has(.outbound-page) .topline { justify-content: space-between; gap: 8px; }
+    }
+    @media (max-width: 760px) {
+      .app:has(.outbound-page) { grid-template-columns: min(155px, 30vw) minmax(0, 1fr); }
+      .app:has(.outbound-page) .brand { font-size: 0; }
+      .app:has(.outbound-page) .topline .right-tools { display: none; }
+      .app:has(.outbound-page) .main { padding-inline: 8px; }
+      .outbound-page .filter-grid { grid-template-columns: minmax(0, 1fr); }
+      .outbound-page .table-toolbar { height: auto; flex-wrap: wrap; }
+      .outbound-table th:last-child, .outbound-table td:not(.empty-cell):last-child { right: auto; box-shadow: none; }
+    }
+    @media (max-width: 940px) {
+      .outbound-page .date-picker-popover, .outbound-page .date-picker-popover.align-right {
+        position: fixed;
+        inset: 12vh 42px auto 12px;
+        max-height: 76dvh;
+        min-width: 0;
+        flex-direction: column;
+        overflow: auto;
+      }
+      .outbound-page .date-shortcuts { display: flex; flex-wrap: wrap; width: 100%; border-right: 0; }
+      .outbound-page .date-shortcut { width: auto; }
+      .outbound-page .date-panel { grid-template-columns: minmax(0, 1fr); }
+      .outbound-page .calendar-month { width: 100%; }
+      .outbound-page .calendar-month + .calendar-month { border-top: 1px solid var(--border); border-left: 0; }
     }
 
     .inventory-iccid-link {
@@ -6013,7 +6045,6 @@
       flex-direction: column;
       gap: 4px;
       min-width: 0;
-      line-height: 1.3;
     }
 
     .cell-line {
@@ -6070,7 +6101,6 @@
       flex-direction: column;
       gap: 4px;
       min-width: 0;
-      line-height: 18px;
     }
 
     .traffic-usage-main {
@@ -6318,7 +6348,6 @@
     thead th {
       height: var(--ui-table-head-height);
       padding: 0 10px;
-      font-size: 12px;
     }
 
     tbody td,
@@ -6331,7 +6360,6 @@
     .tariff-renewal-table tbody td {
       height: var(--ui-table-row-height);
       padding: 7px 10px;
-      font-size: 12px;
     }
 
     .tariff-base-table tbody td,
@@ -6341,7 +6369,6 @@
     .approval-table tbody td {
       height: var(--ui-table-row-multiline-height);
       padding: 7px 10px;
-      font-size: 12px;
     }
 
     .pool-selected-table thead th,
@@ -6357,7 +6384,6 @@
     .approval-people-table tbody td {
       height: 48px;
       padding: 5px 8px;
-      font-size: 12px;
     }
 
     .tariff-tabs,
@@ -6464,7 +6490,7 @@
         max-height: calc(100vh - 428px);
       }
     }
-    .stock-in-modal { width: min(720px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); display: flex; flex-direction: column; border-radius: 8px; background: #fff; overflow: hidden; box-shadow: var(--shadow); }
+    .stock-in-modal { width: min(720px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); display: flex; flex-direction: column; background: #fff; overflow: hidden; box-shadow: var(--shadow); }
     .stock-in-modal .modal-head { position: relative; justify-content: center; flex-shrink: 0; background: #507cff; border: 0; }
     .stock-in-modal .modal-title { color: #fff; font-size: 16px; font-weight: 500; }
     .stock-in-modal .modal-close { position: absolute; right: 16px; color: #fff; }
@@ -6505,11 +6531,6 @@
     }
 
     .account-log-table { width: 100%; }
-    .account-log-table th,
-    .account-log-table td { border-right: 1px solid var(--border-soft); }
-    .account-log-table th:last-child,
-    .account-log-table td:last-child { border-right: 0; }
-    .account-log-table th { background: #f0f1f3; }
     .account-log-table tbody td:not(.empty-cell) { height: 36px; padding-block: 5px; }
     .account-log-table [data-doc-field="序号"] { text-align: center; }
     .account-log-page .pagination { flex-wrap: wrap; }
@@ -6553,7 +6574,7 @@
     .bill-lookup .custom-select-option[hidden] { display: none; }
     .bill-lookup .bill-lookup-empty { color: var(--muted); padding: 6px 10px; font-size: 12px; }
     .monthly-billing-page .table-area { min-height: 0; }
-    .monthly-billing-page .table-scroll { flex: 1 1 auto; max-height: min(640px, calc(100dvh - 350px)); min-height: 190px; border-top: 1px solid var(--border); }
+    .monthly-billing-page .table-scroll { flex: 1 1 auto; max-height: min(640px, calc(100dvh - 350px)); min-height: 190px; border: 0; background: var(--panel); }
     .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)) auto; }
     .monthly-billing-page .filters.is-summary .filter-actions { grid-column: auto; }
     .monthly-billing-page .table-toolbar { height: auto; flex-wrap: wrap; gap: 10px; }
@@ -6563,14 +6584,11 @@
     .monthly-billing-table { width: 100%; min-width: 1590px; font-variant-numeric: tabular-nums; }
     .monthly-billing-table.summary { min-width: 930px; }
     .monthly-billing-table .bill-number { text-align: right; }
-    .monthly-billing-table .bill-money { color: var(--text); font-weight: 700; }
-    .monthly-billing-table:not(.summary) { --bill-action-width: 148px; }
-    .monthly-billing-table:not(.summary) .bill-fixed { position: sticky; z-index: 1; background: var(--panel); }
-    .monthly-billing-table:not(.summary) .bill-money.bill-fixed { right: var(--bill-action-width); box-shadow: -2px 0 0 var(--border-soft); }
+    .monthly-billing-table:not(.summary) .bill-fixed { position: sticky; z-index: 1; }
     .monthly-billing-table:not(.summary) .bill-actions.bill-fixed { right: 0; }
     .monthly-billing-table .bill-actions .link-tool { padding-inline: 4px; }
-    .monthly-billing-table:not(.summary) thead .bill-fixed { background: #f3f4f6; z-index: 3; }
-    .monthly-billing-table .bill-subline, .bill-history-table .bill-subline { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+    .monthly-billing-table:not(.summary) thead .bill-fixed { z-index: 3; }
+    .monthly-billing-table .bill-subline, .bill-history-table .bill-subline { display: block; margin-top: 4px; }
     .bill-field-help { display: inline-flex; align-items: center; gap: 5px; vertical-align: middle; }
     .bill-field-help .traffic-help-btn { border-color: var(--blue-700); background: var(--blue-700); color: #fff; }
     .bill-field-help .traffic-help-btn:hover,
@@ -6578,7 +6596,7 @@
     .bill-dialog .bill-field-help label { margin-bottom: 0; }
     .bill-dialog .bill-field-help { margin-bottom: 6px; }
     .bill-help-tooltip { inset: auto; margin: 0; width: max-content; max-width: min(320px, calc(100vw - 24px)); text-align: left; font-weight: 400; pointer-events: auto; }
-    .monthly-billing-table .bill-detail-cell { white-space: normal; padding: 12px 16px; background: #f8fafc; }
+    .monthly-billing-table .bill-detail-cell { white-space: normal; padding: 12px 16px; }
     .bill-drill-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding: 6px 0; }
     .bill-drill-row + .bill-drill-row { border-top: 1px solid var(--border-soft); }
     .monthly-billing-page .pagination { flex-wrap: wrap; }
@@ -6593,7 +6611,6 @@
       max-height: calc(100dvh - 32px);
       padding: 0;
       border: 1px solid var(--border);
-      border-radius: 8px;
       color: var(--text);
       background: var(--panel);
       box-shadow: var(--shadow);
@@ -6601,6 +6618,38 @@
     .bill-dialog[open] { display: flex; flex-direction: column; }
     .bill-dialog::backdrop { background: rgba(15, 23, 42, .32); }
     .bill-dialog.bill-history { width: min(1060px, calc(100vw - 32px)); }
+    .bill-dialog.group-editor { width: min(860px, calc(100vw - 32px)); }
+    .group-editor-section + .group-editor-section { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-soft); }
+    .bill-dialog.group-editor .modal-grid { gap: 12px 20px; }
+    .group-editor .modal-field { display: grid; grid-template-columns: 110px minmax(0, 1fr); align-items: center; gap: 10px; }
+    .bill-dialog.group-editor .modal-field > label { margin: 0; text-align: right; font-weight: 600; }
+    .group-editor .modal-field input::placeholder,
+    .group-editor textarea::placeholder { color: var(--placeholder); }
+    .group-editor .modal-field input[readonly] { background: #f5f7fa; }
+    .bill-dialog.group-editor .bill-field-help { justify-content: flex-end; margin: 0; }
+    .bill-dialog.group-editor .bill-field-help label { margin: 0; }
+    .group-editor .group-editor-unit { display: flex; min-width: 0; }
+    .group-editor-unit input { min-width: 0; border-radius: var(--ui-radius) 0 0 var(--ui-radius); }
+    .group-editor-unit span { display: grid; place-items: center; flex-shrink: 0; padding: 0 9px; border: 1px solid var(--border); border-left: 0; border-radius: 0 var(--ui-radius) var(--ui-radius) 0; background: #f5f7fa; color: var(--muted); font-size: 12px; }
+    .group-editor .group-editor-remark { align-items: start; }
+    .group-editor-remark label { padding-top: 8px; }
+    .group-editor-remark textarea { display: block; padding-bottom: 24px; }
+    .group-editor-remark-box { position: relative; }
+    .group-editor-count { position: absolute; right: 10px; bottom: 6px; color: var(--muted); font-size: 12px; pointer-events: none; }
+    .group-editor-rules { display: grid; gap: 4px; margin: 14px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .group-editor-rules li { display: flex; align-items: flex-start; gap: 6px; }
+    .group-editor-rules svg { flex: 0 0 14px; width: 14px; height: 14px; margin-top: 2px; color: #b45309; }
+    .group-editor .modal-foot { height: auto; min-height: 56px; flex-wrap: wrap; padding-block: 10px; }
+    .group-editor .bill-error { flex: 1 0 100%; margin: 0; }
+    .group-editor .bill-error:empty { display: none; }
+    @media (max-width: 620px) {
+      .group-editor .modal-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (max-width: 360px) {
+      .group-editor .modal-field { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+      .bill-dialog.group-editor .modal-field > label { text-align: left; }
+      .bill-dialog.group-editor .bill-field-help { justify-content: flex-start; }
+    }
     .bill-dialog .modal-head, .bill-dialog .modal-foot { flex-shrink: 0; }
     .bill-dialog .modal-body { min-height: 0; overflow: auto; }
     .bill-dialog .modal-grid { gap: 14px; }
@@ -6613,9 +6662,6 @@
     .bill-history-table { width: 100%; min-width: 1070px; font-variant-numeric: tabular-nums; }
     .bill-history .table-scroll { min-height: 0; max-height: min(410px, 50dvh); border-top: 1px solid var(--border); }
     .bill-history .pagination { flex-wrap: wrap; }
-    .bill-history-confirm { margin-top: 12px; padding: 12px; border: 1px solid var(--border); border-radius: var(--ui-radius); background: #f5f9ff; }
-    .bill-history-confirm[hidden] { display: none; }
-    .bill-history-confirm p { margin: 0 0 10px; line-height: 1.6; }
     @media (max-width: 1440px) {
       .monthly-billing-page .table-scroll { max-height: calc(100dvh - 372px); }
       html:has(.monthly-billing-page), body:has(.monthly-billing-page) { min-width: 0; }
@@ -6638,7 +6684,6 @@
       .monthly-billing-page .filter-grid,
       .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: minmax(0, 1fr); }
       .monthly-billing-table:not(.summary) tbody .bill-fixed { position: static; box-shadow: none; }
-      .monthly-billing-table:not(.summary) thead .bill-fixed.bill-money,
       .monthly-billing-table:not(.summary) thead .bill-fixed.bill-actions { right: auto; box-shadow: none; }
     }
     .monthly-billing-page :focus-visible, .bill-dialog :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
@@ -7137,6 +7182,10 @@
         page: 1,
         pageSize: 20
       };
+      var groupRuleFields = [
+        ["trafficType", "流量类型"], ["activation", "套餐生效方式"], ["realName", "实名方式"], ["payment", "付费方式"],
+        ["mode", "流量模式"], ["testPeriod", "测试期"], ["testLimit", "测试期流量上限"], ["silence", "沉默期"]
+      ];
       var groupCatalog = [
         { id: "group-001", merchantName: "四川坤宝", groupId: "9001772505945042", groupName: "四川坤宝_通用大流量卡_2G/月*12月", rules: { trafficType: "共享流量", activation: "激活后生效", realName: "企业实名", payment: "商户付费", mode: "自然月", testPeriod: "5天", testLimit: "500MB", silence: "30天" }, packageName: "2G/月*12月", scene: "车载终端", delayDays: "0天", remark: "车载设备默认群组", operatorType: "中国移动" },
         { id: "group-002", merchantName: "鑫立德", groupId: "9001772532341972", groupName: "鑫立德_通用大流量卡_40G/月*12月", rules: { trafficType: "共享流量", activation: "出库后生效", realName: "个人实名", payment: "商户付费", mode: "自然月", testPeriod: "7天", testLimit: "1GB", silence: "60天" }, packageName: "40G/月*12月", scene: "智能终端", delayDays: "1天", remark: "", operatorType: "中国联通" },
@@ -7749,6 +7798,7 @@
             </button>
             <div class="sub-menu">
               <a class="sub-item ${activePage === "inventory" ? "current" : ""} js-inventory-page" href="#">库存管理</a>
+              <a class="sub-item ${activePage === "outbound" ? "current" : ""} js-outbound-page" href="#">出库管理</a>
               <a class="sub-item ${activePage === "cardRecycleRecord" ? "current" : ""} js-card-recycle-page" href="#">卡片回收</a>
             </div>
           </div>
@@ -7978,7 +8028,49 @@
         }).join('') + '</select></div>';
       }
 
+      var inventoryCards = [
+        ["8986042310281000123", "17290310018", "460001982761245", "贴片卡", "贴片MS0-5*6", "4G", "非定向大流量", "中国移动", "已出库", "华东物流", "云链通信", "车载终端组", "2026-11-16 09:10:25", "梁金"],
+        ["8986042310281000456", "17721883909", "460011982762118", "插拔卡", "三切插拔MP1", "5G", "非定向小流量", "中国联通", "未出库", "", "海联物联", "共享设备组", "2026-11-15 14:30:08", "梁金"],
+        ["8986061901128893150", "15300648821", "460031982889315", "贴片卡", "贴片MS0-2*2", "4G", "定向流量", "中国电信", "已出库", "北辰科技", "云链通信", "海外漫游组", "2026-11-14 11:20:35", "陈凌枫"],
+        ["8986042310281000789", "18976521045", "460001982100789", "插拔卡", "二切插拔MP2-中卡", "5G", "场景一", "中国移动", "未出库", "", "海联物联", "测试设备组", "2026-11-13 16:45:10", "陈凌枫"],
+        ["8986061901128894708", "17088263881", "460031982889470", "贴片卡", "贴片MS1-5*6", "4G", "场景二", "中国联通", "未出库", "", "星瀚通信", "仓储备用组", "2026-11-12 10:12:52", "运营管理员"]
+      ].map(function ([iccid, msisdn, imsi, type, specification, network, scenario, carrier, status, merchant, supplier, group, stockedAt, operator]) {
+        return { iccid, msisdn, imsi, type, specification, network, scenario, carrier, status, merchant, supplier, group, stockedAt, operator };
+      });
+
+      function getInventoryCards() {
+        var assigned = new Map();
+        outboundCreatedRecords.forEach(function (record) {
+          record.cards.forEach(function (card) { if (!card.error) assigned.set(card.iccid, record); });
+        });
+        return inventoryCards.map(function (card) {
+          var batch = assigned.get(card.iccid);
+          return batch ? { ...card, status: "已出库", merchant: batch.merchant, group: batch.group } : card;
+        });
+      }
+
+      function getStockCopyButtonHtml(value, label) {
+        return '<button class="copy-btn" type="button" data-copy="' + escapeHtml(value) + '" aria-label="复制' + label + '"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>';
+      }
+
+      function getInventoryRowsHtml(cards) {
+        return cards.map(function (card, index) {
+          return `<tr data-keyword="${card.iccid} ${card.msisdn} ${card.imsi}" data-group="${escapeHtml(card.group)}" data-status="${card.status}">
+            <td class="check-cell"><input type="checkbox" aria-label="选择 ${card.iccid}"></td><td>${index + 1}</td>
+            <td><div class="cell-line"><a class="inventory-iccid-link js-inventory-iccid" href="#inventory-${card.iccid}">${card.iccid}</a>${getStockCopyButtonHtml(card.iccid, "ICCID")}</div></td>
+            <td><div class="cell-line"><span>${card.msisdn}</span>${getStockCopyButtonHtml(card.msisdn, "MSISDN")}</div></td>
+            <td><div class="cell-line"><span>${card.imsi}</span>${getStockCopyButtonHtml(card.imsi, "IMSI")}</div></td>
+            <td>${card.type}</td><td data-inventory-attribute="specification">${card.specification}</td>
+            <td data-inventory-attribute="network">${card.network}</td><td data-inventory-attribute="scenario">${card.scenario}</td><td>${card.carrier}</td>
+            <td><span class="inventory-status ${card.status === "已出库" ? "outbound" : "in-stock"}">${card.status === "已出库" ? "已出库" : "在库"}</span></td>
+            <td>${escapeHtml(card.merchant || "--")}</td><td>${card.supplier}</td>
+            <td data-inventory-attribute="stockedAt">${card.stockedAt}</td><td data-inventory-attribute="operator">${card.operator}</td>
+          </tr>`;
+        }).join("");
+      }
+
       function getInventoryManagementMainHtml() {
+        var cards = getInventoryCards();
         return `
           <section class="content-card inventory-page">
             <div class="filters">
@@ -7994,11 +8086,7 @@
                     <button class="clear-control" type="button" aria-label="清除群组">×</button>
                   </div>
                   <datalist id="inventory-group-options">
-                    <option value="车载终端组"></option>
-                    <option value="共享设备组"></option>
-                    <option value="海外漫游组"></option>
-                    <option value="测试设备组"></option>
-                    <option value="仓储备用组"></option>
+                    ${Array.from(new Set(cards.map(function (card) { return card.group; }))).map(function (group) { return '<option value="' + escapeHtml(group) + '"></option>'; }).join("")}
                   </datalist>
                 </div>
                 <div class="field">
@@ -8015,6 +8103,8 @@
                 <div class="field" data-doc-field="卡片规格"><label for="inventorySpecification">卡片规格</label>${getStockCardSelectHtml("inventorySpecification", "specification", "卡片规格", false)}</div>
                 <div class="field" data-doc-field="网络类型"><label for="inventoryNetwork">网络类型</label>${getStockCardSelectHtml("inventoryNetwork", "network", "网络类型", false)}</div>
                 <div class="field" data-doc-field="卡场景"><label for="inventoryScenario">卡场景</label>${getStockCardSelectHtml("inventoryScenario", "scenario", "卡场景", false)}</div>
+                ${getDateRangeFilterHtml("入库时间", "js-inventory-stocked-range", "", "")}
+                <div class="field"><label for="inventoryOperator">操作人</label><input id="inventoryOperator" class="control" type="text" placeholder="请输入操作人"></div>
                 <div class="filter-actions">
                   <button class="btn primary js-inventory-query" type="button">
                     <svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>
@@ -8057,106 +8147,16 @@
                       <th style="width: 110px;">库存状态</th>
                       <th style="width: 160px;">归属商户</th>
                       <th style="width: 150px;">供应商</th>
+                      <th scope="col" style="width: 168px;">入库时间</th>
+                      <th scope="col" style="width: 100px;">操作人</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr data-keyword="8986042310281000123 17290310018 460001982761245" data-group="车载终端组" data-status="已出库">
-                      <td class="check-cell"><input type="checkbox" aria-label="选择此行"></td>
-                      <td>1</td>
-                      <td><div class="cell-line"><a class="inventory-iccid-link js-inventory-iccid" href="#inventory-8986042310281000123">8986042310281000123</a><button class="copy-btn" type="button" data-copy="8986042310281000123" aria-label="复制ICCID"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>17290310018</span><button class="copy-btn" type="button" data-copy="17290310018" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>460001982761245</span><button class="copy-btn" type="button" data-copy="460001982761245" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td>贴片卡</td>
-                      <td data-inventory-attribute="specification">贴片MS0-5*6</td>
-                      <td data-inventory-attribute="network">4G</td>
-                      <td data-inventory-attribute="scenario">非定向大流量</td>
-                      <td>中国移动</td>
-                      <td><span class="inventory-status outbound">已出库</span></td>
-                      <td>华东物流</td>
-                      <td>云链通信</td>
-                    </tr>
-                    <tr data-keyword="8986042310281000456 17721883909 460011982762118" data-group="共享设备组" data-status="未出库">
-                      <td class="check-cell"><input type="checkbox" aria-label="选择此行"></td>
-                      <td>2</td>
-                      <td><div class="cell-line"><a class="inventory-iccid-link js-inventory-iccid" href="#inventory-8986042310281000456">8986042310281000456</a><button class="copy-btn" type="button" data-copy="8986042310281000456" aria-label="复制ICCID"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>17721883909</span><button class="copy-btn" type="button" data-copy="17721883909" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>460011982762118</span><button class="copy-btn" type="button" data-copy="460011982762118" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td>插拔卡</td>
-                      <td data-inventory-attribute="specification">三切插拔MP1</td>
-                      <td data-inventory-attribute="network">5G</td>
-                      <td data-inventory-attribute="scenario">非定向小流量</td>
-                      <td>中国联通</td>
-                      <td><span class="inventory-status in-stock">在库</span></td>
-                      <td>--</td>
-                      <td>海联物联</td>
-                    </tr>
-                    <tr data-keyword="8986061901128893150 15300648821 460031982889315" data-group="海外漫游组" data-status="已出库">
-                      <td class="check-cell"><input type="checkbox" aria-label="选择此行"></td>
-                      <td>3</td>
-                      <td><div class="cell-line"><a class="inventory-iccid-link js-inventory-iccid" href="#inventory-8986061901128893150">8986061901128893150</a><button class="copy-btn" type="button" data-copy="8986061901128893150" aria-label="复制ICCID"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>15300648821</span><button class="copy-btn" type="button" data-copy="15300648821" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>460031982889315</span><button class="copy-btn" type="button" data-copy="460031982889315" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td>贴片卡</td>
-                      <td data-inventory-attribute="specification">贴片MS0-2*2</td>
-                      <td data-inventory-attribute="network">4G</td>
-                      <td data-inventory-attribute="scenario">定向流量</td>
-                      <td>中国电信</td>
-                      <td><span class="inventory-status outbound">已出库</span></td>
-                      <td>北辰科技</td>
-                      <td>云链通信</td>
-                    </tr>
-                    <tr data-keyword="8986042310281000789 18976521045 460001982100789" data-group="测试设备组" data-status="未出库">
-                      <td class="check-cell"><input type="checkbox" aria-label="选择此行"></td>
-                      <td>4</td>
-                      <td><div class="cell-line"><a class="inventory-iccid-link js-inventory-iccid" href="#inventory-8986042310281000789">8986042310281000789</a><button class="copy-btn" type="button" data-copy="8986042310281000789" aria-label="复制ICCID"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>18976521045</span><button class="copy-btn" type="button" data-copy="18976521045" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>460001982100789</span><button class="copy-btn" type="button" data-copy="460001982100789" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td>插拔卡</td>
-                      <td data-inventory-attribute="specification">二切插拔MP2-中卡</td>
-                      <td data-inventory-attribute="network">5G</td>
-                      <td data-inventory-attribute="scenario">场景一</td>
-                      <td>中国移动</td>
-                      <td><span class="inventory-status in-stock">在库</span></td>
-                      <td>--</td>
-                      <td>海联物联</td>
-                    </tr>
-                    <tr data-keyword="8986061901128894708 17088263881 460031982889470" data-group="仓储备用组" data-status="未出库">
-                      <td class="check-cell"><input type="checkbox" aria-label="选择此行"></td>
-                      <td>5</td>
-                      <td><div class="cell-line"><a class="inventory-iccid-link js-inventory-iccid" href="#inventory-8986061901128894708">8986061901128894708</a><button class="copy-btn" type="button" data-copy="8986061901128894708" aria-label="复制ICCID"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>17088263881</span><button class="copy-btn" type="button" data-copy="17088263881" aria-label="复制MSISDN"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td><div class="cell-line"><span>460031982889470</span><button class="copy-btn" type="button" data-copy="460031982889470" aria-label="复制IMSI"><svg class="action-icon" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button></div></td>
-                      <td>贴片卡</td>
-                      <td data-inventory-attribute="specification">贴片MS1-5*6</td>
-                      <td data-inventory-attribute="network">4G</td>
-                      <td data-inventory-attribute="scenario">场景二</td>
-                      <td>中国联通</td>
-                      <td><span class="inventory-status in-stock">在库</span></td>
-                      <td>--</td>
-                      <td>星瀚通信</td>
-                    </tr>
+                    ${getInventoryRowsHtml(cards)}
                   </tbody>
                 </table>
               </div>
-              <div class="pagination">
-                <span>共 2,436 条</span>
-                <select class="page-size" aria-label="库存管理每页条数">
-                  <option>10 条/页</option>
-                  <option selected>20 条/页</option>
-                  <option>50 条/页</option>
-                  <option>100 条/页</option>
-                  <option>500 条/页</option>
-                </select>
-                <button class="page-btn js-inventory-prev" type="button">上一页</button>
-                <button class="page-btn js-inventory-page-btn current" type="button" data-page="1">1</button>
-                <button class="page-btn js-inventory-page-btn" type="button" data-page="2">2</button>
-                <button class="page-btn js-inventory-page-btn" type="button" data-page="3">3</button>
-                <button class="page-btn js-inventory-page-btn" type="button" data-page="4">4</button>
-                <button class="page-btn js-inventory-next" type="button">下一页</button>
-                <span>跳至</span>
-                <input class="jump js-inventory-jump" type="text" value="1" aria-label="库存管理跳转页码">
-                <span>页</span>
-              </div>
+              <div class="pagination" aria-label="库存管理分页"></div>
             </div>
 
             <div class="modal-overlay js-inventory-recycle-modal" aria-hidden="true">
@@ -8241,6 +8241,363 @@
             </div>
           </section>
         `;
+      }
+
+      var outboundStorageKey = "esimcube.outbound.v1";
+      var outboundCreatedRecords = (function () {
+        try {
+          var records = JSON.parse(localStorage.getItem(outboundStorageKey));
+          if (!Array.isArray(records)) return [];
+          return records.filter(function (record) { return record && Array.isArray(record.cards); }).map(function (record) {
+            return { ...record, creator: record.creator ?? record.operator,
+              outboundAt: record.outboundAt ?? (record.cards.some(function (card) { return !card.error; }) ? record.updatedAt || record.createdAt : "") };
+          });
+        } catch (_) { return []; }
+      })();
+      var outboundView = { merchant: "", group: "", start: "", end: "", outboundStart: "", outboundEnd: "", operator: "",
+        page: 1, pageSize: 20, hiddenColumns: [], selected: new Set() };
+      var outboundColumns = [
+        ["index", "序号", 58], ["batch", "划拨批次号", 196], ["merchant", "商户名称", 135], ["group", "群组名称", 222],
+        ["status", "划拨状态", 96], ["quantity", "数量", 122], ["remark", "备注", 140], ["creator", "创建人", 100],
+        ["createdAt", "创建时间", 164], ["updatedAt", "更新时间", 164], ["outboundAt", "出库时间", 164], ["operator", "操作人", 100], ["actions", "操作", 68]
+      ];
+      var outboundDemoRecords = Array.from({ length: 24 }, function (_, index) {
+        var examples = [
+          ["洲涛科技", "洲涛科技_20G/月", 11], ["洲涛科技", "洲涛科技_20G/月", 35],
+          ["勒仕达科技", "勒仕达科技_1G/月*60月", 35], ["唐山李彬", "唐山李彬_7G/月*12月", 10],
+          ["唐山李彬", "唐山李彬_300M/月*2年", 2], ["恒喆科技", "恒喆科技_300MB/月*36月", 1],
+          ["方大", "方大_100M/月*60个月 测试6+沉默3", 100]
+        ];
+        var sample = examples[index % examples.length];
+        var time = Date.UTC(2026, 10, 16, 10, 34, 41) - index * 1800000 - Math.floor(index / 6) * 86400000;
+        var creator = index < 7 ? "梁金" : "运营管理员";
+        var completedAt = formatBillingTime(time + 5000);
+        return { batch: "EA" + time, merchant: sample[0], group: sample[1], creator: creator, operator: index === 2 ? "陈凌枫" : creator,
+          createdAt: formatBillingTime(time), updatedAt: completedAt, outboundAt: index === 1 ? "" : completedAt, remark: "",
+          cards: Array.from({ length: sample[2] }, function (_, row) {
+            return { iccid: "898600000000" + String(index * 100 + row + 1).padStart(7, "0"),
+              error: index === 1 || (index === 9 && row === 0) ? "卡片不在可划拨库存" : "" };
+          }) };
+      });
+
+      function getOutboundCounts(record) {
+        var total = record.cards.length;
+        var success = record.cards.filter(function (card) { return !card.error; }).length;
+        return { total: total, success: success, failed: total - success, status: !success ? "失败" : success === total ? "成功" : "部分成功" };
+      }
+
+      function getStockSelectHtml(id, label, options, selected) {
+        return '<div class="select-wrap"><select id="' + id + '" name="' + id + '"><option value="" disabled hidden' +
+          (selected ? "" : " selected") + '>请选择' + label + '</option>' + options.map(function (option) {
+            var value = escapeHtml(option.value);
+            return '<option value="' + value + '"' + (selected === option.value ? " selected" : "") + '>' + escapeHtml(option.label) + '</option>';
+          }).join("") + '</select></div>';
+      }
+
+      function getStockTextOptions(values) {
+        return Array.from(new Set(values)).map(function (value) { return { value: value, label: value }; });
+      }
+
+      function renderStockPagination(pagination, total, state) {
+        state.page = clampPage(Math.trunc(state.page), total, state.pageSize);
+        var pages = getPageCount(total, state.pageSize);
+        pagination.innerHTML = `<span role="status">共 ${total} 条</span><select class="page-size" aria-label="每页条数">${getPageSizeOptions(state.pageSize)}</select>
+          <button class="page-btn" type="button" data-step="-1" aria-label="上一页" ${state.page === 1 ? "disabled" : ""}>‹</button>
+          ${getCompactPaginationButtons(state.page, pages, "js-stock-page-number", 6)}
+          <button class="page-btn" type="button" data-step="1" aria-label="下一页" ${state.page >= pages ? "disabled" : ""}>›</button>
+          <span>跳至</span><input class="jump" type="number" min="1" max="${pages}" step="1" aria-label="跳转页码" value="${state.page}"><span>页</span>`;
+        pagination.querySelector(".page-btn.current").setAttribute("aria-current", "page");
+      }
+
+      function bindStockPagination(pagination, state, renderResults) {
+        function update(focus) {
+          renderResults();
+          pagination.querySelector(focus).focus();
+        }
+        pagination.addEventListener("click", function (event) {
+          var button = event.target.closest("button[data-page], button[data-step]");
+          if (!button || button.disabled) return;
+          state.page = button.dataset.page ? Number(button.dataset.page) : state.page + Number(button.dataset.step);
+          update(".page-btn.current");
+        });
+        pagination.addEventListener("change", function (event) {
+          if (!event.target.matches(".page-size")) return;
+          state.pageSize = Number(event.target.value);
+          state.page = 1;
+          update(".page-size");
+        });
+        pagination.addEventListener("keydown", function (event) {
+          if (event.key !== "Enter" || !event.target.matches(".jump")) return;
+          state.page = Number(event.target.value) || 1;
+          update(".jump");
+        });
+      }
+
+      function renderOutboundPage() {
+        var state = outboundView;
+        var records = outboundCreatedRecords.concat(outboundDemoRecords);
+        var main = document.querySelector(".main");
+        main.innerHTML = `
+          <section class="content-card outbound-page" aria-label="出库管理">
+            <div class="filters">
+              <form class="filter-grid">
+                <div class="field"><label for="outboundMerchant">商户名称</label>${getStockSelectHtml("outboundMerchant", "商户名称", getStockTextOptions(records.map(function (record) { return record.merchant; })), state.merchant)}</div>
+                <div class="field"><label for="outboundGroup">群组</label><div class="js-outbound-group-field"></div></div>
+                ${getDateRangeFilterHtml("划拨日期", "js-outbound-date", state.start, state.end)}
+                ${getDateRangeFilterHtml("出库时间", "js-outbound-time", state.outboundStart, state.outboundEnd)}
+                <div class="field"><label for="outboundOperator">操作人</label><input id="outboundOperator" class="control" type="text" placeholder="请输入操作人" value="${escapeHtml(state.operator)}"></div>
+                <div class="filter-actions"><button class="btn primary" type="submit"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg>搜索</button><button class="btn js-outbound-reset" type="button">重置</button></div>
+              </form>
+            </div>
+            <div class="table-toolbar">
+              <div class="toolbar-left"><button class="btn primary js-outbound-create" type="button"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>划拨卡片</button></div>
+              <div class="toolbar-right">
+                <button class="link-tool js-outbound-columns" type="button" popovertarget="outboundColumns"><svg class="action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10m4 0h2M4 12h3m4 0h9M4 17h10m4 0h2"></path><circle cx="16" cy="7" r="2"></circle><circle cx="9" cy="12" r="2"></circle><circle cx="16" cy="17" r="2"></circle></svg>自定义列表项</button>
+                <div id="outboundColumns" class="account-log-columns" popover aria-label="自定义列表项">
+                  ${outboundColumns.filter(function (column) { return column[0] !== "batch" && column[0] !== "actions"; }).map(function ([key, label]) {
+                    return '<label><input type="checkbox" data-column="' + key + '"' + (state.hiddenColumns.includes(key) ? "" : " checked") + '>' + label + '</label>';
+                  }).join("")}
+                  <button class="link-tool js-outbound-default-columns" type="button">恢复默认列</button>
+                </div>
+              </div>
+            </div>
+            <div class="table-area">
+              <div class="table-scroll" role="region" aria-label="出库管理列表" tabindex="0"><table class="outbound-table"><thead></thead><tbody></tbody></table></div>
+              <div class="pagination" aria-label="出库管理分页"></div>
+            </div>
+          </section>`;
+        var page = main.querySelector(".outbound-page");
+        var form = page.querySelector("form");
+        var merchant = form.querySelector("#outboundMerchant");
+        var groupField = form.querySelector(".js-outbound-group-field");
+        var date = form.querySelector(".js-outbound-date");
+        var outboundDate = form.querySelector(".js-outbound-time");
+        var operator = form.querySelector("#outboundOperator");
+        date.dataset.liveCalendar = "true";
+        outboundDate.dataset.liveCalendar = "true";
+        var table = page.querySelector("table");
+        var pager = page.querySelector(".pagination");
+        var panel = page.querySelector("#outboundColumns");
+        var visibleRecords = [];
+
+        function setGroupOptions(selected) {
+          var groups = records.filter(function (record) { return !merchant.value || record.merchant === merchant.value; });
+          groupField.innerHTML = getStockSelectHtml("outboundGroup", "群组", getStockTextOptions(groups.map(function (record) { return record.group; })), selected);
+          enhanceSelectControls(groupField);
+        }
+        setGroupOptions(state.group);
+        merchant.addEventListener("change", function () { setGroupOptions(""); });
+        bindClearableControls(page);
+        bindDateRangeControls(page);
+
+        function cellValue(key, record, counts, index) {
+          if (key === "index") return (state.page - 1) * state.pageSize + index + 1;
+          if (key === "batch") return '<div class="cell-line"><button type="button" class="link-tool outbound-batch" data-detail="' + escapeHtml(record.batch) + '">' +
+            escapeHtml(record.batch) + '</button>' + getStockCopyButtonHtml(record.batch, "划拨批次号") + '</div>';
+          if (key === "actions") return '<button type="button" class="link-tool" data-detail="' + escapeHtml(record.batch) + '">详情</button>';
+          if (key === "status") return '<span class="tag ' + (counts.status === "成功" ? "success" : counts.status === "失败" ? "danger" : "partial") + '">' + counts.status + '</span>';
+          if (key === "quantity") return '<div class="cell-stack"><div>全部数量：<span class="outbound-total">' + counts.total +
+            '</span></div><div>成功数量：<span class="outbound-success">' + counts.success + '</span></div><div>失败数量：<span class="outbound-failed">' + counts.failed + '</span></div></div>';
+          return escapeHtml(record[key] || "--");
+        }
+        function syncChecks() {
+          var checked = visibleRecords.filter(function (record) { return state.selected.has(record.batch); }).length;
+          var selectAll = table.tHead.querySelector("[data-outbound-all]");
+          selectAll.disabled = !visibleRecords.length;
+          selectAll.checked = checked > 0 && checked === visibleRecords.length;
+          selectAll.indeterminate = checked > 0 && checked < visibleRecords.length;
+        }
+        function renderResults(resetScroll) {
+          var hasOutboundRange = state.outboundStart || state.outboundEnd;
+          var operatorTerm = state.operator.toLowerCase();
+          var filtered = records.filter(function (record) {
+            return (!state.merchant || state.merchant === record.merchant) && (!state.group || state.group === record.group) &&
+              matchesDateRange(record.createdAt, state.start, state.end) &&
+              (!hasOutboundRange || (record.outboundAt && matchesDateRange(record.outboundAt, state.outboundStart, state.outboundEnd))) &&
+              String(record.operator || "").toLowerCase().includes(operatorTerm);
+          });
+          var columns = outboundColumns.filter(function (column) { return !state.hiddenColumns.includes(column[0]); });
+          renderStockPagination(pager, filtered.length, state);
+          visibleRecords = getPagedItems(filtered, state.page, state.pageSize);
+          table.style.minWidth = (40 + columns.reduce(function (width, column) { return width + column[2]; }, 0)) + "px";
+          table.tHead.innerHTML = '<tr><th scope="col" class="check-cell"><input type="checkbox" data-outbound-all aria-label="全选当前页"></th>' +
+            columns.map(function ([key, label, width]) { return '<th scope="col" style="width:' + width + 'px"' + (key === "index" ? ' class="outbound-serial"' : "") + '>' + label + '</th>'; }).join("") + '</tr>';
+          table.tBodies[0].innerHTML = visibleRecords.map(function (record, index) {
+            var counts = getOutboundCounts(record);
+            var batch = escapeHtml(record.batch);
+            return '<tr><td class="check-cell"><input type="checkbox" data-outbound-selected="' + batch + '" aria-label="选择 ' + batch + '"' +
+              (state.selected.has(record.batch) ? " checked" : "") + '></td>' + columns.map(function ([key]) {
+                var title = ["merchant", "group", "remark"].includes(key) ? ' title="' + escapeHtml(record[key] || "--") + '"' : "";
+                return '<td' + title + (key === "index" ? ' class="outbound-serial"' : "") + '>' + cellValue(key, record, counts, index) + '</td>';
+              }).join("") + '</tr>';
+          }).join("") || getEmptyTableRowHtml(columns.length + 1);
+          syncChecks();
+          if (resetScroll) page.querySelector(".table-scroll").scrollTop = 0;
+        }
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var range = getDateRangeFilterValue(date);
+          var outboundRange = getDateRangeFilterValue(outboundDate);
+          Object.assign(state, { merchant: merchant.value, group: groupField.querySelector("select").value, start: range.start, end: range.end,
+            outboundStart: outboundRange.start, outboundEnd: outboundRange.end, operator: operator.value.trim(), page: 1 });
+          renderResults(true);
+        });
+        operator.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && (event.isComposing || event.keyCode === 229)) event.preventDefault();
+        });
+        page.querySelector(".js-outbound-reset").addEventListener("click", function () {
+          merchant.value = "";
+          operator.value = "";
+          setGroupOptions("");
+          resetDateRangeValue(date);
+          resetDateRangeValue(outboundDate);
+          hideDatePicker();
+          updateClearableState(form);
+          form.requestSubmit();
+        });
+        date.addEventListener("date-range-change", function () {
+          if (!date.dataset.start && state.start) form.requestSubmit();
+        });
+        outboundDate.addEventListener("date-range-change", function () {
+          if (!outboundDate.dataset.start && state.outboundStart) form.requestSubmit();
+        });
+        table.addEventListener("change", function (event) {
+          var input = event.target;
+          function select(batch) { if (input.checked) state.selected.add(batch); else state.selected.delete(batch); }
+          if (input.hasAttribute("data-outbound-all")) {
+            table.tBodies[0].querySelectorAll("[data-outbound-selected]").forEach(function (row) {
+              row.checked = input.checked;
+              select(row.dataset.outboundSelected);
+            });
+          } else if (input.dataset.outboundSelected) select(input.dataset.outboundSelected);
+          syncChecks();
+        });
+        table.addEventListener("click", function (event) {
+          var detail = event.target.closest("[data-detail]");
+          var copy = event.target.closest("[data-copy]");
+          if (copy) copyToClipboard(copy.dataset.copy);
+          if (detail) {
+            detail.focus();
+            openOutboundDetail(records.find(function (record) { return record.batch === detail.dataset.detail; }));
+          }
+        });
+        var columnButton = page.querySelector(".js-outbound-columns");
+        panel.addEventListener("beforetoggle", function (event) {
+          if (event.newState !== "open") return;
+          var bounds = columnButton.getBoundingClientRect();
+          panel.style.setProperty("--log-columns-top", Math.max(12, Math.min(bounds.bottom + 6, innerHeight - 310)) + "px");
+          panel.style.setProperty("--log-columns-right", Math.max(12, innerWidth - bounds.right) + "px");
+        });
+        panel.addEventListener("change", function () {
+          state.hiddenColumns = Array.from(panel.querySelectorAll("input:not(:checked)"), function (input) { return input.dataset.column; });
+          renderResults(false);
+        });
+        panel.querySelector(".js-outbound-default-columns").addEventListener("click", function () {
+          panel.querySelectorAll("input").forEach(function (input) { input.checked = true; });
+          state.hiddenColumns = [];
+          renderResults(false);
+        });
+        page.querySelector(".js-outbound-create").addEventListener("click", openOutboundAllocation);
+        bindStockPagination(pager, state, function () { renderResults(true); });
+        renderResults(true);
+      }
+
+      function openOutboundDetail(record) {
+        if (!record) return;
+        var dialog = openBillingDialog("划拨详情", `
+          <div class="cell-line"><span>划拨批次号：${escapeHtml(record.batch)}</span><span>商户名称：${escapeHtml(record.merchant)}</span><span>群组名称：${escapeHtml(record.group)}</span></div>
+          <div class="table-scroll" role="region" aria-label="出库卡详情记录" tabindex="0"><table>
+            <thead><tr><th scope="col">ICCID</th><th scope="col">划拨状态</th><th scope="col">失败原因</th></tr></thead>
+            <tbody>${record.cards.map(function (card) {
+              return '<tr><td><div class="cell-line">' + escapeHtml(card.iccid) + getStockCopyButtonHtml(card.iccid, "ICCID") +
+                '</div></td><td><span class="tag ' + (card.error ? 'danger">失败' : 'success">成功') + '</span></td><td>' + escapeHtml(card.error || "--") + '</td></tr>';
+            }).join("")}</tbody>
+          </table></div>`,
+          '<button class="btn" type="button" data-bill-close>关闭</button><button class="btn primary" type="button" data-bill-export>导出</button>', "outbound-detail-dialog");
+        dialog.addEventListener("click", function (event) {
+          var copy = event.target.closest("[data-copy]");
+          if (copy) copyToClipboard(copy.dataset.copy);
+          if (!event.target.closest("[data-bill-export]")) return;
+          var rows = record.cards.map(function (card) { return [record.batch, record.merchant, record.group, card.iccid, card.error ? "失败" : "成功", card.error]; });
+          if (!enqueueBillingExport("出库卡详情记录", record.batch, ["划拨批次号", "商户名称", "群组名称", "ICCID", "划拨状态", "失败原因"], rows)) return;
+          dialog.addEventListener("close", function () {
+            openExportTaskConfirm(function () { openOutboundDetail(record); });
+          }, { once: true });
+          dialog.close();
+        });
+      }
+
+      function openOutboundAllocation() {
+        refreshGroupCatalog();
+        var groups = groupCatalog.slice();
+        var dialog = openBillingDialog("划拨卡片", `
+          <div class="modal-grid">
+            <div class="modal-field"><label for="allocationMerchant"><span class="required-mark">*</span>商户名称</label>
+              ${getStockSelectHtml("allocationMerchant", "商户名称", getStockTextOptions(groups.map(function (group) { return group.merchantName; })), "")}</div>
+            <div class="modal-field"><label for="allocationGroup"><span class="required-mark">*</span>群组</label><div class="js-allocation-group"></div></div>
+            <div class="modal-field full"><label for="allocationCards"><span class="required-mark">*</span>ICCID</label>
+              <textarea id="allocationCards" rows="4" placeholder="请输入 ICCID，多个用逗号或换行分隔" aria-describedby="allocationError"></textarea></div>
+            <div class="modal-field full"><label for="allocationRemark">备注</label><textarea id="allocationRemark" rows="2" maxlength="255" placeholder="请输入备注"></textarea></div>
+          </div><p class="bill-error" id="allocationError" role="status"></p>`,
+          '<button class="btn" type="button" data-bill-close>取消</button><button class="btn primary" type="submit">确认</button>', "outbound-allocation-dialog");
+        var merchant = dialog.querySelector("#allocationMerchant");
+        var groupField = dialog.querySelector(".js-allocation-group");
+        var cardField = dialog.querySelector("#allocationCards");
+        var error = dialog.querySelector("#allocationError");
+        function setGroups() {
+          var options = groups.filter(function (group) { return group.merchantName === merchant.value; }).map(function (group) {
+            return { value: group.groupId, label: group.groupName };
+          });
+          groupField.innerHTML = getStockSelectHtml("allocationGroup", "群组", options, "");
+          groupField.querySelector("select").disabled = !merchant.value;
+          enhanceSelectControls(groupField);
+          groupField.querySelector(".custom-select-trigger").disabled = !merchant.value;
+        }
+        setGroups();
+        enhanceSelectControls(dialog);
+        merchant.addEventListener("change", setGroups);
+        function resetError() {
+          error.textContent = "";
+          dialog.querySelectorAll("[aria-invalid]").forEach(function (field) { field.removeAttribute("aria-invalid"); });
+        }
+        function reject(element, text) {
+          var target = element.closest(".custom-select-host")?.querySelector(".custom-select-trigger") || element;
+          error.textContent = text;
+          target.setAttribute("aria-invalid", "true");
+          target.setAttribute("aria-describedby", "allocationError");
+          target.focus();
+        }
+        dialog.addEventListener("input", resetError);
+        dialog.querySelector("form").addEventListener("submit", function () {
+          resetError();
+          var groupSelect = groupField.querySelector("select");
+          var group = groups.find(function (item) { return item.groupId === groupSelect.value && item.merchantName === merchant.value; });
+          if (!merchant.value) return reject(merchant, "请选择商户名称");
+          if (!group) return reject(groupSelect, "请选择群组");
+          var iccids = Array.from(new Set(cardField.value.trim().split(/[\s,，;；]+/).filter(Boolean)));
+          if (!iccids.length) return reject(cardField, "请输入 ICCID");
+          if (iccids.some(function (iccid) { return !/^\d{19,20}$/.test(iccid); })) return reject(cardField, "ICCID 须为 19 或 20 位数字");
+          var inventory = new Map(getInventoryCards().map(function (card) { return [card.iccid, card]; }));
+          var cards = iccids.map(function (iccid) {
+            var card = inventory.get(iccid);
+            return { iccid: iccid, error: !card ? "未找到库存卡片" : card.status === "已出库" ? "卡片已出库" : "" };
+          });
+          var now = Date.now();
+          while (outboundCreatedRecords.some(function (item) { return item.batch === "EA" + now; })) now++;
+          var at = formatBillingTime(now);
+          var record = { batch: "EA" + now, merchant: group.merchantName, group: group.groupName, creator: "运营管理员", operator: "运营管理员",
+            createdAt: at, updatedAt: at, remark: dialog.querySelector("#allocationRemark").value.trim(), cards: cards };
+          var counts = getOutboundCounts(record);
+          record.outboundAt = counts.success ? at : "";
+          outboundCreatedRecords.unshift(record);
+          var persisted = true;
+          try { localStorage.setItem(outboundStorageKey, JSON.stringify(outboundCreatedRecords)); } catch (_) { persisted = false; }
+          dialog.close();
+          Object.assign(outboundView, { merchant: "", group: "", start: "", end: "", outboundStart: "", outboundEnd: "", operator: "", page: 1 });
+          renderOutboundPage();
+          document.querySelector(".js-outbound-create").focus();
+          showToast("划拨" + counts.status + "：成功 " + counts.success + " 张，失败 " + counts.failed + " 张" + (persisted ? "" : "（仅本次会话）"), { force: true });
+        });
       }
 
       function getCardRecycleRecordMainHtml() {
@@ -8642,19 +8999,9 @@
       }
 
       function getGroupRuleHtml(group) {
-        var rules = group.rules;
-        return `
-          <div class="cell-stack group-rule-stack">
-            <div><span class="cell-key">流量类型</span> ${escapeHtml(rules.trafficType)}</div>
-            <div><span class="cell-key">套餐生效方式</span> ${escapeHtml(rules.activation)}</div>
-            <div><span class="cell-key">实名方式</span> ${escapeHtml(rules.realName)}</div>
-            <div><span class="cell-key">付费方式</span> ${escapeHtml(rules.payment)}</div>
-            <div><span class="cell-key">流量模式</span> ${escapeHtml(rules.mode)}</div>
-            <div><span class="cell-key">测试期</span> ${escapeHtml(rules.testPeriod)}</div>
-            <div><span class="cell-key">测试期流量上限</span> ${escapeHtml(rules.testLimit)}</div>
-            <div><span class="cell-key">沉默期</span> ${escapeHtml(rules.silence)}</div>
-          </div>
-        `;
+        return '<div class="cell-stack group-rule-stack">' + groupRuleFields.map(function (field) {
+          return '<div><span class="cell-key">' + field[1] + '</span> ' + escapeHtml(group.rules[field[0]] || "--") + '</div>';
+        }).join("") + '</div>';
       }
 
       function getGroupManagementRowsHtml() {
@@ -8676,7 +9023,7 @@
               <td>${escapeHtml(group.scene)}</td>
               <td>${escapeHtml(group.delayDays)}</td>
               <td>${escapeHtml(group.remark || "--")}</td>
-              <td><div class="row-actions"><button type="button" class="js-group-row-action" data-action="详情" data-id="${escapeHtml(group.id)}">详情</button><button type="button" class="js-group-row-action" data-action="编辑" data-id="${escapeHtml(group.id)}">编辑</button><button type="button" class="js-group-row-action" data-action="计费配置" data-id="${escapeHtml(group.id)}">计费配置</button><button type="button" class="js-group-row-action danger" data-action="删除" data-id="${escapeHtml(group.id)}">删除</button></div></td>
+              <td><div class="row-actions"><button type="button" class="js-group-row-action" data-action="详情" data-id="${escapeHtml(group.id)}">详情</button><button type="button" class="js-group-row-action" data-action="编辑" data-id="${escapeHtml(group.id)}">编辑</button><button type="button" class="js-group-row-action danger" data-action="删除" data-id="${escapeHtml(group.id)}">删除</button></div></td>
             </tr>
           `;
         }).join("");
@@ -8750,7 +9097,7 @@
           groupManagementState.page = 1;
           renderGroupManagementPage();
         });
-        page.querySelector(".js-group-create").addEventListener("click", function () { showToast("群组新增入口已打开"); });
+        page.querySelector(".js-group-create").addEventListener("click", function () { openGroupEditor(); });
         var deleteModal = page.querySelector(".js-group-delete-modal");
         var deleteMessage = page.querySelector(".js-group-delete-message");
         var deleteTargetId = "";
@@ -8769,9 +9116,9 @@
         }
         page.querySelectorAll(".js-group-row-action").forEach(function (button) {
           button.addEventListener("click", function () {
-            if (button.dataset.action === "计费配置") {
+            if (button.dataset.action === "编辑") {
               var group = groupCatalog.find(function (item) { return item.id === button.dataset.id; });
-              if (group) openGroupBillingConfig(group);
+              if (group) openGroupEditor(group);
               return;
             }
             if (button.dataset.action === "删除") {
@@ -8785,7 +9132,10 @@
         page.querySelector(".js-cancel-group-delete").addEventListener("click", closeGroupDeleteModal);
         page.querySelector(".js-confirm-group-delete").addEventListener("click", function () {
           if (!deleteTargetId) return;
+          refreshGroupCatalog();
           groupCatalog = groupCatalog.filter(function (item) { return item.id !== deleteTargetId; });
+          billingData.groups = groupCatalog;
+          saveMonthlyBillingData();
           closeGroupDeleteModal();
           renderGroupManagementPage();
           showToast("删除成功", { force: true });
@@ -11528,7 +11878,17 @@
         operator.addEventListener('keydown', function (event) { if (event.key === 'Enter') applyFilters(); });
         taskType.addEventListener('change', applyFilters);
         page.querySelectorAll('.js-download-management-edit').forEach(function (button) { button.addEventListener('click', function () { showToast('下载任务编辑入口已打开'); }); });
-        page.querySelectorAll('.js-download-management-download').forEach(function (button) { button.addEventListener('click', function () { showToast('文件下载已开始'); }); });
+        page.querySelectorAll('.js-download-management-download').forEach(function (button) {
+          button.addEventListener('click', function () {
+            var record = downloadManagementState.records.find(function (item) { return item.id === button.dataset.id; });
+            if (record && record.csv != null) {
+              downloadBillingCsv(record);
+              renderDownloadManagementPage();
+              document.querySelector('.download-management-page .js-download-management-download[data-id=' + CSS.escape(record.id) + ']')?.focus({ preventScroll: true });
+            }
+            showToast('文件下载已开始');
+          });
+        });
         page.querySelectorAll('.js-download-management-page').forEach(function (button) { button.addEventListener('click', function () { downloadManagementState.page = Number(button.dataset.page) || 1; renderDownloadManagementPage(); }); });
         var previous = page.querySelector('.js-download-management-prev');
         var next = page.querySelector('.js-download-management-next');
@@ -11740,12 +12100,16 @@
       var billingStorageKey = "esimcube.monthly-billing.v1";
       var billingCanPersist = true;
       var billingData = readMonthlyBillingData();
+      if (Array.isArray(billingData.groups)) groupCatalog = billingData.groups;
       var billingView = { tab: "groups", month: previousBillingMonth(), merchant: "", summaryMerchant: "", group: "", type: "", page: 1, pageSize: 20, expanded: "", busy: false };
       var billingTypes = { minimum: "低消计费", usage: "按量计费" };
+      var billingPriceDigits = 7;
+      var billingPriceScale = Math.pow(10, billingPriceDigits);
       var billingFieldHelp = {
+        chargingCards: { name: "计费卡数", text: "卡运营商状态为已激活的卡数量" },
         average: { name: "卡均用量", text: "卡均用量 = 使用流量 ÷ 计费卡数。" },
-        price: { name: "流量单价", text: "每 GB 计费流量的价格。账单金额 = 计费流量 × 流量单价。" },
-        minimum: { name: "低消", text: "每张计费卡每月的最低计费流量。群组卡均用量低于低消时，出账费用 = 低消 × 计费卡数 × 单价；达到或超过时，按实际用量计费。设为 0 则不设最低用量。" }
+        price: { name: "流量单价", text: "每 MB 计费流量的价格。账单金额 = 计费流量（MB）× 流量单价。" },
+        minimum: { name: "低消", text: "每张计费卡每月的最低计费流量（MB）。群组卡均用量换算为 MB 后低于低消时，出账费用 = 低消 × 计费卡数 × 单价；达到或超过时，按实际用量计费。设为 0 则不设最低用量。" }
       };
 
       function getBillingFieldHelp(field, context, label) {
@@ -11816,8 +12180,9 @@
 
       window.addEventListener("storage", function (event) {
         if (event.key !== billingStorageKey || !event.newValue || !billingCanPersist) return;
-        billingData = readMonthlyBillingData();
+        refreshGroupCatalog();
         if (currentView === "monthlyBilling") renderMonthlyBillingPage();
+        if (currentView === "group" && !document.querySelector(".group-editor[open], .js-group-delete-modal.show")) renderGroupManagementPage();
       });
 
       function previousBillingMonth() {
@@ -11833,7 +12198,7 @@
       function readMonthlyBillingData() {
         try {
           var saved = JSON.parse(localStorage.getItem(billingStorageKey));
-          if (saved && saved.rates && saved.snapshots && saved.confirmed && saved.remarks) {
+          if (saved && saved.rates && saved.snapshots && saved.remarks) {
             Object.keys(saved.rates).forEach(function (groupId) {
               var rate = saved.rates[groupId];
               // The previous form appended its most recently saved configuration last.
@@ -11852,7 +12217,7 @@
         groupCatalog.forEach(function (group, index) {
           rates[group.groupId] = { price: [20000, 17500, 22500, 16000, 18000, 21000][index % 6], minimum: 1000 };
         });
-        return { rates: rates, snapshots: {}, confirmed: {}, remarks: {}, groupRemarks: {}, serial: 0 };
+        return { rates: rates, snapshots: {}, remarks: {}, groupRemarks: {}, serial: 0 };
       }
 
       function saveMonthlyBillingData() {
@@ -11866,6 +12231,12 @@
         }
       }
 
+      function refreshGroupCatalog() {
+        if (!billingCanPersist) return;
+        billingData = readMonthlyBillingData();
+        if (Array.isArray(billingData.groups)) groupCatalog = billingData.groups;
+      }
+
       function billingKey(month, id) {
         return JSON.stringify([month, id]);
       }
@@ -11874,9 +12245,9 @@
         return billingData.rates[groupId] || null;
       }
 
-      function parseBillingDecimal(value, digits) {
-        var match = /^(\d{1,6})(?:\.(\d+))?$/.exec(value.trim());
-        if (!match || (match[2] && match[2].length > digits)) return null;
+      function parseBillingDecimal(value, digits, wholeDigits = 6) {
+        var match = /^(\d+)(?:\.(\d+))?$/.exec(value.trim());
+        if (!match || match[1].length > wholeDigits || (match[2] && match[2].length > digits)) return null;
         return Number(match[1]) * Math.pow(10, digits) + Number((match[2] || "").padEnd(digits, "0"));
       }
 
@@ -11886,8 +12257,9 @@
         var minimumUsage = rate.minimum * chargingCards;
         if (!Number.isSafeInteger(minimumUsage)) return null;
         var billableUsage = Math.max(usage, minimumUsage);
-        // Traffic is stored in thousandths of a GB and price in ten-thousandths of a yuan.
-        var cents = Number((BigInt(billableUsage) * BigInt(rate.price) + 50000n) / 100000n);
+        // With 1 GB = 1000 MB, the existing integers represent MB and 10^-7 yuan/MB.
+        var centsScale = BigInt(billingPriceScale / 100);
+        var cents = Number((BigInt(billableUsage) * BigInt(rate.price) + centsScale / 2n) / centsScale);
         return Number.isSafeInteger(cents) ? { type: usage < minimumUsage ? "minimum" : "usage", billableUsage: billableUsage, cents: cents } : null;
       }
 
@@ -11900,7 +12272,11 @@
       }
 
       function formatBillingPrice(value) {
-        return value == null ? "--" : (value / 10000).toFixed(4);
+        return value == null ? "--" : (value / billingPriceScale).toFixed(billingPriceDigits).replace(/\.?0+$/, "");
+      }
+
+      function formatBillingMinimum(value) {
+        return value == null ? "--" : value.toLocaleString("zh-CN");
       }
 
       function formatBillingTime(value) {
@@ -11916,11 +12292,6 @@
           bill: bill,
           issue: snapshot.sourceState === "查询成功" && !bill ? (invalidCount ? "计费卡数异常" : rate ? "金额超出可计算范围" : "未配置计费规则") : ""
         });
-      }
-
-      function getConfirmedMonthlyBill(key, history) {
-        var saved = billingData.confirmed[key];
-        return typeof saved === "string" ? history.find(function (snapshot) { return snapshot.id === saved; }) || null : saved || null;
       }
 
       function makeBillingSnapshot(group, month, sequence, time) {
@@ -11951,22 +12322,20 @@
           var key = billingKey(month, group.groupId);
           var history = billingData.snapshots[key] || [];
           var rawLatest = history[history.length - 1];
-          var confirmed = getConfirmedMonthlyBill(key, history);
-          var latest = !rawLatest ? null : !confirmed ? estimateBillingSnapshot(rawLatest) : rawLatest.id === confirmed.id ? confirmed : rawLatest;
-          return { group: group, key: key, latest: latest, confirmed: confirmed, display: confirmed || latest };
+          return { group: group, key: key, latest: rawLatest ? estimateBillingSnapshot(rawLatest) : null };
         });
       }
 
       function getMonthlyMerchantRows(rows) {
         var merchants = new Map();
         rows.forEach(function (row) {
-          var name = row.confirmed ? row.confirmed.merchantName : row.group.merchantName;
+          var name = (row.latest || row.group).merchantName;
           if (!merchants.has(name)) merchants.set(name, { name: name, rows: [], count: 0, cents: 0 });
           var item = merchants.get(name);
           item.rows.push(row);
-          if (row.confirmed) {
+          if (row.latest?.bill) {
             item.count += 1;
-            item.cents += row.confirmed.bill.cents;
+            item.cents += row.latest.bill.cents;
           }
         });
         return Array.from(merchants.values());
@@ -12106,11 +12475,9 @@
 
       function getBillingGroupRow(row) {
         var group = row.group;
-        var item = row.display;
-        var latest = row.latest;
+        var item = row.latest;
         var rate = item ? item.rate : getBillingRate(group.groupId);
         var bill = item && item.bill;
-        var status = row.confirmed ? "已确认" : !latest ? "待查询" : latest.bill ? "待确认" : "待核对";
         var average = item && item.chargingCards > 0 && item.usage != null ? item.usage / item.chargingCards : null;
         var groupId = escapeHtml(group.groupId);
         var remark = billingData.groupRemarks[row.key] || "";
@@ -12123,14 +12490,88 @@
           <td class="bill-number">${item && item.chargingCards != null ? item.chargingCards : "--"}</td>
           <td class="bill-number">${formatBillingGb(average)}</td>
           <td class="bill-number">${formatBillingPrice(rate && rate.price)}</td>
-          <td class="bill-number">${formatBillingGb(rate && rate.minimum)}</td>
-          <td class="bill-number">${formatBillingCents(latest && latest.bill ? latest.bill.cents : null)}</td>
-          <td>${latest ? formatBillingTime(latest.time) : "--"}${latest ? '<span class="bill-subline">V' + latest.version + ' · ' + escapeHtml(latest.issue || latest.sourceState) + '</span>' : ""}</td>
+          <td class="bill-number">${formatBillingMinimum(rate && rate.minimum)}</td>
+          <td class="bill-number">${formatBillingCents(bill?.cents)}</td>
+          <td>${item ? formatBillingTime(item.time) : "--"}${item ? '<span class="bill-subline">V' + item.version + ' · ' + escapeHtml(item.issue || item.sourceState) + '</span>' : ""}</td>
           <td data-bill-remark-cell title="${escapeHtml(remark)}">${escapeHtml(remark || "--")}</td>
-          <td class="bill-number bill-money bill-fixed">${formatBillingCents(row.confirmed ? row.confirmed.bill.cents : null)}<span class="bill-subline"><span class="tag ${row.confirmed ? "success" : status === "待核对" ? "partial" : "muted"}">${status}</span></span></td>
-          <td class="bill-actions bill-fixed"><button class="link-tool" type="button" data-bill-history="${groupId}" ${latest ? "" : "disabled"}>查询历史</button>
+          <td class="bill-actions bill-fixed"><button class="link-tool" type="button" data-bill-history="${groupId}" ${item ? "" : "disabled"}>查询历史</button>
           <button class="link-tool" type="button" data-bill-group-remark="${groupId}">编辑备注</button></td>
         </tr>`;
+      }
+
+      function getBillingListExportRows(rows, month, isSummary) {
+        return rows.map(function (row) {
+          if (isSummary) {
+            return [month, row.name, row.rows.length, row.count, row.rows.length - row.count,
+              row.count ? row.cents / 100 : null, billingData.remarks[billingKey(month, row.name)]];
+          }
+          var item = row.latest;
+          var group = item || row.group;
+          var rate = item ? item.rate : getBillingRate(group.groupId);
+          var bill = item && item.bill;
+          return [month, group.merchantName, group.groupName, group.groupId, bill && billingTypes[bill.type],
+            item && item.cards, item && item.usage != null ? item.usage / 1000 : null, item && item.chargingCards,
+            item && item.chargingCards > 0 && item.usage != null ? Number((item.usage / item.chargingCards / 1000).toFixed(3)) : null,
+            rate && formatBillingPrice(rate.price), rate && rate.minimum, bill ? bill.cents / 100 : null,
+            item && formatBillingTime(item.time), item && "V" + item.version, item && (item.issue || item.sourceState),
+            billingData.groupRemarks[row.key]];
+        });
+      }
+
+      function getBillingHistoryItems(row) {
+        var history = billingData.snapshots[row.key] || [];
+        return history.slice().reverse().map(function (snapshot) {
+          return { snapshot: snapshot, item: estimateBillingSnapshot(snapshot) };
+        });
+      }
+
+      function getBillingHistoryExportRows(row, month) {
+        return getBillingHistoryItems(row).map(function (entry) {
+          var item = entry.item;
+          var snapshot = entry.snapshot;
+          return [month, item.merchantName, item.groupName, item.groupId, "V" + item.version, formatBillingTime(item.time),
+            item.sourceState, item.cards, item.chargingCards, item.usage == null ? null : item.usage / 1000,
+            item.rate && formatBillingPrice(item.rate.price), item.rate && item.rate.minimum,
+            item.bill && billingTypes[item.bill.type], item.bill && item.bill.cents / 100,
+            snapshot.rate && formatBillingPrice(snapshot.rate.price), snapshot.rate && snapshot.rate.minimum,
+            snapshot.bill && billingTypes[snapshot.bill.type], snapshot.bill && snapshot.bill.cents / 100,
+            item.issue];
+        });
+      }
+
+      var billingExportSerial = 0;
+
+      function enqueueBillingExport(title, scope, headers, rows) {
+        if (!rows.length) return false;
+        var csv = [headers].concat(rows).map(function (row) {
+          return row.map(function (value) {
+            var text = value == null ? "" : String(value);
+            // Prevent user-entered fields such as remarks from becoming spreadsheet formulas.
+            if (typeof value === "string" && (/^[\r\n\t]/.test(text) || /^[=+@\-＝＋＠－]/.test(text.trimStart()))) text = "'" + text;
+            return '"' + text.replace(/"/g, '""') + '"';
+          }).join(",");
+        }).join("\r\n");
+        var time = formatBillingTime(new Date());
+        var serial = ++billingExportSerial;
+        downloadManagementState.records.unshift({
+          id: "billing-export-" + serial, taskType: title, fileName: title + "_" + scope + "_" + time.replace(/\D/g, "") + "_" + serial + ".csv",
+          status: "已完成", downloadCount: 0, lastDownloadedAt: "--", remark: "共 " + rows.length + " 条",
+          operator: "运营管理员", operationTime: time, csv: csv
+        });
+        downloadManagementState.filters = { taskType: "", operator: "" };
+        downloadManagementState.page = 1;
+        return true;
+      }
+
+      function downloadBillingCsv(record) {
+        var url = URL.createObjectURL(new Blob(["\uFEFF", record.csv], { type: "text/csv;charset=utf-8" }));
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = record.fileName;
+        link.click();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        record.downloadCount += 1;
+        record.lastDownloadedAt = formatBillingTime(new Date());
       }
 
       function getBillingMerchantRow(item) {
@@ -12145,8 +12586,9 @@
           <td><button type="button" class="link-tool" data-bill-merchant="${merchant}" aria-expanded="${expanded}">${expanded ? "收起群组" : "查看群组"}</button>
           <button type="button" class="link-tool" data-bill-remark="${merchant}">编辑备注</button></td></tr>${expanded ?
           '<tr><td colspan="8" class="bill-detail-cell">' + item.rows.map(function (row) {
-            return '<div class="bill-drill-row"><span>' + escapeHtml(row.confirmed ? row.confirmed.groupName : row.group.groupName) + '</span><span>' +
-              (row.confirmed ? '已确认 · V' + row.confirmed.version + ' · ¥' + formatBillingCents(row.confirmed.bill.cents) : '未出账') +
+            var latest = row.latest;
+            return '<div class="bill-drill-row"><span>' + escapeHtml((latest || row.group).groupName) + '</span><span>' +
+              (latest?.bill ? 'V' + latest.version + ' · ¥' + formatBillingCents(latest.bill.cents) : '未出账') +
               '</span><button class="link-tool" type="button" data-bill-history="' + escapeHtml(row.group.groupId) + '"' + (row.latest ? '' : ' disabled') + '>查询历史</button></div>';
           }).join("") + '</td></tr>' : ""}`;
       }
@@ -12156,19 +12598,19 @@
         var isSummary = state.tab === "merchants";
         var allRows = getMonthlyBillingRows(state.month);
         var merchantOptions = Array.from(new Set(allRows.map(function (row) {
-          return (isSummary ? row.confirmed || row.group : row.display || row.group).merchantName;
+          return (row.latest || row.group).merchantName;
         })));
-        var groupOptions = allRows.map(function (row) { return getBillingGroupLabel(row.display || row.group); });
+        var groupOptions = allRows.map(function (row) { return getBillingGroupLabel(row.latest || row.group); });
         var groupRows = allRows.filter(function (row) {
-          return matchesBillingGroupFilters(row.display || row.group, state) &&
-            (!state.type || (row.display && row.display.bill && row.display.bill.type === state.type));
+          return matchesBillingGroupFilters(row.latest || row.group, state) &&
+            (!state.type || row.latest?.bill?.type === state.type);
         });
         var rows = isSummary ? getMonthlyMerchantRows(allRows).filter(function (item) { return !state.summaryMerchant || item.name === state.summaryMerchant; }) : groupRows;
         var headers = isSummary
           ? ["账期", "商户", "群组总数", "已出账群组", "未出账群组", "总出账金额（元）", "备注", "操作"]
-          : ["账期", "商户", "群组", "账单类型", "总卡数", "使用流量（GB）", "计费卡数", "卡均用量（GB）", "单价（元/GB）", "低消（GB/卡/月）", "最新测算（元）", "最新查询时间", "备注", "出账金额（元）", "操作"];
-        var widths = isSummary ? [90, 120, 90, 100, 100, 140, 190, 160] : [85, 100, 240, 90, 74, 111, 76, 135, 130, 147, 108, 170, 180, 124, 148];
-        var helpFields = { 7: "average", 8: "price", 9: "minimum" };
+          : ["账期", "商户", "群组", "账单类型", "总卡数", "使用流量（GB）", "计费卡数", "卡均用量（GB）", "单价（元/MB）", "低消（MB/卡/月）", "出账金额（元）", "最新查询时间", "备注", "操作"];
+        var widths = isSummary ? [90, 120, 90, 100, 100, 140, 190, 160] : [85, 100, 240, 90, 74, 111, 100, 135, 130, 147, 108, 170, 180, 148];
+        var helpFields = { 6: "chargingCards", 7: "average", 8: "price", 9: "minimum" };
         var numericStart = isSummary ? 2 : 4;
         var numericEnd = isSummary ? 5 : 10;
         state.page = clampPage(state.page, rows.length, state.pageSize);
@@ -12189,14 +12631,14 @@
               <span id="billMonthError" role="status" class="bill-error"></span></div>
             </form></div>
             <div class="table-toolbar"><div class="toolbar-left">${isSummary ? "" :
-              '<button type="button" class="btn primary bill-query-btn" ' + (state.busy ? 'disabled aria-busy="true"' : "") + '>' + (state.busy ? "查询中…" : "重新查询用量") + '</button>'}
-              </div><div class="toolbar-right" role="status">${billingCanPersist ? "模拟数据" : "模拟数据 · 本地存储不可用"}</div></div>
+              '<button type="button" class="btn primary bill-query-btn" ' + (state.busy ? 'disabled aria-busy="true"' : "") + '>' + (state.busy ? "刷新中…" : "刷新账单") + '</button>'}
+              <button type="button" class="btn${isSummary ? " primary" : ""}" data-bill-export ${!rows.length || (!isSummary && state.busy) ? "disabled" : ""}>导出</button>
+              </div>${billingCanPersist ? "" : '<div class="toolbar-right" role="status">本地存储不可用</div>'}</div>
             <div class="table-area">
               <p class="bill-update-note">每月1-3号每日上午十点自动更新上月账单数据。</p>
               <div class="table-scroll" role="region" aria-label="${isSummary ? "商户汇总" : "群组账单"}列表" tabindex="0">
                 <table class="monthly-billing-table${isSummary ? " summary" : ""}"><thead><tr>${headers.map(function (label, i) {
-                  var className = !isSummary && i === headers.length - 2 ? "bill-number bill-money bill-fixed" :
-                    !isSummary && i === headers.length - 1 ? "bill-actions bill-fixed" : i >= numericStart && i <= numericEnd ? "bill-number" : "";
+                  var className = !isSummary && i === headers.length - 1 ? "bill-actions bill-fixed" : i >= numericStart && i <= numericEnd ? "bill-number" : "";
                   if (!isSummary && helpFields[i]) label = getBillingFieldHelp(helpFields[i], "list", label);
                   return '<th scope="col" style="width:' + widths[i] + 'px" class="' + className + '">' + label + '</th>';
                 }).join("")}</tr></thead><tbody>${getPagedItems(rows, state.page, state.pageSize).map(isSummary ? getBillingMerchantRow : getBillingGroupRow).join("") || getEmptyTableRowHtml(headers.length)}</tbody></table>
@@ -12245,6 +12687,11 @@
           } else if (button.classList.contains("bill-query-btn")) {
             var filters = readFilters();
             if (filters) queryMonthlyBilling(filters);
+          } else if (button.hasAttribute("data-bill-export")) {
+            var exportHeaders = isSummary ? headers.slice(0, -1) :
+              headers.slice(0, 2).concat(["群组名称", "群组ID"], headers.slice(3, 12), ["最新查询版本", "最新查询状态"], headers.slice(12, -1));
+            if (enqueueBillingExport(isSummary ? "商户汇总" : "群组账单", state.month, exportHeaders,
+                getBillingListExportRows(rows, state.month, isSummary))) openExportTaskConfirm(function () { button.focus(); });
           } else if (button.dataset.billHistory) {
             var row = allRows.find(function (item) { return item.group.groupId === button.dataset.billHistory; });
             if (row) openBillingHistory(row, state.month);
@@ -12256,7 +12703,7 @@
           } else if (button.dataset.billGroupRemark) {
             var groupRow = allRows.find(function (item) { return item.group.groupId === button.dataset.billGroupRemark; });
             if (groupRow) {
-              var group = groupRow.display || groupRow.group;
+              var group = groupRow.latest || groupRow.group;
               openBillingRemark(state.month, group.merchantName, button, group);
             }
           }
@@ -12307,32 +12754,204 @@
         return dialog;
       }
 
-      function openGroupBillingConfig(group) {
-        var dialog = openBillingDialog("群组计费配置",
-          `<p class="bill-dialog-context">${escapeHtml(group.merchantName)} / ${escapeHtml(group.groupName)}</p>
-            <div class="modal-grid">
-              <div class="modal-field">${getBillingFieldHelp("price", "config", '<label for="billRatePrice">流量单价（元/GB）</label>')}<input id="billRatePrice" type="text" inputmode="decimal" required aria-describedby="bill-help-config-price billRateError"></div>
-              <div class="modal-field">${getBillingFieldHelp("minimum", "config", '<label for="billRateMinimum">低消（GB/卡/月）</label>')}<input id="billRateMinimum" type="text" inputmode="decimal" required aria-describedby="bill-help-config-minimum billRateError"></div>
-            </div><p class="bill-error" id="billRateError" role="status"></p>`,
-          '<button class="btn" type="button" data-bill-close>取消</button><button class="btn primary" type="submit">保存</button>');
+      function openGroupEditor(group) {
+        var initial = group || {};
+        var rules = initial.rules || {};
+        var rate = group && getBillingRate(group.groupId);
+        var archive = document.createElement("template");
+        archive.innerHTML = getMerchantArchiveMainHtml();
+        var merchants = groupCatalog.map(function (item) { return item.merchantName; }).concat(
+          Array.from(archive.content.querySelectorAll(".merchant-table tbody tr[data-name]"), function (row) { return row.dataset.name; }));
+        var choiceFields = [
+          ["merchantName", "商户名称", merchants, initial.merchantName],
+          ["operatorType", "运营商", ["中国移动", "中国联通", "中国电信"], initial.operatorType],
+          ["billingMethod", "计费方式", ["自然月计费", "周期计费"], initial.billingMethod],
+          ["cardType", "卡片类型", ["流量卡", "语音卡"], initial.cardType],
+          ["activation", "套餐生效方式", ["激活后生效", "出库后生效", "首次联网生效"], rules.activation],
+          ["trafficType", "流量类型", ["共享流量", "独享流量", "通用流量", "定向流量"], rules.trafficType],
+          ["payment", "付费方式", ["商户付费", "个人付费"], rules.payment],
+          ["realName", "实名方式", ["企业实名", "个人实名"], rules.realName],
+          ["mode", "流量模式", ["自然月", "周期"], rules.mode],
+          ["scene", "使用场景", getStockCardOptions("scenario").concat(groupCatalog.map(function (item) { return item.scene; })), initial.scene]
+        ];
+        var usageFields = [
+          ["testPeriod", "测试期", "个自然月", "请输入测试期自然月数", false, "天"],
+          ["testLimit", "测试期流量上限", "MB", "请输入测试期流量使用上限", true, "GB"],
+          ["silence", "沉默期", "个自然月", "请输入沉默期自然月数", false, "天"]
+        ].map(function ([key, label, unit, placeholder, decimal, legacyUnit]) {
+          var saved = String(rules[key] ?? "");
+          var inputUnit = saved.endsWith(legacyUnit) ? legacyUnit : unit;
+          return { key: key, label: label, unit: inputUnit, decimal: decimal,
+            placeholder: inputUnit === unit ? placeholder : "请输入" + label,
+            value: saved.endsWith(inputUnit) ? saved.slice(0, -inputUnit.length) : saved };
+        });
+        var requiredMark = '<span class="required-mark">*</span>';
+        function textField(key, label, value, attributes) {
+          return '<div class="modal-field"><label for="groupEditor-' + key + '">' + label + '</label><input id="groupEditor-' + key +
+            '" name="' + key + '" type="text" value="' + escapeHtml(value) + '" ' + (attributes || "") + '></div>';
+        }
+        function choiceField(field) {
+          var [key, label, options, value] = field;
+          if (group) return textField(key, label, value, 'readonly placeholder="未配置"');
+          var required = key !== "scene";
+          return '<div class="modal-field"><label for="groupEditor-' + key + '">' + (required ? requiredMark : "") + label + '</label>' +
+            '<div class="select-wrap"><select id="groupEditor-' + key + '" name="' + key + '"' + (required ? ' required' : '') + ' aria-describedby="groupEditorError">' +
+            '<option value="" selected disabled hidden>请选择' + label + '</option>' + Array.from(new Set(options.filter(Boolean))).map(function (option) {
+              return '<option>' + escapeHtml(option) + '</option>';
+            }).join("") + '</select></div></div>';
+        }
+        function usageField({ key, label, unit, placeholder, decimal, value }) {
+          var id = "groupEditor-" + key;
+          return '<div class="modal-field"><label for="' + id + '">' + label + '</label><div class="group-editor-unit">' +
+            '<input id="' + id + '" name="' + key + '" type="text" inputmode="' + (decimal ? "decimal" : "numeric") + '" value="' +
+            escapeHtml(value) + '" placeholder="' + placeholder + '" aria-describedby="' + id + 'Unit groupEditorError">' +
+            '<span id="' + id + 'Unit">' + unit + '</span></div></div>';
+        }
+        function rateField(key, id, label, unit, value) {
+          return '<div class="modal-field">' + getBillingFieldHelp(key, "config", '<label for="' + id + '"><span class="required-mark">*</span>' + label + '</label>') +
+            '<div class="group-editor-unit"><input id="' + id + '" type="text" inputmode="' + (key === "minimum" ? "numeric" : "decimal") + '" value="' + value +
+            '" required aria-describedby="' + id + 'Unit bill-help-config-' + key + ' groupEditorError"><span id="' + id + 'Unit">' + unit + '</span></div></div>';
+        }
+        var ruleNotes = ["默认群组名：商户名称_流量类型_日期戳。", "群组创建后，仅群组名称、备注、测试期、沉默期、测试期流量上限和计费配置可修改。"];
+        var dialog = openBillingDialog(group ? "群组编辑" : "创建群组",
+          `<section class="group-editor-section"><div class="modal-grid">
+            ${group ? textField("groupName", requiredMark + "群组名称", initial.groupName, 'required autofocus aria-describedby="groupEditorError"') : ""}
+            ${group ? textField("groupId", "群组ID", initial.groupId, "readonly") : ""}
+            ${choiceFields.map(choiceField).join("")}
+            ${usageFields.map(usageField).join("")}
+            <div class="modal-field full group-editor-remark"><label for="groupEditor-remark">备注</label>
+              <div class="group-editor-remark-box"><textarea id="groupEditor-remark" name="remark" rows="2" maxlength="255" placeholder="请输入备注" aria-describedby="groupEditorError">${escapeHtml(initial.remark || "")}</textarea>
+                <span class="group-editor-count" aria-hidden="true"></span></div>
+            </div>
+          </div></section>
+          <section class="group-editor-section"><div class="modal-grid">
+            ${rateField("price", "billRatePrice", "流量单价", "元/MB", rate ? formatBillingPrice(rate.price) : "")}
+            ${rateField("minimum", "billRateMinimum", "低消", "MB/卡/月", rate ? rate.minimum : "")}
+          </div></section>
+          <ul class="group-editor-rules" role="list">${ruleNotes.map(function (note) {
+            return `<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10.3 4.9 2.5 18.4A1.7 1.7 0 0 0 4 21h16a1.7 1.7 0 0 0 1.5-2.6L13.7 4.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/>
+            </svg><span>${note}</span></li>`;
+          }).join("")}</ul>`,
+          '<p class="bill-error" id="groupEditorError" role="status"></p><button class="btn" type="reset">重置</button><button class="btn primary" type="submit">确认</button><button class="btn primary" type="submit" data-group-order>前往订购套餐</button>', "group-editor");
+        enhanceSelectControls(dialog);
         bindBillingFieldHelp(dialog);
+        var form = dialog.querySelector("form");
+        var error = dialog.querySelector("#groupEditorError");
         var price = dialog.querySelector("#billRatePrice");
         var minimum = dialog.querySelector("#billRateMinimum");
-        var error = dialog.querySelector("#billRateError");
-        var rate = getBillingRate(group.groupId);
-        price.value = rate ? formatBillingPrice(rate.price) : "";
-        minimum.value = rate ? (rate.minimum / 1000).toFixed(3) : "";
-        dialog.querySelector("form").addEventListener("submit", function () {
-          var priceValue = parseBillingDecimal(price.value, 4);
-          var minimumValue = parseBillingDecimal(minimum.value, 3);
-          var invalid = priceValue == null ? [price, "请输入非负单价，最多 4 位小数"] :
-            minimumValue == null ? [minimum, "请输入非负低消，最多 3 位小数"] : null;
-          [price, minimum].forEach(function (input) { input.removeAttribute("aria-invalid"); });
-          if (invalid) { error.textContent = invalid[1]; invalid[0].setAttribute("aria-invalid", "true"); invalid[0].focus(); return; }
-          billingData.rates[group.groupId] = { price: priceValue, minimum: minimumValue };
+        var fields = form.elements;
+        var selects = Array.from(form.querySelectorAll("select"));
+        var count = dialog.querySelector(".group-editor-count");
+        function updateCount() { count.textContent = fields.remark.value.length + "/255"; }
+        function clearErrors() {
+          error.textContent = "";
+          form.querySelectorAll("[aria-invalid]").forEach(function (input) { input.removeAttribute("aria-invalid"); });
+        }
+        function reject(control, message) {
+          var trigger = control.closest(".custom-select-host")?.querySelector(".custom-select-trigger") || control;
+          error.textContent = message;
+          trigger.setAttribute("aria-invalid", "true");
+          trigger.focus();
+        }
+        fields.remark.addEventListener("input", updateCount);
+        updateCount();
+        selects.forEach(function (select) {
+          select.tabIndex = -1;
+          var host = select.closest(".custom-select-host");
+          var trigger = host.querySelector(".custom-select-trigger");
+          var label = select.labels[0];
+          function syncName() { trigger.setAttribute("aria-label", label.textContent.replace("*", "") + "：" + (select.value || "未选择")); }
+          syncName();
+          trigger.setAttribute("aria-describedby", "groupEditorError");
+          select.addEventListener("change", syncName);
+          label.addEventListener("click", function (event) {
+            event.preventDefault();
+            trigger.focus();
+            if (!host.classList.contains("open")) trigger.click();
+          });
+        });
+        form.addEventListener("reset", function () {
+          closeCustomSelects();
+          clearErrors();
+          setTimeout(function () {
+            selects.forEach(function (select) { select.dispatchEvent(new Event("change")); });
+            updateCount();
+          }, 0);
+        });
+        dialog.addEventListener("cancel", function (event) {
+          var openList = dialog.querySelector(".custom-select-host.open");
+          if (!openList) return;
+          event.preventDefault();
+          closeCustomSelects();
+          openList.querySelector(".custom-select-trigger").focus();
+        });
+        form.addEventListener("submit", function (event) {
+          clearErrors();
+          if (group && !fields.groupName.value.trim()) return reject(fields.groupName, "请输入群组名称");
+          if (fields.remark.value.length > 255 && fields.remark.value !== initial.remark) return reject(fields.remark, "备注不能超过 255 字");
+          if (!group) {
+            var missing = choiceFields.find(function (field) { return field[0] !== "scene" && !fields.namedItem(field[0]).value; });
+            if (missing) return reject(fields.namedItem(missing[0]), "请选择" + missing[1]);
+          }
+          var changedUsage = usageFields.map(function (field) {
+            var input = fields.namedItem(field.key);
+            return { field: field, input: input, value: input.value.trim() };
+          }).filter(function (entry) { return !group || entry.value !== entry.input.defaultValue.trim(); });
+          var invalidUsage = changedUsage.find(function ({ field, value }) {
+            return value && (field.decimal ? !/^\d+(?:\.\d+)?$/.test(value) || !Number.isFinite(Number(value)) :
+              !/^\d+$/.test(value) || !Number.isSafeInteger(Number(value)));
+          });
+          if (invalidUsage) return reject(invalidUsage.input, invalidUsage.field.label + (invalidUsage.field.decimal ? "请输入非负数" : "请输入非负整数"));
+          var priceValue = parseBillingDecimal(price.value, billingPriceDigits);
+          var minimumValue = parseBillingDecimal(minimum.value, 0, 9);
+          if (priceValue == null) return reject(price, "请输入非负单价，最多 7 位小数");
+          if (minimumValue == null) return reject(minimum, "请输入非负低消（MB），最多 9 位整数");
+          refreshGroupCatalog();
+          var current = group && groupCatalog.find(function (item) { return item.id === group.id; });
+          if (group && !current) { error.textContent = "该群组已删除，请关闭弹窗后刷新列表"; return; }
+          var number = Date.now() * 1000;
+          if (!current) {
+            while (Object.hasOwn(billingData.rates, String(number)) || groupCatalog.some(function (item) { return item.groupId === String(number); })) number++;
+          }
+          var updated = current ? Object.assign({}, current) : { id: "group-" + number, groupId: String(number) };
+          updated.remark = fields.remark.value.trim();
+          updated.rules = Object.assign({}, current && current.rules);
+          changedUsage.forEach(function ({ field, value }) {
+            updated.rules[field.key] = value ? value + field.unit : "";
+          });
+          if (current) {
+            updated.groupName = fields.groupName.value.trim();
+          } else {
+            choiceFields.forEach(function (field) {
+              var key = field[0];
+              var target = groupRuleFields.some(function (rule) { return rule[0] === key; }) ? updated.rules : updated;
+              target[key] = fields.namedItem(key).value;
+            });
+            var dateStamp = new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Shanghai", dateStyle: "short" }).format(new Date()).replace(/-/g, "");
+            var baseName = updated.merchantName + "_" + updated.rules.trafficType + "_" + dateStamp;
+            updated.groupName = baseName;
+            for (var suffix = 2; groupCatalog.some(function (item) { return item.groupName === updated.groupName; }); suffix++) {
+              updated.groupName = baseName + "_" + suffix;
+            }
+          }
+          groupCatalog = current ? groupCatalog.map(function (item) { return item.id === current.id ? updated : item; }) : [updated].concat(groupCatalog);
+          billingData.groups = groupCatalog;
+          billingData.rates[updated.groupId] = { price: priceValue, minimum: minimumValue };
           var persisted = saveMonthlyBillingData();
           dialog.close();
-          showToast(persisted ? "计费配置已保存" : "计费配置仅在本次会话保留");
+          if (!current) groupManagementState.page = 1;
+          if (event.submitter?.hasAttribute("data-group-order")) {
+            tariffOrderState.activeTab = "groupBase";
+            tariffOrderState.groupBase.filters = { merchantName: updated.merchantName, groupName: updated.groupName, packageName: "" };
+            tariffOrderState.groupBase.page = 1;
+            openTariffOrderPageFromSidebar({ silent: true });
+          } else {
+            renderGroupManagementPage();
+            var edit = document.querySelector('.js-group-row-action[data-action="编辑"][data-id=' + CSS.escape(updated.id) + ']');
+            (edit || document.querySelector(".js-group-create")).focus({ preventScroll: true });
+          }
+          showToast(persisted ? (current ? "群组已保存" : "群组已新增") : "群组变更仅在本次会话保留");
         });
       }
 
@@ -12367,15 +12986,27 @@
         });
       }
 
-      function openBillingHistory(row, month) {
-        var pager = { page: 1, pageSize: 20 };
+      function openBillingHistory(row, month, pager = { page: 1, pageSize: 20 }) {
         var dialog = openBillingDialog("账单查询历史",
-          '<p class="bill-dialog-context">' + month + ' · ' + escapeHtml(row.group.merchantName) + ' / ' + escapeHtml(row.group.groupName) + '</p><div class="bill-history-results"></div><div class="bill-history-confirm" hidden></div>',
-          '<button class="btn" type="button" data-bill-close>关闭</button>', "bill-history");
+          '<p class="bill-dialog-context">' + month + ' · ' + escapeHtml(row.group.merchantName) + ' / ' + escapeHtml(row.group.groupName) + '</p><div class="bill-history-results"></div>',
+          '<button class="btn" type="button" data-bill-close>关闭</button><button class="btn primary" type="button" data-bill-export>导出</button>', "bill-history");
         var results = dialog.querySelector(".bill-history-results");
-        var confirmation = dialog.querySelector(".bill-history-confirm");
+        var exportButton = dialog.querySelector("[data-bill-export]");
+        exportButton.addEventListener("click", function () {
+          var headers = ["账期", "商户", "群组名称", "群组ID", "版本", "查询时间", "查询状态", "总卡数", "计费卡数", "使用流量（GB）",
+            "单价（元/MB）", "低消（MB/卡/月）", "账单类型", "金额（元）", "查询时单价（元/MB）", "查询时低消（MB/卡/月）", "查询时账单类型",
+            "查询时金额（元）", "异常说明"];
+          if (!enqueueBillingExport("账单查询历史", month + "_" + row.group.groupId, headers, getBillingHistoryExportRows(row, month))) return;
+          dialog.addEventListener("close", function () {
+            openExportTaskConfirm(function () {
+              openBillingHistory(row, month, pager);
+              document.querySelector(".bill-history[open] [data-bill-export]").focus();
+            });
+          }, { once: true });
+          dialog.close();
+        });
         function refreshOnRateChange(event) {
-          if (event.key === billingStorageKey && event.newValue && confirmation.hidden) renderHistory();
+          if (event.key === billingStorageKey && event.newValue) renderHistory();
         }
         window.addEventListener("storage", refreshOnRateChange);
         dialog.addEventListener("close", function () {
@@ -12386,74 +13017,29 @@
           return current + (previous === current ? "" : '<span class="bill-subline">查询时：' + previous + '</span>');
         }
         function renderHistory(focusSelector) {
-          var history = (billingData.snapshots[row.key] || []).slice().reverse();
-          var confirmed = getConfirmedMonthlyBill(row.key, history);
+          var history = getBillingHistoryItems(row);
+          exportButton.disabled = !history.length;
           pager.page = clampPage(pager.page, history.length, pager.pageSize);
           results.innerHTML = `<div class="table-scroll" role="region" aria-label="账单快照列表" tabindex="0"><table class="bill-history-table">
             <thead><tr><th style="width:56px">版本</th><th style="width:156px">查询时间</th><th style="width:94px">查询状态</th>
-              <th style="width:95px">总卡数 / 计费</th><th style="width:105px">使用流量（GB）</th><th style="width:128px">${getBillingFieldHelp("price", "history", "单价（元/GB）")}</th>
-              <th style="width:135px">${getBillingFieldHelp("minimum", "history", "低消（GB/卡/月）")}</th><th style="width:86px">账单类型</th><th style="width:104px">金额（元）</th><th style="width:125px">操作</th></tr></thead>
-            <tbody>${getPagedItems(history, pager.page, pager.pageSize).map(function (snapshot) {
-              var isConfirmed = confirmed && confirmed.id === snapshot.id;
-              var item = isConfirmed ? confirmed : confirmed ? snapshot : estimateBillingSnapshot(snapshot);
+              <th style="width:95px">总卡数 / 计费</th><th style="width:105px">使用流量（GB）</th><th style="width:128px">${getBillingFieldHelp("price", "history", "单价（元/MB）")}</th>
+              <th style="width:135px">${getBillingFieldHelp("minimum", "history", "低消（MB/卡/月）")}</th><th style="width:86px">账单类型</th><th style="width:104px">金额（元）</th><th style="width:125px">异常说明</th></tr></thead>
+            <tbody>${getPagedItems(history, pager.page, pager.pageSize).map(function (entry) {
+              var snapshot = entry.snapshot;
+              var item = entry.item;
               var status = escapeHtml(item.sourceState);
               return `<tr><td>V${item.version}</td><td>${formatBillingTime(item.time)}</td><td title="${status}">${status}</td>
                 <td>${item.cards == null ? "--" : item.cards + " / " + item.chargingCards}</td><td>${formatBillingGb(item.usage)}</td>
                 <td>${historyValue(formatBillingPrice(item.rate && item.rate.price), formatBillingPrice(snapshot.rate && snapshot.rate.price))}</td>
-                <td>${historyValue(formatBillingGb(item.rate && item.rate.minimum), formatBillingGb(snapshot.rate && snapshot.rate.minimum))}</td>
+                <td>${historyValue(formatBillingMinimum(item.rate && item.rate.minimum), formatBillingMinimum(snapshot.rate && snapshot.rate.minimum))}</td>
                 <td>${historyValue(item.bill ? billingTypes[item.bill.type] : "--", snapshot.bill ? billingTypes[snapshot.bill.type] : "--")}</td>
                 <td>${historyValue(formatBillingCents(item.bill && item.bill.cents), formatBillingCents(snapshot.bill && snapshot.bill.cents))}</td>
-                <td>${isConfirmed ? '<span class="tag success">出账依据</span>' : !confirmed && item.bill ?
-                  '<button class="link-tool" type="button" data-bill-snapshot="' + escapeHtml(item.id) + '">选为出账依据</button>' :
-                  escapeHtml(item.issue || "--")}</td></tr>`;
+                <td title="${escapeHtml(item.issue || "")}">${escapeHtml(item.issue || "--")}</td></tr>`;
             }).join("") || getEmptyTableRowHtml(10)}</tbody></table></div>${getBillingPager(pager.page, history.length, pager.pageSize, "查询历史")}`;
           bindBillingFieldHelp(results);
           bindBillingPager(results, pager, renderHistory);
           if (focusSelector) results.querySelector(focusSelector)?.focus();
         }
-        results.addEventListener("click", function (event) {
-          var trigger = event.target.closest("[data-bill-snapshot]");
-          if (!trigger || billingData.confirmed[row.key]) return;
-          var snapshot = (billingData.snapshots[row.key] || []).find(function (item) { return item.id === trigger.dataset.billSnapshot; });
-          var estimate = snapshot && estimateBillingSnapshot(snapshot);
-          if (!estimate || !estimate.bill) return;
-          confirmation.hidden = false;
-          confirmation.innerHTML = '<p>采用 V' + estimate.version + ' 的用量出账，单价 ' + formatBillingPrice(estimate.rate.price) +
-            ' 元/GB，低消 ' + formatBillingGb(estimate.rate.minimum) + ' GB/卡/月，金额 ¥' + formatBillingCents(estimate.bill.cents) +
-            '。确认后金额不再随计费配置变更。</p><p class="bill-error" role="status" hidden></p>' +
-            '<button type="button" class="btn">取消</button> <button type="button" class="btn primary">确认出账</button>';
-          var buttons = confirmation.querySelectorAll("button");
-          buttons[0].addEventListener("click", function () {
-            confirmation.hidden = true;
-            renderHistory("[data-bill-snapshot=" + CSS.escape(snapshot.id) + "]");
-            if (!results.contains(document.activeElement)) dialog.querySelector(".modal-close").focus();
-          });
-          buttons[1].addEventListener("click", function () {
-            if (billingCanPersist) billingData = readMonthlyBillingData();
-            var history = billingData.snapshots[row.key] || [];
-            var current = history.find(function (item) { return item.id === snapshot.id; });
-            var latest = current && estimateBillingSnapshot(current);
-            var message = billingData.confirmed[row.key] ? "账单已确认出账" :
-              !latest || !latest.bill || latest.rate.price !== estimate.rate.price || latest.rate.minimum !== estimate.rate.minimum ?
-                "计费配置或查询记录已变化，请重新选择出账依据。" : "";
-            if (message) {
-              var error = confirmation.querySelector(".bill-error");
-              error.hidden = false;
-              error.textContent = message;
-              buttons[1].disabled = true;
-              buttons[0].focus();
-              return;
-            }
-            billingData.confirmed[row.key] = latest;
-            var persisted = saveMonthlyBillingData();
-            confirmation.hidden = true;
-            renderHistory();
-            renderMonthlyBillingPage();
-            dialog.querySelector(".modal-close").focus();
-            showToast(persisted ? "账单已确认出账" : "账单仅在本次会话确认");
-          });
-          buttons[0].focus();
-        });
         renderHistory();
       }
 
@@ -13034,15 +13620,21 @@
       }
 
       var exportTaskConfirmModal = document.querySelector('.js-export-task-confirm-modal');
+      var exportTaskOnDismiss = null;
 
-      function closeExportTaskConfirm() {
+      function closeExportTaskConfirm(visitDownloads) {
         exportTaskConfirmModal.classList.remove('show');
         exportTaskConfirmModal.setAttribute('aria-hidden', 'true');
+        var onDismiss = exportTaskOnDismiss;
+        exportTaskOnDismiss = null;
+        if (!visitDownloads && onDismiss) onDismiss();
       }
 
-      function openExportTaskConfirm() {
+      function openExportTaskConfirm(onDismiss) {
+        exportTaskOnDismiss = onDismiss || null;
         exportTaskConfirmModal.classList.add('show');
         exportTaskConfirmModal.setAttribute('aria-hidden', 'false');
+        if (onDismiss) exportTaskConfirmModal.querySelector('.js-cancel-export-task-confirm').focus();
       }
 
       exportTaskConfirmModal.addEventListener('click', function (event) {
@@ -13051,14 +13643,21 @@
           return;
         }
         if (event.target.closest('.js-confirm-export-task')) {
-          closeExportTaskConfirm();
+          closeExportTaskConfirm(true);
           openDownloadManagementPageFromSidebar();
+        }
+      });
+
+      exportTaskConfirmModal.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && exportTaskOnDismiss) {
+          event.preventDefault();
+          closeExportTaskConfirm();
         }
       });
 
       document.addEventListener('click', function (event) {
         var exportButton = event.target.closest('button');
-        if (!exportButton || !exportButton.textContent.trim().includes('导出')) {
+        if (!exportButton || exportButton.hasAttribute('data-bill-export') || !exportButton.textContent.trim().includes('导出')) {
           return;
         }
         event.preventDefault();
@@ -13603,9 +14202,9 @@
           shortcut.textContent = item.label;
           shortcut.addEventListener("click", function () {
             if (item.days) {
-              setDateRangeValue(state.button, addDays(today, 1 - item.days), today);
+              setDateRangeValue(state.button, addDays(state.referenceDate, 1 - item.days), state.referenceDate);
             } else {
-              var targetMonth = addMonths(today, item.offset);
+              var targetMonth = addMonths(state.referenceDate, item.offset);
               setDateRangeValue(state.button, startOfMonth(targetMonth), endOfMonth(targetMonth));
             }
             hideDatePicker();
@@ -13622,6 +14221,7 @@
         var field = button.closest(".field");
         var initialStart = parseDate(button.dataset.start);
         var initialEnd = parseDate(button.dataset.end);
+        var referenceDate = button.dataset.liveCalendar === "true" ? toDateOnly(new Date()) : today;
         var popover = document.createElement("div");
         var panel = document.createElement("div");
 
@@ -13635,7 +14235,8 @@
         activeDatePicker = {
           button: button,
           popover: popover,
-          baseMonth: startOfMonth(initialStart || today),
+          baseMonth: startOfMonth(initialStart || referenceDate),
+          referenceDate: referenceDate,
           start: initialStart,
           end: initialEnd
         };
@@ -13901,6 +14502,15 @@
           item.classList.remove("current");
         });
         tab.classList.add("current");
+
+        if (tab.dataset.page === "outbound") {
+          currentView = "outbound";
+          document.body.classList.remove("page-cleared");
+          renderSidebar("outbound");
+          document.querySelector(".breadcrumb").textContent = "进销存管理 / 出库管理";
+          renderOutboundPage();
+          return;
+        }
 
         if (tab.dataset.page === "monthlyBilling") {
           currentView = "monthlyBilling";
@@ -18057,6 +18667,7 @@
 
         page.dataset.inventoryBound = "true";
         bindClearableControls(page);
+        bindDateRangeControls(page);
         bindNumericIdentityInputs(page);
 
         var keywordInput = page.querySelector("#inventoryKeyword");
@@ -18065,6 +18676,9 @@
         var specificationSelect = page.querySelector("#inventorySpecification");
         var networkSelect = page.querySelector("#inventoryNetwork");
         var scenarioSelect = page.querySelector("#inventoryScenario");
+        var operatorInput = page.querySelector("#inventoryOperator");
+        var stockedRange = page.querySelector(".js-inventory-stocked-range");
+        stockedRange.dataset.liveCalendar = "true";
         var queryButton = page.querySelector(".js-inventory-query");
         var resetButton = page.querySelector(".js-inventory-reset");
         var actionButtons = Array.prototype.slice.call(page.querySelectorAll(".js-inventory-action"));
@@ -18076,8 +18690,9 @@
         });
         var headerCheckbox = page.querySelector("thead .check-cell input");
         var rowCheckboxes = Array.prototype.slice.call(page.querySelectorAll("tbody .check-cell input"));
-        var pageButtons = Array.prototype.slice.call(page.querySelectorAll(".js-inventory-page-btn"));
-        var jumpInput = page.querySelector(".js-inventory-jump");
+        var pagination = page.querySelector(".pagination");
+        var inventoryPager = { page: 1, pageSize: 20 };
+        var filteredRows = rows.slice();
         var recycleModal = page.querySelector(".js-inventory-recycle-modal");
         var recycleStopInputs = Array.prototype.slice.call(page.querySelectorAll(".js-inventory-recycle-stop"));
         var recycleStopTip = page.querySelector(".js-inventory-recycle-stop-tip");
@@ -18091,7 +18706,6 @@
         var recycleError = page.querySelector(".js-inventory-recycle-error");
         var recycleConfirmModal = page.querySelector(".js-inventory-recycle-confirm-modal");
         var recycleConfirmMessage = page.querySelector(".js-inventory-recycle-confirm-message");
-        var currentInventoryPage = 1;
         var pendingRecycleData = null;
 
         function visibleRowCheckboxes() {
@@ -18108,24 +18722,41 @@
 
           headerCheckbox.checked = visibleBoxes.length > 0 && checkedCount === visibleBoxes.length;
           headerCheckbox.indeterminate = checkedCount > 0 && checkedCount < visibleBoxes.length;
+          headerCheckbox.disabled = !visibleBoxes.length;
+        }
+
+        function renderInventoryResults() {
+          var table = page.querySelector(".inventory-table");
+          renderStockPagination(pagination, filteredRows.length, inventoryPager);
+          var visible = new Set(getPagedItems(filteredRows, inventoryPager.page, inventoryPager.pageSize));
+          rows.forEach(function (row) { row.classList.toggle("hidden", !visible.has(row)); });
+          table.querySelector(".empty-cell")?.closest("tr").remove();
+          if (!visible.size) table.tBodies[0].insertAdjacentHTML("beforeend", getEmptyTableRowHtml(table.tHead.rows[0].cells.length));
+          page.querySelector(".table-scroll").scrollTop = 0;
+          syncHeaderCheckbox();
         }
 
         function applyInventoryFilters() {
           var keyword = keywordInput.value.trim();
           var group = groupInput.value.trim().toLowerCase();
           var status = statusSelect.value;
+          var operator = operatorInput.value.trim().toLowerCase();
+          var range = getDateRangeFilterValue(stockedRange);
 
-          rows.forEach(function (row) {
+          filteredRows = rows.filter(function (row) {
             var matchesKeyword = !keyword || row.dataset.keyword.indexOf(keyword) !== -1;
             var matchesGroup = !group || row.dataset.group.toLowerCase().indexOf(group) !== -1;
             var matchesStatus = !status || row.dataset.status === status;
             var matchesSpecification = !specificationSelect.value || row.dataset.specification === specificationSelect.value;
             var matchesNetwork = !networkSelect.value || row.dataset.network === networkSelect.value;
             var matchesScenario = !scenarioSelect.value || row.dataset.scenario === scenarioSelect.value;
-            row.classList.toggle("hidden", !(matchesKeyword && matchesGroup && matchesStatus && matchesSpecification && matchesNetwork && matchesScenario));
+            var matchesOperator = !operator || row.dataset.operator.toLowerCase().includes(operator);
+            return matchesKeyword && matchesGroup && matchesStatus && matchesSpecification && matchesNetwork && matchesScenario &&
+              matchesOperator && matchesDateRange(row.dataset.stockedAt, range.start, range.end);
           });
 
-          syncHeaderCheckbox();
+          inventoryPager.page = 1;
+          renderInventoryResults();
         }
 
         function resetInventoryFilters() {
@@ -18135,19 +18766,11 @@
           specificationSelect.value = "";
           networkSelect.value = "";
           scenarioSelect.value = "";
-          rows.forEach(function (row) {
-            row.classList.remove("hidden");
-          });
+          operatorInput.value = "";
+          resetDateRangeValue(stockedRange);
+          hideDatePicker();
           updateClearableState(page);
-          syncHeaderCheckbox();
-        }
-
-        function setInventoryPage(pageNumber) {
-          currentInventoryPage = Math.max(1, Math.min(4, pageNumber));
-          pageButtons.forEach(function (button) {
-            button.classList.toggle("current", Number(button.dataset.page) === currentInventoryPage);
-          });
-          jumpInput.value = currentInventoryPage;
+          applyInventoryFilters();
         }
 
         function getRecycleMode() {
@@ -18350,9 +18973,9 @@
 
         queryButton.addEventListener("click", applyInventoryFilters);
         resetButton.addEventListener("click", resetInventoryFilters);
-        [keywordInput, groupInput].forEach(function (input) {
+        [keywordInput, groupInput, operatorInput].forEach(function (input) {
           input.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
+            if (event.key === "Enter" && !event.isComposing && event.keyCode !== 229) {
               applyInventoryFilters();
             }
           });
@@ -18394,25 +19017,8 @@
           });
         });
 
-        pageButtons.forEach(function (button) {
-          button.addEventListener("click", function () {
-            setInventoryPage(Number(button.dataset.page));
-          });
-        });
-
-        page.querySelector(".js-inventory-prev").addEventListener("click", function () {
-          setInventoryPage(currentInventoryPage - 1);
-        });
-
-        page.querySelector(".js-inventory-next").addEventListener("click", function () {
-          setInventoryPage(currentInventoryPage + 1);
-        });
-
-        jumpInput.addEventListener("keydown", function (event) {
-          if (event.key === "Enter") {
-            setInventoryPage(Number(jumpInput.value) || 1);
-          }
-        });
+        bindStockPagination(pagination, inventoryPager, renderInventoryResults);
+        renderInventoryResults();
 
         recycleModeInputs.forEach(function (input) {
           input.addEventListener("change", syncRecycleMode);
@@ -19080,6 +19686,20 @@
         showToast("已打开库存管理");
       }
 
+      function openOutboundPageFromSidebar() {
+        var tabs = document.querySelector(".tabs");
+        var tab = tabs.querySelector('[data-page="outbound"]');
+        if (!tab) {
+          tab = document.createElement("div");
+          tab.className = "tab";
+          tab.dataset.page = "outbound";
+          tab.innerHTML = '出库管理 <button class="tab-close" type="button" aria-label="关闭出库管理页面">×</button>';
+          tabs.appendChild(tab);
+          bindCurrentTabInteractions();
+        }
+        activateTabPage(tab);
+      }
+
       function openCardRecycleRecordPageFromSidebar() {
         currentView = "cardRecycleRecord";
         document.body.classList.remove("page-cleared");
@@ -19352,6 +19972,7 @@
       document.addEventListener("click", function (event) {
         var dashboardMenu = event.target.closest(".js-dashboard-page");
         var inventoryMenu = event.target.closest(".js-inventory-page");
+        var outboundMenu = event.target.closest(".js-outbound-page");
         var cardRecycleMenu = event.target.closest(".js-card-recycle-page");
         var flowMenu = event.target.closest(".js-side-page");
         var trafficPoolMenu = event.target.closest(".js-traffic-pool-page");
@@ -19378,6 +19999,12 @@
         if (inventoryMenu) {
           event.preventDefault();
           runWithTrafficPoolLeaveGuard(openInventoryManagementPageFromSidebar);
+          return;
+        }
+
+        if (outboundMenu) {
+          event.preventDefault();
+          runWithTrafficPoolLeaveGuard(openOutboundPageFromSidebar);
           return;
         }
 
