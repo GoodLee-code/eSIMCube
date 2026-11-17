@@ -41,6 +41,7 @@
       --ui-flowchart-preview-radius: 8px;
       --ui-radius: 4px;
       --ui-section-gap: 20px;
+      --ui-pagination-gap: 25px;
       --ui-content-padding: 18px;
     }
 
@@ -2625,10 +2626,6 @@
       height: 48px;
     }
 
-    .work-order-card-pagination {
-      margin-top: 12px;
-    }
-
     .work-order-card-pagination .js-work-order-card-pages {
       display: inline-flex;
       align-items: center;
@@ -3099,7 +3096,6 @@
 
     .task-detail-pagination {
       width: 100%;
-      padding-top: 12px;
     }
 
     .modal-grid {
@@ -5340,11 +5336,6 @@
       z-index: 5;
     }
 
-    .pool-selected-pagination,
-    .pool-picker-pagination {
-      padding: 10px 0 0;
-    }
-
     .pool-selected-pagination {
       flex: 0 0 auto;
       flex-wrap: nowrap;
@@ -6220,8 +6211,7 @@
       align-items: center;
       justify-content: flex-end;
       gap: 8px;
-      margin-top: auto;
-      padding: 14px 0 0;
+      margin-top: var(--ui-pagination-gap);
       color: #5f6b7a;
       font-size: 12px;
     }
@@ -6393,7 +6383,6 @@
 
     .pagination {
       gap: 8px;
-      padding-top: 14px;
       font-size: 12px;
     }
 
@@ -6575,14 +6564,15 @@
     .bill-lookup .bill-lookup-empty { color: var(--muted); padding: 6px 10px; font-size: 12px; }
     .monthly-billing-page .table-area { min-height: 0; }
     .monthly-billing-page .table-scroll { flex: 1 1 auto; max-height: min(640px, calc(100dvh - 350px)); min-height: 190px; border: 0; background: var(--panel); }
-    .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: repeat(2, minmax(180px, 1fr)) auto; }
+    .monthly-billing-page .filters.is-summary .filter-grid { grid-template-columns: repeat(2, minmax(0, calc((100% - 36px) / 4))) auto; }
     .monthly-billing-page .filters.is-summary .filter-actions { grid-column: auto; }
     .monthly-billing-page .table-toolbar { height: auto; flex-wrap: wrap; gap: 10px; }
     .monthly-billing-page .toolbar-right,
     .monthly-billing-page .bill-update-note { color: var(--muted); font-size: 12px; }
-    .monthly-billing-page .bill-update-note { margin: 0 0 8px; line-height: 1.5; }
+    .monthly-billing-page .bill-update-note { display: flex; align-items: flex-start; gap: 6px; margin: 0 0 8px; line-height: 1.5; }
+    .bill-update-note-icon { display: inline-grid; place-items: center; flex: 0 0 16px; height: 16px; margin-top: 1px; border-radius: 50%; background: var(--blue-700); color: #fff; font-size: 11px; font-weight: 700; line-height: 1; }
     .monthly-billing-table { width: 100%; min-width: 1590px; font-variant-numeric: tabular-nums; }
-    .monthly-billing-table.summary { min-width: 930px; }
+    .monthly-billing-table.summary { min-width: 790px; }
     .monthly-billing-table .bill-number { text-align: right; }
     .monthly-billing-table:not(.summary) .bill-fixed { position: sticky; z-index: 1; }
     .monthly-billing-table:not(.summary) .bill-actions.bill-fixed { right: 0; }
@@ -6596,9 +6586,6 @@
     .bill-dialog .bill-field-help label { margin-bottom: 0; }
     .bill-dialog .bill-field-help { margin-bottom: 6px; }
     .bill-help-tooltip { inset: auto; margin: 0; width: max-content; max-width: min(320px, calc(100vw - 24px)); text-align: left; font-weight: 400; pointer-events: auto; }
-    .monthly-billing-table .bill-detail-cell { white-space: normal; padding: 12px 16px; }
-    .bill-drill-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding: 6px 0; }
-    .bill-drill-row + .bill-drill-row { border-top: 1px solid var(--border-soft); }
     .monthly-billing-page .pagination { flex-wrap: wrap; }
     .monthly-billing-page .bill-error { color: #b42318; font-size: 12px; }
     .monthly-billing-page .link-tool:disabled { color: var(--muted); cursor: default; }
@@ -6687,6 +6674,12 @@
       .monthly-billing-table:not(.summary) thead .bill-fixed.bill-actions { right: auto; box-shadow: none; }
     }
     .monthly-billing-page :focus-visible, .bill-dialog :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+    /* Short lists should not leave extra space between the last row and the pager. */
+    .table-scroll:has(+ .pagination) {
+      flex-grow: 0;
+      min-height: 0;
+    }
   </style>
   <link rel="stylesheet" href="components/product-doc-panel.css">
 </head>
@@ -12101,7 +12094,7 @@
       var billingCanPersist = true;
       var billingData = readMonthlyBillingData();
       if (Array.isArray(billingData.groups)) groupCatalog = billingData.groups;
-      var billingView = { tab: "groups", month: previousBillingMonth(), merchant: "", summaryMerchant: "", group: "", type: "", page: 1, pageSize: 20, expanded: "", busy: false };
+      var billingView = { tab: "groups", month: previousBillingMonth(), merchant: "", summaryMerchant: "", group: "", type: "", page: 1, pageSize: 20, busy: false };
       var billingTypes = { minimum: "低消计费", usage: "按量计费" };
       var billingPriceDigits = 7;
       var billingPriceScale = Math.pow(10, billingPriceDigits);
@@ -12330,13 +12323,10 @@
         var merchants = new Map();
         rows.forEach(function (row) {
           var name = (row.latest || row.group).merchantName;
-          if (!merchants.has(name)) merchants.set(name, { name: name, rows: [], count: 0, cents: 0 });
+          if (!merchants.has(name)) merchants.set(name, { name: name, totalGroups: 0, cents: null });
           var item = merchants.get(name);
-          item.rows.push(row);
-          if (row.latest?.bill) {
-            item.count += 1;
-            item.cents += row.latest.bill.cents;
-          }
+          item.totalGroups += 1;
+          if (row.latest?.bill) item.cents = (item.cents ?? 0) + row.latest.bill.cents;
         });
         return Array.from(merchants.values());
       }
@@ -12502,8 +12492,8 @@
       function getBillingListExportRows(rows, month, isSummary) {
         return rows.map(function (row) {
           if (isSummary) {
-            return [month, row.name, row.rows.length, row.count, row.rows.length - row.count,
-              row.count ? row.cents / 100 : null, billingData.remarks[billingKey(month, row.name)]];
+            return [month, row.name, row.totalGroups,
+              row.cents == null ? null : row.cents / 100, billingData.remarks[billingKey(month, row.name)]];
           }
           var item = row.latest;
           var group = item || row.group;
@@ -12577,20 +12567,11 @@
       function getBillingMerchantRow(item) {
         var month = billingView.month;
         var remark = billingData.remarks[billingKey(month, item.name)] || "";
-        var expanded = billingView.expanded === item.name;
         var merchant = escapeHtml(item.name);
-        return `<tr><td>${month}</td><td>${merchant}</td><td class="bill-number">${item.rows.length}</td>
-          <td class="bill-number">${item.count}</td><td class="bill-number">${item.rows.length - item.count}</td>
-          <td class="bill-number bill-money">${formatBillingCents(item.count ? item.cents : null)}</td>
+        return `<tr><td>${month}</td><td>${merchant}</td><td class="bill-number">${item.totalGroups}</td>
+          <td class="bill-number bill-money">${formatBillingCents(item.cents)}</td>
           <td data-bill-remark-cell title="${escapeHtml(remark)}">${escapeHtml(remark || "--")}</td>
-          <td><button type="button" class="link-tool" data-bill-merchant="${merchant}" aria-expanded="${expanded}">${expanded ? "收起群组" : "查看群组"}</button>
-          <button type="button" class="link-tool" data-bill-remark="${merchant}">编辑备注</button></td></tr>${expanded ?
-          '<tr><td colspan="8" class="bill-detail-cell">' + item.rows.map(function (row) {
-            var latest = row.latest;
-            return '<div class="bill-drill-row"><span>' + escapeHtml((latest || row.group).groupName) + '</span><span>' +
-              (latest?.bill ? 'V' + latest.version + ' · ¥' + formatBillingCents(latest.bill.cents) : '未出账') +
-              '</span><button class="link-tool" type="button" data-bill-history="' + escapeHtml(row.group.groupId) + '"' + (row.latest ? '' : ' disabled') + '>查询历史</button></div>';
-          }).join("") + '</td></tr>' : ""}`;
+          <td><button type="button" class="link-tool" data-bill-remark="${merchant}">编辑备注</button></td></tr>`;
       }
 
       function renderMonthlyBillingPage(focusSelector) {
@@ -12607,12 +12588,12 @@
         });
         var rows = isSummary ? getMonthlyMerchantRows(allRows).filter(function (item) { return !state.summaryMerchant || item.name === state.summaryMerchant; }) : groupRows;
         var headers = isSummary
-          ? ["账期", "商户", "群组总数", "已出账群组", "未出账群组", "总出账金额（元）", "备注", "操作"]
+          ? ["账期", "商户", "群组总数", "总出账金额（元）", "备注", "操作"]
           : ["账期", "商户", "群组", "账单类型", "总卡数", "使用流量（GB）", "计费卡数", "卡均用量（GB）", "单价（元/MB）", "低消（MB/卡/月）", "出账金额（元）", "最新查询时间", "备注", "操作"];
-        var widths = isSummary ? [90, 120, 90, 100, 100, 140, 190, 160] : [85, 100, 240, 90, 74, 111, 100, 135, 130, 147, 108, 170, 180, 148];
+        var widths = isSummary ? [90, 120, 90, 140, 190, 160] : [85, 100, 240, 90, 74, 111, 100, 135, 130, 147, 108, 170, 180, 148];
         var helpFields = { 6: "chargingCards", 7: "average", 8: "price", 9: "minimum" };
         var numericStart = isSummary ? 2 : 4;
-        var numericEnd = isSummary ? 5 : 10;
+        var numericEnd = isSummary ? 3 : 10;
         state.page = clampPage(state.page, rows.length, state.pageSize);
         var main = document.querySelector(".main");
         main.innerHTML = `
@@ -12635,7 +12616,7 @@
               <button type="button" class="btn${isSummary ? " primary" : ""}" data-bill-export ${!rows.length || (!isSummary && state.busy) ? "disabled" : ""}>导出</button>
               </div>${billingCanPersist ? "" : '<div class="toolbar-right" role="status">本地存储不可用</div>'}</div>
             <div class="table-area">
-              <p class="bill-update-note">每月1-3号每日上午十点自动更新上月账单数据。</p>
+              <p class="bill-update-note"><span class="bill-update-note-icon" aria-hidden="true">i</span><span>每月1-3号每日上午十点自动更新上月账单数据。</span></p>
               <div class="table-scroll" role="region" aria-label="${isSummary ? "商户汇总" : "群组账单"}列表" tabindex="0">
                 <table class="monthly-billing-table${isSummary ? " summary" : ""}"><thead><tr>${headers.map(function (label, i) {
                   var className = !isSummary && i === headers.length - 1 ? "bill-actions bill-fixed" : i >= numericStart && i <= numericEnd ? "bill-number" : "";
@@ -12659,7 +12640,7 @@
           form.querySelector("#billMonthError").textContent = valid ? "" : "请选择已结束的账期";
           if (!valid) { month.focus(); return null; }
           var merchant = form.querySelector("#billMerchant").value.trim();
-          var filters = { month: month.value, page: 1, expanded: "" };
+          var filters = { month: month.value, page: 1 };
           if (isSummary) {
             filters.summaryMerchant = merchant;
           } else {
@@ -12678,11 +12659,11 @@
           var button = event.target.closest("button");
           if (!button) return;
           if (button.hasAttribute("data-bill-reset")) {
-            Object.assign(state, { month: previousBillingMonth(), page: 1, expanded: "" },
+            Object.assign(state, { month: previousBillingMonth(), page: 1 },
               isSummary ? { summaryMerchant: "" } : { merchant: "", group: "", type: "" });
             renderMonthlyBillingPage("[data-bill-reset]");
           } else if (button.dataset.billView && state.tab !== button.dataset.billView) {
-            state.tab = button.dataset.billView; state.page = 1; state.expanded = "";
+            state.tab = button.dataset.billView; state.page = 1;
             renderMonthlyBillingPage('[data-bill-view="' + state.tab + '"]');
           } else if (button.classList.contains("bill-query-btn")) {
             var filters = readFilters();
@@ -12695,9 +12676,6 @@
           } else if (button.dataset.billHistory) {
             var row = allRows.find(function (item) { return item.group.groupId === button.dataset.billHistory; });
             if (row) openBillingHistory(row, state.month);
-          } else if (button.dataset.billMerchant) {
-            state.expanded = state.expanded === button.dataset.billMerchant ? "" : button.dataset.billMerchant;
-            renderMonthlyBillingPage("[data-bill-merchant=" + CSS.escape(button.dataset.billMerchant) + "]");
           } else if (button.dataset.billRemark) {
             openBillingRemark(state.month, button.dataset.billRemark, button);
           } else if (button.dataset.billGroupRemark) {
